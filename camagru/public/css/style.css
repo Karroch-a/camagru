@@ -1,0 +1,19 @@
+.icons
+{
+    width: 46px;
+    height: 46px;
+    position: relative;
+    float: left;
+    margin-top: 4px;
+    margin-left: 10px;
+}
+.cam
+{
+    margin-left: 10px;
+    margin-top: 8px;
+}
+.navbar-brand,
+.navbar-nav a {
+  font-family: 'Arial Black';
+  font-size: large;
+}
