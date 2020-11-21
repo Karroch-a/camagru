@@ -1,0 +1,6 @@
+<?PHP
+
+    namespace CAMAGRU\Controller;
+
+
+?>

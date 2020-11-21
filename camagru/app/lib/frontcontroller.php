@@ -23,7 +23,6 @@
             {
                 $this->_params = explode('/' , $url[2]);
             }
-            var_dump($this);
         }
 
         public function disp()
