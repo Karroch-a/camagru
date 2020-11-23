@@ -6,21 +6,14 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <div class="container-fluid">
-                <div class="row">
-                    <div>
-                    <a href="index.php"><img src="img/shutter.png" class="icons"></a>
-                    </div>
-                        <div class="cam"><a href="index.php" class="navbar-brand" >Camagru</a></div>
-                </div>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="login.php" class="nav-link">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="register.php" class="nav-link">Register</a>
-                        </li>
-                    </ul>
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="index.php">
+    <img src="/img/shutter.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
+        Camagru
+  </a>
+        <a class="login-resgister" href="loign.php">
+             <div class="btn pull-right">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Resgister</button>
             </div>
 </nav>
