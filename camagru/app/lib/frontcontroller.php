@@ -6,8 +6,8 @@
     {
         const NOT_FOUND_ACTION = 'notFoundAction';
         const NOT_FOUND_CONTROLLER = 'CAMAGRU\Controllers\\NotFoundController';
-        private $_controller;
-        private $_action;
+        private $_controller = "index";
+        private $_action = "default";
         private $_params = array();
 
         public function __construct()
@@ -40,6 +40,7 @@
                 $controllerClassName = self::NOT_FOUND_CONTROLLER;
             }
             $controller = new $controllerClassName();
+            var_dump($controller);
             if(!method_exists($controller, $actionName))
             {
                 $this->_action = $actionName = self::NOT_FOUND_ACTION;

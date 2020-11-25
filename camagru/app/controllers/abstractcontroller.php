@@ -1,6 +1,7 @@
 <?PHP
 
     namespace CAMAGRU\Controllers;
+    use \CAMAGRU\LIB\FrontController;
 
     class AbstractController
     {
@@ -10,7 +11,7 @@
 
         public function notFoundAction()
         {
-            echo "sorry this page is not exists";
+            $this->_view();
         }
         public function setController ($controllerName)
         {
@@ -31,7 +32,7 @@
                 require_once VIEW_PATH . 'notfound' . DS . 'notfound.view.php';
             }
             else{
-                $view = VIEW_PATH . $this->_controller .DS  .$this->_action . 'view.php';
+                $view = VIEW_PATH . $this->_controller .DS  .$this->_action . '.view.php';
                 if (file_exists($view))
                 {
                     require_once $view;

@@ -1,8 +1,11 @@
 <?php
-
     namespace CAMAGRU\Controllers;
-    class NotFoundController
+
+    class NotFoundController extends AbstractController
     {
-        
+        public function defaultAction()
+        {
+            echo 'not found';
+        }
     }
 ?>

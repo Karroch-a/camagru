@@ -7,11 +7,11 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="index.php">
+    <a class="navbar-brand">
     <img src="/img/shutter.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
         Camagru
   </a>
-        <a class="login-resgister" href="loign.php">
+        <a class="login-resgister">
              <div class="btn pull-right">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Resgister</button>
