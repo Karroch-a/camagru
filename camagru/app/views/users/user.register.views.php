@@ -1,5 +1,5 @@
 <?php
 
     namespace CAMAGRU\Views;
-
+    
 ?>

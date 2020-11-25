@@ -1,5 +1,4 @@
 <?php
-
     namespace CAMAGRU;
     use CAMAGRU\LIB\FrontController;
     if (!defined('DS'))
@@ -11,5 +10,4 @@
     require_once APP_PATH . DS . 'lib' . DS . 'autoload.php';
     $frontcontroller = new FrontController();
     $frontcontroller->disp();
-
 ?>

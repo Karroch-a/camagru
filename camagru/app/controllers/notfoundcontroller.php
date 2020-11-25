@@ -1,5 +1,8 @@
 <?php
 
-    namespace CAMAGRU\Controller;
-
+    namespace CAMAGRU\Controllers;
+    class NotFoundController
+    {
+        
+    }
 ?>
