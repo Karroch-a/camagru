@@ -13,7 +13,7 @@
   </a>
         <a class="login-resgister">
              <div class="btn pull-right">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Resgister</button>
+                    <a class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</a>
+                    <a class="btn btn-outline-success my-2 my-sm-0" type="submit">Resgister</a>
             </div>
 </nav>

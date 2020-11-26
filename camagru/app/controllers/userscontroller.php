@@ -16,5 +16,13 @@
         {
             $this->_view();
         }
+        public function profileAction()
+        {
+            $this->_view();
+        }
+        public function forgetpasswordAction()
+        {
+            $this->_view();
+        }
     }
 ?>
