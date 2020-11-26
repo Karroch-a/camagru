@@ -8,5 +8,13 @@
         {
             $this->_view();
         }
+        public function registerAction()
+        {
+            $this->_view();
+        }
+        public function loginAction()
+        {
+            $this->_view();
+        }
     }
 ?>

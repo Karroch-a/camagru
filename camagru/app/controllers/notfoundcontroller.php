@@ -3,9 +3,5 @@
 
     class NotFoundController extends AbstractController
     {
-        public function defaultAction()
-        {
-            echo 'not found';
-        }
     }
 ?>

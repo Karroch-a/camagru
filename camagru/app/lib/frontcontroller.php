@@ -40,7 +40,6 @@
                 $controllerClassName = self::NOT_FOUND_CONTROLLER;
             }
             $controller = new $controllerClassName();
-            var_dump($controller);
             if(!method_exists($controller, $actionName))
             {
                 $this->_action = $actionName = self::NOT_FOUND_ACTION;

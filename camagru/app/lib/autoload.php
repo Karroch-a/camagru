@@ -9,7 +9,7 @@
             $className = str_replace('\\', '/', $className);
             $className = $className . '.php';
             $className = strtolower($className);
-            if (file_exists(APP_PATH). $className)
+            if (file_exists(APP_PATH. $className))
             {
                 require_once APP_PATH . $className;
             }
