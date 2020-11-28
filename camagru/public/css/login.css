@@ -1,0 +1,104 @@
+
+.login-register
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 360;
+    height: 360px;
+    padding: 80px 40px;
+    box-sizing: border-box;
+    box-shadow: 0px 5px 10px rgba(0,0,0,.5);
+    border-radius: 20px;
+    background: #fff
+}
+input, select, textarea{
+    color: black;
+}
+.login-register input
+{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.login-register p
+{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #fff;
+}
+.login-register input[type="text"]
+{
+    border: none;
+    border-bottom: 1px solid  rgb(129, 129, 129);
+    background-color: transparent;
+    outline: none;
+    height: 40px;
+    color: black;
+    border: 1px solid #3497db;
+}
+.login-register input[type="password"]
+{
+    border: none;
+    border-bottom: 1px solid  rgb(129, 129, 129);
+    background-color: transparent;
+    outline: none;
+    height: 40px;
+    color: black;
+    border: 1px solid #3497db;
+
+}
+::placeholder
+{
+    color: rgb(129, 129, 129);
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: small;
+}
+.login-register .btn {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+    background-color: #3497db;
+    opacity: 1;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    position: relative;
+    box-shadow: 0 0 10px 1px #3497db;
+    margin-top: 15px;
+    margin-bottom: 35px;
+    border-radius: 0;
+    left: 100px;
+  }
+  .login-register .btn, .login-register input {
+    padding: 10px 15px;
+  }
+  .btn {background:#159f85; padding:12px 20px; color:#fff; font-size:14px; font-weight: 300;
+	transition:all .8s ease-in-out 0s; -moz-transition:all .8s ease-in-out 0s; -webkit-transition:all .8s ease-in-out 0s; 
+    -o-transition:all .8s ease-in-out 0s; border-radius:0; text-transform: uppercase; 
+}
+.login-register p
+{
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+.login-register h2
+{
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: Georgia, serif;
+}
+.copyright
+{
+    border-top: 1px solid  rgb(129, 129, 129);
+    padding: 20px;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+}

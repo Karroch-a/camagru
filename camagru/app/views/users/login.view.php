@@ -1,18 +1,20 @@
 <html>
     <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/login.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-        <div class="login">
+        
+        <div class="login-register">
             <!-- <img src="https://img.icons8.com/ios/100/000000/gender-neutral-user.png" class="face"> -->
-            <h2></h2>
             <form action="profile" method="POST">
-                <input type="text" name="username" placeholder="Username">
-                <input type="password" name="password" placeholder="Password">
-                <input type="submit" name="button" value="login">
-                <a href="forgetpassword" > <p style="color:darkblue;" >Forget Password</p></a>
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="password" name="password" placeholder="Password">
+                    <div>
+                        <button type="submit" class="btn" name="button">Login</button>
+                    </div>
+                    <a href="forgetpassword"><p>Forget Password</p></a>
             </form>
         </div>
     </body>

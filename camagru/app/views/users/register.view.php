@@ -1,1 +1,21 @@
-<h1></h1>
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../public/css/register.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        
+        <div class="login-register">
+            <!-- <img src="https://img.icons8.com/ios/100/000000/gender-neutral-user.png" class="face"> -->
+            <form action="login" method="POST">
+                <input type="text" name="username" placeholder="Username">
+                <input type="text" name="email" placeholder="Email">
+                <input type="password" name="password" placeholder="Password">
+                <input type="password" name="confirm-password" placeholder="Confirm Password">
+                <button type="submit" class="btn" name="button">Register</button>
+                <p > Already a member ? <a href="login" style="color: black;">Sign in</a></p>
+            </form>
+        </div>
+    </body>
+</html>
