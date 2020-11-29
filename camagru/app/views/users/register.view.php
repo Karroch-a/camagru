@@ -8,7 +8,7 @@
         
         <div class="login-register">
             <!-- <img src="https://img.icons8.com/ios/100/000000/gender-neutral-user.png" class="face"> -->
-            <form action="login" method="POST">
+            <form action="/users/register" method="POST">
                 <input type="text" name="username" placeholder="Username">
                 <input type="text" name="email" placeholder="Email">
                 <input type="password" name="password" placeholder="Password">

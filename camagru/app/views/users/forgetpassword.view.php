@@ -7,10 +7,10 @@
     </head>
     <body>
         <div class="login-register">
-            <h2>Reset Password?</h2>
-            <form action="login" method="POST">
+            <h2>Find your Camagru account</h2>
+            <form action="/users/forgetpassword" method="POST">
                 <input class="trasn" type="text" name="email" placeholder="Email address" style="color: black;">
-                <button class="btn" type="reset" value="Reset">Reset</button>
+                <button class="btn" type="reset" value="Reset">Search</button>
         </div>
     </body>
 </html>
