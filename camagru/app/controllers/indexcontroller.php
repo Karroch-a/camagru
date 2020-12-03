@@ -8,9 +8,5 @@
         {
             $this->_view();
         }
-        public function addAction()
-        {
-            $this->_view();
-        }
     }
 ?>

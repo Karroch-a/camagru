@@ -1,3 +1,3 @@
 <?php
-echo "adahdajkdhad";
+    require_once 'login.view.php';
 ?>

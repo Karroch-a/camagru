@@ -10,7 +10,7 @@
     <a class="navbar-brand" href = "\index">
     <img src="/img/shutter.png" width="30" height="30" class="d-inline-block align-top" alt="logo">
         Camagru
-  </a>
+        </a>
         <a class="login-resgister">
              <div class="btn pull-right">
                     <a href= "/users/login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</a>
