@@ -15,10 +15,13 @@
 
         protected static $tableName = 'db_aazeroua';
         protected static $tableSchema = array(
-            'username',
-            'email',           
-            'password',          
-            'confirm_password',
+            'username'              => self::DATA_TYPE_STR,
+            'email'                 => self::DATA_TYPE_STR,           
+            'password'              => self::DATA_TYPE_STR,          
+            'confirm_password'      => self::DATA_TYPE_STR,
+            'username_error'        => self::DATA_TYPE_STR,
+            'email_error'           => self::DATA_TYPE_STR,
+            'passowrd_error'        => self::DATA_TYPE_STR
         );
     }
 ?>

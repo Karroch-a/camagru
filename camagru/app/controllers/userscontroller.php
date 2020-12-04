@@ -24,17 +24,17 @@
                 {
                     $_SESSION[$obj->username_error] = 'Invalid Username';
                 }
-                else if ($obj->password !== $obj->password2)
-                {
-                    $_SESSION[$obj->passowrd_error] = 'The password and confirmation password do not match.';
-                }
                 else if (!filter_var($obj->email, FILTER_VALIDATE_EMAIL) || !preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$obj->email))
                 {
                     $_SESSION[$obj->email_error] = 'Invalid Email';
                 }
-                if (strlen($obj->password) <= '8')
+                else if (strlen($obj->password) <= '8')
                 {
                     $_SESSION[$obj->passowrd_error] = 'Your Password Must Contain At Least 8 Characters!';
+                }
+                else if ($obj->password !== $obj->password2)
+                {
+                    $_SESSION[$obj->passowrd_error] = 'The password and confirmation password do not match.';
                 }
                 elseif(!preg_match("#[0-9]+#",$obj->password))
                 {
@@ -48,6 +48,8 @@
                 {
                     $_SESSION[$obj->passowrd_error] = 'Your Password Must Contain At Least 1 Capital Letter!';
                 }
+                $q = new ErrorModel();
+                $q->errormodels();
             }
             $this->_view();
         }
