@@ -1,7 +1,6 @@
 <?php
     require_once "bootstrap.php";
-    $bot = new \Bootstarp();
-
+    require_once "footer.php";
 ?>
 <html>
     <head>

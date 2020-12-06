@@ -1,5 +1,4 @@
 <?php
-
     namespace CAMAGRU\Config;
     if(!defined('DS'))
     {
@@ -8,9 +7,8 @@
     define("APP_PATH", realpath(dirname(__FILE__)));
     define('VIEW_PATH', APP_PATH . DS . 'views' . DS);
 
-    defined('DATABASE_HOST_NAME')  ?null : define('DATABASE_HOST_NAME', 'localhost');
+    defined('DATABASE_HOST_NAME')  ?null : define('DATABASE_HOST_NAME', '192.168.99.120');
     defined('DATABASE_USER_NAME')  ?null : define('DATABASE_USER_NAME', 'root');
     defined('DATABASE_PASSWORD')   ?null : define('DATABASE_PASSWORD', 'myrootpass');
     defined('DATABASE_DB_NAME')  ?null : define('DATABASE_DB_NAME', 'db_aazeroua');
-    defined('DATABASE_PORT_NUMBER')  ?null : define('DATABASE_PORT_NUMBER', '81');
-?>
+    defined('DATABASE_PORT_NUMBER')  ?null : define('DATABASE_PORT_NUMBER', '6033');

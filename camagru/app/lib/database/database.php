@@ -1,21 +1,12 @@
 <?php
-
-    use CAMAGRU\Config;
-    $dsn = 'mysql:host=localhost;port=81;dbname=db_aazeroua';
+    $dsn = 'mysql:host=192.168.99.120;port=6033;dbname=db_aazeroua';
     $user = 'root';
     $pass = 'myrootpass';
 
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $password2 = $_POST['password2'];
-    $password = md5($password);
+    $connexion = null;
         try{
-            $db = new PDO($dsn, $user, $pass);
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $q =  "INSERT INTO users (username, email, password)
-                    VALUES ('$username', '$email', '$password')";
-        } catch (PDOException $e) {
+            $connexion = new \PDO($dsn, $user, $pass);
+            $connexion->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        } catch (\PDOException $e) {
         echo 'Connection failed: ' . $e->getMessage();
     }
-?>

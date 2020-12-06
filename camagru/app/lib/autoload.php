@@ -16,4 +16,3 @@
         }
     }
     spl_autoload_register(__NAMESPACE__ . '\AutoLoad::autoload');
-?>

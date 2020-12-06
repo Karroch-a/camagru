@@ -1,7 +1,7 @@
 <?php
-    namespace CAMAGRU\Controllers;
 
-    class NotFoundController extends AbstractController
-    {
-    }
-?>
+namespace CAMAGRU\Controllers;
+
+class NotFoundController extends AbstractController
+{
+}

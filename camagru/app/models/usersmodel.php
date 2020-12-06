@@ -13,15 +13,14 @@
         public $password_error;
         public $confirm_password_error;
 
-        protected static $tableName = 'db_aazeroua';
+        protected static $tableName = 'users';
         protected static $tableSchema = array(
             'username'              => self::DATA_TYPE_STR,
             'email'                 => self::DATA_TYPE_STR,           
             'password'              => self::DATA_TYPE_STR,          
-            'confirm_password'      => self::DATA_TYPE_STR,
-            'username_error'        => self::DATA_TYPE_STR,
-            'email_error'           => self::DATA_TYPE_STR,
-            'passowrd_error'        => self::DATA_TYPE_STR
+            // 'confirm_password'      => self::DATA_TYPE_STR,
+            // 'username_error'        => self::DATA_TYPE_STR,
+            // 'email_error'           => self::DATA_TYPE_STR,
+            // 'passowrd_error'        => self::DATA_TYPE_STR
         );
     }
-?>

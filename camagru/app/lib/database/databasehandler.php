@@ -2,4 +2,3 @@
 
     namespace CAMAGRU\LIB\Database;
 
-?>
