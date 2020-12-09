@@ -17,7 +17,10 @@
         protected static $tableSchema = array(
             'username'              => self::DATA_TYPE_STR,
             'email'                 => self::DATA_TYPE_STR,           
-            'password'              => self::DATA_TYPE_STR,          
+            'password'              => self::DATA_TYPE_STR,
+            'rowcount'              => self::DATA_TYPE_INT,
+            'token'                 => self::DATA_TYPE_STR,
+            'password_token'        => self::DATA_TYPE_STR,
             // 'confirm_password'      => self::DATA_TYPE_STR,
             // 'username_error'        => self::DATA_TYPE_STR,
             // 'email_error'           => self::DATA_TYPE_STR,

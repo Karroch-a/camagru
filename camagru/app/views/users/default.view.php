@@ -1,3 +1,3 @@
 <?php
-    require_once 'login.view.php';
+    $this->redirect('/users/login');
 ?>

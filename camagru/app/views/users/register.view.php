@@ -1,4 +1,8 @@
 <?php
+    if (isset($_SESSION['username']))
+    {
+        $this->redirect('/users/profile');
+    }
     require_once "bootstrap.php";
     require_once "footer.php";
 ?>
@@ -11,31 +15,31 @@
 
 <body>
     <?php
-        if ($_SESSION[$obj->username_error] == true) {
-            $q = $_SESSION[$obj->username_error];
+        if (isset($_SESSION['username_error'])) {
+            $q = $_SESSION['username_error'] ;
             echo "<p class='alert alert-danger text-center'>$q</p>";
             echo '<br>';
-            unset($_SESSION[$obj->username_error]);
-        } else if ($_SESSION[$obj->email_error] == true) {
-            $er =  $_SESSION[$obj->email];
+            unset($_SESSION['username_error'] );
+        } else if (isset($_SESSION['email_error'])) {
+            $er =  $_SESSION['email_error'];
             echo "<p class='alert alert-danger text-center'> $er</p>";
             echo '<br>';
-            unset($_SESSION[$obj->email_error]);
-        } else if ($_SESSION[$obj->password_error] == true) {
-            $er =  $_SESSION[$obj->password_error];
+            unset($_SESSION['email_error']);
+        } else if (isset($_SESSION['passowrd_error'])) {
+            $er =  $_SESSION['passowrd_error'];
             echo "<p class='alert alert-danger text-center'> $er</p>";
             echo '<br>';
-            unset($_SESSION[$obj->password_error]);
-        } else if ($_SESSION[$obj->password_error] == true) {
-            $er =  $_SESSION[$obj->password_error];
+            unset($_SESSION['passowrd_error']);
+        } else if (isset($_SESSION['passowrd_error'])) {
+            $er =  $_SESSION['passowrd_error'];
             echo "<p class='alert alert-danger text-center'> $er</p>";
             echo '<br>';
-            unset($_SESSION[$obj->password_error]);
-        } else if ($_SESSION[$obj->passsword_error] == true) {
-            $er =  $_SESSION[$obj->passsword_error];
+            unset($_SESSION['passowrd_error']);
+        } else if (isset($_SESSION['passowrd_error'])) {
+            $er =  $_SESSION['passowrd_error'];
             echo "<p class='alert alert-danger text-center'> $er</p>";
             echo '<br>';
-            unset($_SESSION[$obj->password_error]);
+            unset($_SESSION['passowrd_error']);
         }
         else if(isset($_SESSION['email_already']))
         {

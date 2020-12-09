@@ -1,4 +1,8 @@
 <?php
+  if (isset($_SESSION['username']))
+  {
+      $this->redirect('/users/profile');
+  }
     require_once "bootstrap.php";
     require_once "footer.php";
 ?>
@@ -10,13 +14,40 @@
     </head>
     <body>
         <?php
-            if (isset($_SESSION['message']))
-            {?>
-                <?php $q = $_SESSION['message']; echo "<p class='alert alert-success text-center'>$q</p>"?>
-                <?php
-                    unset($_SESSION['message']);
+        if (isset($_SESSION['message'])) {
+            $q = $_SESSION['message'];
+            echo "<p class='alert alert-success text-center'>$q</p>";
+            unset($_SESSION['message']);
+        }
+        if ($_SESSION['token_validate'])
+        {
+            $er =  $_SESSION['token_validate'];
+            echo "<p class='alert alert-success text-center'> $er</p>";
+            unset($_SESSION['token_validate']);
+        }
+        if ($_SESSION['token_not_valid'])
+        {
+            $er =  $_SESSION['token_not_valid'];
+            echo "<p class='alert alert-danger text-center'> $er</p>";
+            unset($_SESSION['token_not_valid']);
+        }
+        if (isset($_SESSION['username_error']))
+        {
+            if (isset($_SESSION['validate_account']))
+            {
+                $er =  $_SESSION['validate_account'];
+                echo "<p class='alert alert-danger text-center'> $er</p>";
+                unset($_SESSION['validate_account']);
             }
-        ?>
+            else
+            {
+                $er =  $_SESSION['username_error'];
+                echo "<p class='alert alert-danger text-center'> $er</p>";
+                unset($_SESSION['username_error']);
+            }
+        }
+        
+    ?>
         <div class="login-register">
             <!-- <img src="https://img.icons8.com/ios/100/000000/gender-neutral-user.png" class="face"> -->
             <form action="/users/login" method="POST">

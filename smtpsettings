@@ -1,0 +1,12 @@
+defaults
+auth on
+tls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile /var/log/msmtp.log
+account karroch
+host smtp.gmail.com
+port 587
+from camagru.karroch@gmail.com
+user camagru.karroch@gmail.com
+password *********
+account default : karroch

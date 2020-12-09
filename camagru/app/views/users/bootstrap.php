@@ -1,4 +1,3 @@
-
 <html>
     <head>
         <title>Camagru</title>
@@ -13,8 +12,15 @@
         </a>
         <a class="login-resgister">
             <div class="btn pull-right">
+            <form  method="POST" name="Logout">
+            <?php if (isset($_SESSION['username'])):?>
+                <a href="/users/profile" class="btn btn-outline-success my-2 my-sm-0" type="submit"><?php echo 'Hi ' . $_SESSION['username'] ?></a>
+                <a href="/users/login"><input type="submit"  class="btn btn-outline-success my-2 my-sm-0" name="logout" value="Logout"></a>
+            </form>
+            <?php else :?>
                 <a href="/users/login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</a>
-                <a href="/users/register" class="btn btn-outline-success my-2 my-sm-0" type="submit">Resgister</a>
+                <a href="/users/register" class="btn btn-outline-success my-2 my-sm-0"  type ='logout'type="submit">Resgister</a>
             </div>
+            <?php endif; ?>
     </nav>
     </html>

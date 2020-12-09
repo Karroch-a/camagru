@@ -16,4 +16,3 @@ require_once APP_PATH . DS . 'lib' . DS . 'autoload.php';
 session_start();
 $frontcontroller = new FrontController();
 $frontcontroller->disp();
-// header("Location: http://google.com");
