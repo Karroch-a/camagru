@@ -4,12 +4,7 @@
       $this->redirect('/users/profile');
   }
   $url = explode('/', trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/'), 3);
-  $check_token = $url[2];
-  if ($_SESSION['shuffled1'] != $check_token)
-  {
-    $this->redirect('/users/login');
-  }
-  if ($check_token == '')
+  if ($check_token === '')
   {
     $this->redirect('/users/login');
   }

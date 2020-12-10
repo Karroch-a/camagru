@@ -93,7 +93,6 @@
             $q = $connexion->prepare("SELECT COUNT(id) FROM users WHERE token = '$check_token'");
             $q->execute();
             $count = $q->fetchColumn();
-            echo $count;
             if ($count == "1")
             {
                 return true;
@@ -109,21 +108,35 @@
             $url = explode('/', trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/'), 3);
             $check_token = $url[2];
             $row = "UPDATE  users SET rowcount = 1 WHERE token = '$check_token'";
-            $tok = "UPDATE  users SET token = 0  WHERE rowcount = 1";
+            $tok = "UPDATE  users SET token = 'NULL'  WHERE rowcount = 1";
             $stmt_row = $connexion->prepare($row);
             $stmt_tok = $connexion->prepare($tok);
             $stmt_row->execute();
             $stmt_tok->execute();
         }
-        public function edit()
+        public function editpassword()
         {
             global $connexion;
             $password = md5($_POST['new']);
-            $email = $_SESSION['email'];
-            $row = "UPDATE users SET password = '$password' WHERE email = '$email' AND rowcount = 1";
-            $stmt_row = $connexion->prepare($row);
-            $stmt_row->execute();
-            unset($_SESSION['shuffled1']);
+            $url = explode('/', trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/'), 3);
+            $check_token = $url[2];
+            $q = $connexion->prepare("SELECT COUNT(id) FROM users WHERE rowcount = 1 AND password_token = '$check_token'");
+            $q->execute();
+            $count = $q->fetchColumn();
+            if ($count == "1")
+            {
+                $row = "UPDATE users SET password = '$password' WHERE rowcount = 1 AND password_token = '$check_token'";
+                $password_token = "UPDATE users SET password_token = 'NULL' WHERE password_token = '$check_token'";
+                $stmt_row = $connexion->prepare($row);
+                $password_token_s = $connexion->prepare($password_token);
+                $stmt_row->execute();
+                $password_token_s->execute();
+                return true;
+            }
+            else
+            {
+              return false;
+            }
         }
         public function checkmail()
         {

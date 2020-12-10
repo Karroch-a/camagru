@@ -4,5 +4,5 @@
     {
         $this->redirect('/users/profile');
     }
-    // $this->redirect('/users/login');
+    $this->redirect('/users/login');
 ?>

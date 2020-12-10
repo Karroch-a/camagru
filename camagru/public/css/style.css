@@ -118,7 +118,7 @@ input, select, textarea{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 360;
+    width: 360px;
     height: 490px;
     padding: 80px 40px;
     box-sizing: border-box;
@@ -191,13 +191,203 @@ input, select, textarea{
   .register .btn, .register input {
     padding: 10px 15px;
   }
-  .btn {background:#159f85; padding:12px 20px; color:#fff; font-size:14px; font-weight: 300;
-	transition:all .8s ease-in-out 0s; -moz-transition:all .8s ease-in-out 0s; -webkit-transition:all .8s ease-in-out 0s; 
-    -o-transition:all .8s ease-in-out 0s; border-radius:0; text-transform: uppercase; 
-}
 .register p
 {
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
     color: black;
+}
+.account
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 800px;
+    padding: 30px 40px;
+    box-sizing: border-box;
+    box-shadow: 0px 5px 10px rgba(0,0,0,.5);
+    border-radius: 20px;
+    background: #fff;
+    float: left;
+}
+.account h4
+{
+    padding: 10px 0px 40px 0px;
+    font-size: large;
+}
+.account .photo_profile
+{
+    position: relative;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    left: 40px;
+    height: 80px;
+    background-color: gray;
+    border-radius: 360%;
+    padding: 30px 30px;
+    box-sizing: border-box;
+}
+.photo_profile .btn {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+    background-color: #3497db;
+    opacity: 1;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    position: relative;
+    box-shadow: 0 0 10px 1px #3497db;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    border-radius: 0;
+    left: 100px;
+    bottom: 20px;
+  }
+  .inp
+  {
+      padding-top: 20px;
+  }
+  .account .tr
+  {
+      position: relative;
+      border-top: 1px solid  rgb(219, 215, 215);
+      padding-bottom: 20px;
+      width: 610px;
+      margin-top: 10px;
+  }
+  .account input
+{
+    width: 40%;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+.account p
+{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #fff;
+}
+.account input[type="text"]
+{
+    border: none;
+    border-bottom: 1px solid  rgb(129, 129, 129);
+    background-color: transparent;
+    outline: none;
+    height: 40px;
+    color: black;
+    border: 1px solid #3497db;
+    margin-right: 50px;
+}
+.account input[type="password"]
+{
+    border: none;
+    border-bottom: 1px solid  rgb(129, 129, 129);
+    background-color: transparent;
+    outline: none;
+    height: 40px;
+    color: black;
+    border: 1px solid #3497db;
+    margin-right: 50px;
+
+}
+.account .btn {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    color: #3497db;
+    background-color: #fff;
+    opacity: 1;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    position: relative;
+    margin-top: 15px;
+    margin-bottom: 35px;
+    border-radius: 5px;
+    left: 100spx;
+  }
+  .d
+  {
+    position: relative;
+    left: 120px;
+    bottom: 73px;
+
+  }
+  .d .btn {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 auto;
+    color: red;
+    background-color: #fff;
+    opacity: 1;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    position: relative;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    left: 100px;
+    bottom: 20px;
+  }
+
+  .inp .btn
+  {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+    background-color: #3497db;
+    opacity: 1;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    position: relative;
+    box-shadow: 0 0 10px 1px #3497db;
+    margin-top: 15px;
+    margin-bottom: 35px;
+    border-radius: 0;
+    top: 120px;
+    left: 490px;
+  }
+.delete
+{
+    position: relative;
+    top:20px;
+}
+.delete .btn
+{
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 auto;
+    color: red;
+    background-color: #fff;
+    opacity: 1;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    position: relative;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    left: 170px;
+    top: -45px;
 }

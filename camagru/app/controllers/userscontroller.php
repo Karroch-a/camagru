@@ -23,7 +23,7 @@ class UsersController extends AbstractController
             $obj->email = $_POST['email'];
             $obj->password = $_POST['password'];
             $obj->password2 = $_POST['confirm-password'];
-            if (strlen($obj->username) < 5 || $obj->username == "") {
+            if (strlen($obj->username) < 5 || $obj->username == "" || strlen($obj->username) > 10 ||!filter_var($obj->username, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW)) {
                 $_SESSION['username_error'] = 'Invalid Username';
             } 
             else if (!filter_var($obj->email, FILTER_VALIDATE_EMAIL) || !preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $obj->email)) {
@@ -48,14 +48,15 @@ class UsersController extends AbstractController
             {
                 $obj->password = md5($obj->password);
                 $obj->rowcount = 0;
-                $obj->password_token = 0;
+                $obj->password_token = 'NULL';
+                $url = "http://192.168.99.125:8000/users/verify/";
                 if ($obj->checkvalidateregister() == true) 
                 {
                     $_SESSION['mail'] = $obj->email;
-                    $obj->token = str_shuffle('ABCDEFGHJKK1234654@2842942@!8Hd)()@$QQHE=1-1=1=][LDLD');
+                    $obj->token = str_shuffle('ABCDEFGHJKK1234654120');
                     $_SESSION['shuffled'] = $obj->token;
                     $subject = 'verified accounts';
-                    $message = "welcome to camagru . $obj->username <br> http://192.168.99.118:8000/users/verify/" .$obj->token;
+                    $message = "welcome to camagru . $obj->username <br> $url" .$obj->token;
                     $header .= "Content-type: text/html\r\n";
                     $obj->create();
                     $_SESSION['message'] = 'Your account has been made, <br /> please verify it by clicking the activation link that has been send to your email.';
@@ -84,6 +85,55 @@ class UsersController extends AbstractController
     }
     public function profileAction()
     {
+        if (isset($_POST['apply']))
+        {
+            global $connexion;
+            $obj = new UsersModel();
+            if (isset($_POST['apply']))
+            {
+                if(isset($_FILES['upload']) && !empty($_FILES['upload']['name']))
+                {
+                    $error = "";
+                    $imageName = $_FILES['upload']['name'];
+                    $imageTmp = $_FILES['upload']['tmp_name'];
+                    $imageSize = $_FILES['upload']['size'];
+                    $valid_extensions = array('jpeg', 'jpg', 'png', 'gif');
+                    $extension = pathinfo($imageName, PATHINFO_EXTENSION);
+                    if (getimagesize($imageSize))
+                    {
+                        if ($imageSize <= MAX_SIZE)
+                        {
+                            if (in_array($extension, $valid_extensions))
+                            {
+                                $imageName = md5(uniqid()).$extension;
+                                if (move_uploaded_file($imageTmp, 'upload', $imageName))
+                                {
+                                    echo "success";
+                                }
+                                else
+                                {
+                                    $error = "implossible upload";
+                                }
+                            }
+                            else
+                            {
+                                $error = "extension isn't accepted";
+                            }
+                        }
+                        else
+                        {
+                            $error = "image is so big";
+                        }
+                    }
+                else
+                {
+                    $error = 'no File selected';
+                }
+            }
+        } 
+            $stmt = $connexion->prepare("UPDATE users SET image_profile = '$image_profile' WHERE username = $obj->username");
+            echo $stmt->execute();
+        }
         $this->_view();
     }
     public function verifyAction()
@@ -114,14 +164,18 @@ class UsersController extends AbstractController
             }
             else if ($obj->checkmail() == true)
             {
-                $obj->token = str_shuffle('ABCDEFGHJKK1234654@2842942@!8Hd)()@$QQHE=1-1=1=][LDLD');
-                $_SESSION['shuffled1'] = $obj->token;
+                global $connexion;
+                $url = "http://192.168.99.125:8000/users/verify/";
+                $obj->password_token = str_shuffle('ABCDEFGHJKK1234654@2842942@!8Hd)()@$QQHE=1-1=1=][LDLD');
                 $subject = 'reset password';
-                $message = "welcome to camagru . $obj->username <br> http://192.168.99.118:8000/users/editpassword/" .$obj->token;
+                $message = "welcome to camagru . $obj->username <br> $url".$obj->password_token;
                 $header .= "Content-type: text/html\r\n";
                 $_SESSION['forgetpassword'] = 'please verify it by clicking the reset link that has been send to your email.';
                 $_SESSION['check'] = mail($obj->email, $subject, $message, $header);
                 $_SESSION['email'] = $obj->email;
+                $sql = "UPDATE users SET password_token = '$obj->password_token' WHERE email = '$obj->email'";
+                $stmt = $connexion->prepare($sql);
+                $stmt->execute();
             }
         }
         $this->_view();
@@ -149,9 +203,15 @@ class UsersController extends AbstractController
             }
             else
             {
-                $obj->edit();
+                if ($obj->edit() == true)
+                {
+                    $_SESSION['success'] = 'success password is changed please login in your account';
+                    $this->redirect('/users/login');
+                }
+                
+                else
+                $_SESSION['token_invalid'] = 'token_invalid';
                 $this->redirect('/users/login');
-                unset($_SESSION['email']);
             }
         }
         $this->_view();
