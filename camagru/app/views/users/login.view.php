@@ -25,13 +25,13 @@
             echo "<p class='alert alert-success text-center'> $er</p>";
             unset($_SESSION['token_validate']);
         }
-        if ($_SESSION['token_not_valid'])
+        if ($_SESSION['validate_account'])
         {
-            $er =  $_SESSION['token_not_valid'];
+            $er =  $_SESSION['validate_account'];
             echo "<p class='alert alert-danger text-center'> $er</p>";
-            unset($_SESSION['token_not_valid']);
+            unset($_SESSION['validate_account']);
         }
-        if (isset($_SESSION['username_error']))
+        else if (isset($_SESSION['username_error']))
         {
             $er =  $_SESSION['username_error'];
             echo "<p class='alert alert-danger text-center'> $er</p>";

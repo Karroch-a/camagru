@@ -49,6 +49,7 @@ class UsersController extends AbstractController
                 $obj->password = md5($obj->password);
                 $obj->rowcount = 0;
                 $obj->password_token = 'NULL';
+                $obj->image_profile = 'NULL';
                 $url = "http://192.168.99.125:8000/users/verify/";
                 if ($obj->checkvalidateregister() == true) 
                 {
@@ -85,54 +86,12 @@ class UsersController extends AbstractController
     }
     public function profileAction()
     {
-        if (isset($_POST['apply']))
+        if (isset($_POST['delete']))
         {
-            global $connexion;
             $obj = new UsersModel();
-            if (isset($_POST['apply']))
-            {
-                if(isset($_FILES['upload']) && !empty($_FILES['upload']['name']))
-                {
-                    $error = "";
-                    $imageName = $_FILES['upload']['name'];
-                    $imageTmp = $_FILES['upload']['tmp_name'];
-                    $imageSize = $_FILES['upload']['size'];
-                    $valid_extensions = array('jpeg', 'jpg', 'png', 'gif');
-                    $extension = pathinfo($imageName, PATHINFO_EXTENSION);
-                    if (getimagesize($imageSize))
-                    {
-                        if ($imageSize <= MAX_SIZE)
-                        {
-                            if (in_array($extension, $valid_extensions))
-                            {
-                                $imageName = md5(uniqid()).$extension;
-                                if (move_uploaded_file($imageTmp, 'upload', $imageName))
-                                {
-                                    echo "success";
-                                }
-                                else
-                                {
-                                    $error = "implossible upload";
-                                }
-                            }
-                            else
-                            {
-                                $error = "extension isn't accepted";
-                            }
-                        }
-                        else
-                        {
-                            $error = "image is so big";
-                        }
-                    }
-                else
-                {
-                    $error = 'no File selected';
-                }
-            }
-        } 
-            $stmt = $connexion->prepare("UPDATE users SET image_profile = '$image_profile' WHERE username = $obj->username");
-            echo $stmt->execute();
+            $obj->delete();
+            session_destroy();
+            $this->redirect('/users/login');
         }
         $this->_view();
     }

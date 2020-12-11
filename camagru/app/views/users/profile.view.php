@@ -27,7 +27,7 @@
                     <button type="submit" class="btn" name="apply">Apply</button>
                     <div class="d"><button type="submit" class="btn" name="remove">Remove</button></div>
                 </div>
-                <input type="file" name="upload" class="btn" placeholder="Upload">
+                <input type="file" name="upload" class="btn">
                 <div class="tr"></div>
                 <div class="inp">
                     <input type="text" name="username" placeholder="Username">

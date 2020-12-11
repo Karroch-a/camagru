@@ -12,3 +12,4 @@
     defined('DATABASE_PASSWORD')   ?null : define('DATABASE_PASSWORD', 'myrootpass');
     defined('DATABASE_DB_NAME')  ?null : define('DATABASE_DB_NAME', 'db_aazeroua');
     defined('DATABASE_PORT_NUMBER')  ?null : define('DATABASE_PORT_NUMBER', '6033');
+    defined('TARGER')  ?null : define('TARGER', 'views/users/upload/');

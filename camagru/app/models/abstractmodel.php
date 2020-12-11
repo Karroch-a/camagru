@@ -165,5 +165,14 @@
                 return false;
             }
         }
+        public function delete()
+        {
+            global $connexion;
+            $obj = new UsersModel();
+            $username = $_SESSION['username'];
+            $sql = "DELETE FROM users WHERE username = '$username'";
+            $stmt = $connexion->prepare($sql);
+            $stmt->execute();
+        }
     }
 ?>
