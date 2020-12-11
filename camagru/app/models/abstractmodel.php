@@ -168,11 +168,28 @@
         public function delete()
         {
             global $connexion;
-            $obj = new UsersModel();
             $username = $_SESSION['username'];
             $sql = "DELETE FROM users WHERE username = '$username'";
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
+        }
+        public function profileinfo()
+        {
+            global $connexion;
+            $use = $_SESSION['username'];
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $password = md5($_POST['password']);
+            $password2 = $_POST['confirm-password'];
+            $row_pass = "UPDATE  users SET password = '$password' WHERE username = '$use'";
+            $row_email = "UPDATE  users SET email = '$email' WHERE username = '$use'";
+            $row_user = "UPDATE  users SET username = '$username' WHERE username = '$use'";
+            $stmt_pass = $connexion->prepare($row_pass);
+            $stmt_email = $connexion->prepare($row_email);
+            $stmt_user = $connexion->prepare($row_user);
+            $stmt_pass->execute();
+            $stmt_email->execute();
+            $stmt_user->execute();
         }
     }
 ?>

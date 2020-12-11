@@ -43,7 +43,7 @@ class UsersController extends AbstractController
             } 
             else if (!preg_match("#[a-z]+#", $obj->password)) {
                 $_SESSION['passowrd_error'] = 'Your Password Must Contain At Least 1 Capital Letter!';
-            } 
+            }
             else 
             {
                 $obj->password = md5($obj->password);
@@ -86,12 +86,48 @@ class UsersController extends AbstractController
     }
     public function profileAction()
     {
+        $obj = new UsersModel();
         if (isset($_POST['delete']))
         {
-            $obj = new UsersModel();
             $obj->delete();
             session_destroy();
             $this->redirect('/users/login');
+        }
+        if (isset($_POST['save']))
+        {
+            $obj->username = $_POST['username'];
+            $obj->email = $_POST['email'];
+            $obj->password = $_POST['password'];
+            $obj->password2 = $_POST['confirm-password'];
+            if (strlen($obj->username) < 5 || $obj->username == "" || strlen($obj->username) > 10 ||!filter_var($obj->username, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW)) {
+                $_SESSION['error'] = 'Invalid Username';
+            } 
+            else if (!filter_var($obj->email, FILTER_VALIDATE_EMAIL) || !preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $obj->email)) {
+                $_SESSION['email_error'] = 'Invalid Email';
+            } 
+            else if (strlen($obj->password) <= '8') {
+                $_SESSION['passowrd_error1'] = 'Your Password Must Contain At Least 8 Characters!';
+            }
+            else if ($obj->password !== $obj->password2) {
+                $_SESSION['ok'] = 'The password and confirmation password do not match.';
+            } 
+            elseif (!preg_match("#[0-9]+#", $obj->password)) {
+                $_SESSION['passowrd_error3'] = 'Your Password Must Contain At Least 1 Number!!';
+            } 
+            elseif (!preg_match("#[A-Z]+#", $obj->password)) {
+                $_SESSION['passowrd_error4'] = 'Your Password Must Contain At Least 1 Lowercase Letter!';
+            } 
+            else if (!preg_match("#[a-z]+#", $obj->password)) {
+                $_SESSION['passowrd_error5'] = 'Your Password Must Contain At Least 1 Capital Letter!';
+            }
+            else
+            {
+                if ($obj->checkvalidateregister() == true)
+                {
+                    $obj->profileinfo();
+                    $_SESSION['username'] = $obj->username;
+                }
+            }
         }
         $this->_view();
     }
