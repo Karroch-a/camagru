@@ -91,7 +91,7 @@
                     <div class="tr"></div>
                     <div class="delete">
                         <h3>Delete Account</h3>By deleting your account you will lose all your data
-                        <button type="submit" class="btn" name="delete">Delete</button>
+                        <button type="submit" class="btn" name="delete">delete</button>
                     </div>
                     <button type="submit" class="btn" name="save">Save changes</button>
                 </div>

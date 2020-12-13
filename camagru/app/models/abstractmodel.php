@@ -191,5 +191,47 @@
             $stmt_email->execute();
             $stmt_user->execute();
         }
+        public function savechanges()
+        {
+            global $connexion;
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $usr = $_SESSION['username'];
+            if (isset($email))
+            {
+                $sql_username = "SELECT username FROM  users WHERE username = ? AND username != '$usr'";
+                $sql_email = "SELECT email FROM  users WHERE email = ? AND username != '$usr'";
+                $stmt_username = $connexion->prepare($sql_username);
+                $stmt_email = $connexion->prepare($sql_email);
+                $stmt_email->execute([$email]);
+                $stmt_username->execute([$username]);
+                if ($stmt_email->rowCount() >= 1)
+                {
+                        $_SESSION['email_already'] = 'sorry! email already exist';
+                        return false;
+                }
+                else if ($stmt_username->rowCount() >= 1)
+                {
+                        $_SESSION['username_already'] = 'sorry! username already exist';
+                        return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+        public function getall($usr)
+        {
+            global $connexion;
+            $sql = "SELECT * FROM users WHERE username = '$use'";
+            $stmt = $connexion->prepare($sql);
+            if ($stmt->execute() === true)
+            {
+                $obj = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, get_called_class(), array_keys(static::$tableSchema));
+                return array_shift($obj);
+            }
+            return false;
+        }
     }
 ?>

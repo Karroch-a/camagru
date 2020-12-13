@@ -50,7 +50,7 @@ class UsersController extends AbstractController
                 $obj->rowcount = 0;
                 $obj->password_token = 'NULL';
                 $obj->image_profile = 'NULL';
-                $url = "http://192.168.99.125:8000/users/verify/";
+                $url = "http://192.168.99.126:8000/users/verify/";
                 if ($obj->checkvalidateregister() == true) 
                 {
                     $_SESSION['mail'] = $obj->email;
@@ -122,7 +122,7 @@ class UsersController extends AbstractController
             }
             else
             {
-                if ($obj->checkvalidateregister() == true)
+                if ($obj->savechanges() == true)
                 {
                     $obj->profileinfo();
                     $_SESSION['username'] = $obj->username;
@@ -160,7 +160,7 @@ class UsersController extends AbstractController
             else if ($obj->checkmail() == true)
             {
                 global $connexion;
-                $url = "http://192.168.99.125:8000/users/verify/";
+                $url = "http://192.168.99.126:8000/users/verify/";
                 $obj->password_token = str_shuffle('ABCDEFGHJKK1234654@2842942@!8Hd)()@$QQHE=1-1=1=][LDLD');
                 $subject = 'reset password';
                 $message = "welcome to camagru . $obj->username <br> $url".$obj->password_token;
