@@ -1,37 +1,23 @@
-<!DOCTYPE html>
+<?php
+    if (!isset($_SESSION['username']))
+     {
+         $this->redirect('/users/login');
+     }
+   require_once APP_PATH . DS . 'views' . DS .  'users' . DS . 'bootstrap.php';
+   require_once APP_PATH . DS . 'views' . DS .  'users' . DS . 'footer.php';
+   
+?>
 <html>
 	<head>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../public/css/style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
-		<video id="vid"></video>
-		<canvas id="canvas"></canvas><br>
-		<button onclick="picutre();">take picture</button>
-		<script type="text/javascript">
-			var video = document.getElementById('video');
-			var canvas = document.getElementById('canvas');
-			var context = canvas.getContext('2d');
-
-			navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.oGetUserMedia || navigator.msGetUserMedia;
-
-			if(navigator.getUserMedia){
-				navigator.getUserMedia({video:true}, streamWebCam, throwError);
-			}
-
-			function streamWebCam (stream) {
-				vid.srcObject = stream;
-				vid.play();
-			}
-
-			function throwError (e) {
-				alert(e.name);
-			}
-
-			function picutre () {
-				canvas.width = vid.clientWidth;
-				canvas.height = vid.clientHeight;
-				context.drawImage(vid, 0, 0);
-			}
+		<video id="vid" style="width:300px"></video>
+		<canvas id="canvas" ></canvas><br>
+		<button  class="btn btn-primary" onclick="picutre();">take picture</button>
+        <script type="text/javascript" src="/../public/js/main.js">
 		</script>
 	</body>
 </html>

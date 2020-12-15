@@ -1,22 +1,17 @@
 <?php
- if (!isset($_SESSION['username']))
- {
-     $this->redirect('/users/login');
- }
- if (isset($_POST['logout']))
- {
-     session_destroy();
-     $this->redirect('/users/login');
- }
+//  if (!isset($_SESSION['username']))
+//  {
+//      $this->redirect('/users/login');
+//  }
     require_once "bootstrap.php";
     require_once "footer.php";
 ?>
 <html>
 <head>
     <title>Camagru</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="../public/css/style.css">
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../public/css/style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
         <?php

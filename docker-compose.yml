@@ -11,6 +11,7 @@ services:
       - /Users/aazeroua/Desktop/camagru/camagru/:/var/www/html/
     ports:
       - 8000:80
+      - 8081:443
   db:
     container_name: mysqldb
     image: mysql

@@ -1,7 +1,10 @@
 <?php
-    $dsn = 'mysql:host=192.168.99.127;port=6033;dbname=db_aazeroua';
-    $user = 'root';
-    $pass = 'myrootpass';
+    namespace CAMAGRU\LIB\Database;
+    use CAMAGRU\Config;
+    
+    $dsn = "mysql:host=".DATABASE_HOST_NAME.";port=".DATABASE_PORT_NUMBER.";dbname=".DATABASE_DB_NAME;
+    $user = DATABASE_USER_NAME;
+    $pass = DATABASE_PASSWORD;
 
     $connexion = null;
         try{
