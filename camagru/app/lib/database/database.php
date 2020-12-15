@@ -1,5 +1,5 @@
 <?php
-    $dsn = 'mysql:host=192.168.99.126;port=6033;dbname=db_aazeroua';
+    $dsn = 'mysql:host=192.168.99.127;port=6033;dbname=db_aazeroua';
     $user = 'root';
     $pass = 'myrootpass';
 

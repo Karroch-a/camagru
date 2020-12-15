@@ -1,21 +1,37 @@
+<!DOCTYPE html>
 <html>
-    <head>
-    <head>
-    <body>
-        <video id="video" width="640" height="480" autoplay></video>
-        <script type="text/javascript">
-            // Grab elements, create settings, etc.
-            var video = document.getElementById('video');
+	<head>
 
-            // Get access to the camera!
-            if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    // Not adding `{ audio: true }` since we only want video now
-            navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-                //video.src = window.URL.createObjectURL(stream);
-                video.srcObject = stream;
-                video.play();
-    });
-}
-        </script>
-    </body>
+	</head>
+	<body>
+		<video id="vid"></video>
+		<canvas id="canvas"></canvas><br>
+		<button onclick="picutre();">take picture</button>
+		<script type="text/javascript">
+			var video = document.getElementById('video');
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+
+			navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.oGetUserMedia || navigator.msGetUserMedia;
+
+			if(navigator.getUserMedia){
+				navigator.getUserMedia({video:true}, streamWebCam, throwError);
+			}
+
+			function streamWebCam (stream) {
+				vid.srcObject = stream;
+				vid.play();
+			}
+
+			function throwError (e) {
+				alert(e.name);
+			}
+
+			function picutre () {
+				canvas.width = vid.clientWidth;
+				canvas.height = vid.clientHeight;
+				context.drawImage(vid, 0, 0);
+			}
+		</script>
+	</body>
 </html>
