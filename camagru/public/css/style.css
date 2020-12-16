@@ -13,6 +13,22 @@
     border-radius: 20px;
     background: #fff
 }
+.ikhan
+{
+    position: relative;
+    display: inline-block;
+}
+svg
+{
+    width: 40px;
+    height: 30px;
+}
+
+.fas
+{
+    color: black;
+    font-size: large;
+}
 input, select, textarea{
     color: black;
 }
@@ -390,4 +406,95 @@ input, select, textarea{
     border-radius: 5px;
     left: 170px;
     top: -45px;
+}
+
+@media (min-width: 320px) and (max-width: 700px)
+{
+    .login-register 
+    {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        width: 310px;
+        height: 292px;
+        padding: 40px 30px;
+        box-sizing: border-box;
+        box-shadow: 0px 5px 10px rgba(0,0,0,.5);
+        border-radius: 20px;
+        background: #fff;
+        margin-top: 6%;
+    }
+    .register
+{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 310px;
+    height: 341px;
+    padding: 30px 30px;
+    margin-top: 5%;
+    box-sizing: border-box;
+    box-shadow: 0px 5px 10px rgba(0,0,0,.5);
+    border-radius: 20px;
+    background: #fff;
+}
+.alert {
+    height: 52px;
+ }
+input, select, textarea{
+    color: black;
+}
+.text-center
+{
+    position: relative;
+    font-size: small;
+    bottom: 1%;
+}
+.register input
+{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.register input[type="text"]
+{
+    border: none;
+    border-bottom: 1px solid  rgb(129, 129, 129);
+    background-color: transparent;
+    outline: none;
+    height: 40px;
+    color: black;
+    border: 1px solid #3497db;
+}
+.register input[type="password"]
+{
+    border: none;
+    border-bottom: 1px solid  rgb(129, 129, 129);
+    background-color: transparent;
+    outline: none;
+    height: 40px;
+    color: black;
+    border: 1px solid #3497db;
+
+}
+
+.register .btn {
+    position: relative;
+    cursor: pointer;
+    height: 15%;
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    background-color: #3497db;
+    opacity: 1;
+    left: 30%;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    box-shadow: 0 0 10px 1px #3497db;
+    margin-bottom: 10%;
+    border-radius: 0;
+  }
+  .register .btn, .register input {
+    padding: 5x 5px;
+  }
 }

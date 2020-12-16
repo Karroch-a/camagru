@@ -17,7 +17,7 @@
     <?php
         if (isset($_SESSION['username_error'])) {
             $q = $_SESSION['username_error'] ;
-            echo "<p class='alert alert-danger text-center'>$q</p>";
+            echo "<p class='alert alert-danger text-center '>$q</p>";
             echo '<br>';
             unset($_SESSION['username_error'] );
         } else if (isset($_SESSION['email_error'])) {
@@ -27,12 +27,12 @@
             unset($_SESSION['email_error']);
         } else if (isset($_SESSION['passowrd_error'])) {
             $er =  $_SESSION['passowrd_error'];
-            echo "<p class='alert alert-danger text-center'> $er</p>";
+            echo "<p class='alert alert-danger text-center '> $er</p>";
             echo '<br>';
             unset($_SESSION['passowrd_error']);
         } else if (isset($_SESSION['passowrd_error'])) {
             $er =  $_SESSION['passowrd_error'];
-            echo "<p class='alert alert-danger text-center'> $er</p>";
+            echo "<p class='alert alert-danger '> $er</p>";
             echo '<br>';
             unset($_SESSION['passowrd_error']);
         } else if (isset($_SESSION['passowrd_error'])) {
