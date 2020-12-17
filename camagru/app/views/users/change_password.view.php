@@ -1,5 +1,5 @@
 <?php
-  if (isset($_SESSION['username']))
+  if (!isset($_SESSION['username']))
   {
       $this->redirect('/users/profile');
   }
@@ -25,10 +25,11 @@
         <div class="login-register">
             <!-- <img src="https://img.icons8.com/ios/100/000000/gender-neutral-user.png" class="face"> -->
             <form action="/users/login" method="POST">
+                    <input type="password" name="current" placeholder="Current Password">
                     <input type="password" name="new" placeholder="New Password">
                     <input type="password" name="confirm" placeholder="Confirm Password">
                     <div>
-                        <button type="submit" class="btn" name="submit">Reset</button>
+                        <button type="submit" class="btn" name="change">reset</button>
                     </div>
             </form>
         </div>

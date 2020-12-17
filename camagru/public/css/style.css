@@ -13,17 +13,15 @@
     border-radius: 20px;
     background: #fff
 }
-.ikhan
-{
-    position: relative;
-    display: inline-block;
-}
 svg
 {
     width: 40px;
     height: 30px;
 }
-
+.login-register a
+{
+    color: #1a73e8;
+}
 .fas
 {
     color: black;
@@ -53,6 +51,7 @@ input, select, textarea{
     height: 40px;
     color: black;
     border: 1px solid #3497db;
+    border-radius: 8px;
 }
 .login-register input[type="password"]
 {
@@ -63,6 +62,7 @@ input, select, textarea{
     height: 40px;
     color: black;
     border: 1px solid #3497db;
+    border-radius: 8px;
 
 }
 ::placeholder
@@ -78,17 +78,16 @@ input, select, textarea{
     text-align: center;
     margin: 0 auto;
     color: #fff;
-    background-color: #3497db;
+    background-color: #1a73e8;
     opacity: 1;
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
     position: relative;
-    box-shadow: 0 0 10px 1px #3497db;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
     margin-top: 15px;
     margin-bottom: 35px;
-    border-radius: 0;
     left: 100px;
   }
   .login-register .btn, .login-register input {
@@ -96,7 +95,7 @@ input, select, textarea{
   }
   .btn {background:#159f85; padding:12px 20px; color:#fff; font-size:14px; font-weight: 300;
 	transition:all .8s ease-in-out 0s; -moz-transition:all .8s ease-in-out 0s; -webkit-transition:all .8s ease-in-out 0s; 
-    -o-transition:all .8s ease-in-out 0s; border-radius:0; text-transform: uppercase; 
+    -o-transition:all .8s ease-in-out 0s; border-radius:0; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .login-register p
 {
@@ -166,6 +165,7 @@ input, select, textarea{
     height: 40px;
     color: black;
     border: 1px solid #3497db;
+    border-radius: 8px;
 }
 .register input[type="password"]
 {
@@ -176,6 +176,7 @@ input, select, textarea{
     height: 40px;
     color: black;
     border: 1px solid #3497db;
+    border-radius: 8px;
 
 }
 ::placeholder
@@ -191,7 +192,7 @@ input, select, textarea{
     text-align: center;
     margin: 0 auto;
     color: #fff;
-    background-color: #3497db;
+    background-color: #1a73e8;
     opacity: 1;
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
@@ -216,11 +217,11 @@ input, select, textarea{
 .account
 {
     position: absolute;
-    top: 50%;
+    top: 51%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 700px;
-    height: 800px;
+    width: 600px;
+    height: 790px;
     padding: 30px 40px;
     box-sizing: border-box;
     box-shadow: 0px 5px 10px rgba(0,0,0,.5);
@@ -228,44 +229,12 @@ input, select, textarea{
     background: #fff;
     float: left;
 }
+
 .account h4
 {
     padding: 10px 0px 40px 0px;
     font-size: large;
 }
-.account .photo_profile
-{
-    position: relative;
-    transform: translate(-50%, -50%);
-    width: 80px;
-    left: 40px;
-    height: 80px;
-    background-color: gray;
-    border-radius: 360%;
-    padding: 30px 30px;
-    box-sizing: border-box;
-}
-.photo_profile .btn {
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-    text-align: center;
-    margin: 0 auto;
-    color: #fff;
-    background-color: #3497db;
-    opacity: 1;
-    -moz-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-    position: relative;
-    box-shadow: 0 0 10px 1px #3497db;
-    margin-top: 0px;
-    margin-bottom: 30px;
-    border-radius: 0;
-    left: 100px;
-    bottom: 20px;
-  }
   .inp
   {
       padding-top: 20px;
@@ -274,13 +243,13 @@ input, select, textarea{
   {
       position: relative;
       border-top: 1px solid  rgb(219, 215, 215);
-      padding-bottom: 20px;
-      width: 610px;
-      margin-top: 10px;
+      padding-bottom: 5px;
+      width: 100%;
+      margin-top: 5px;
   }
   .account input
 {
-    width: 40%;
+    width: 60%;
     margin-bottom: 20px;
     padding-left: 10px;
 }
@@ -301,6 +270,7 @@ input, select, textarea{
     color: black;
     border: 1px solid #3497db;
     margin-right: 50px;
+    border-radius: 8px;
 }
 .account input[type="password"]
 {
@@ -312,53 +282,8 @@ input, select, textarea{
     color: black;
     border: 1px solid #3497db;
     margin-right: 50px;
-
+    border-radius: 8px;
 }
-.account .btn {
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-    text-align: center;
-    margin: 0 auto;
-    color: #3497db;
-    background-color: #fff;
-    opacity: 1;
-    -moz-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-    position: relative;
-    margin-top: 15px;
-    margin-bottom: 35px;
-    border-radius: 5px;
-    left: 100spx;
-  }
-  .d
-  {
-    position: relative;
-    left: 120px;
-    bottom: 73px;
-
-  }
-  .d .btn {
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-    margin: 0 auto;
-    color: red;
-    background-color: #fff;
-    opacity: 1;
-    -moz-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-    position: relative;
-    margin-top: 0px;
-    margin-bottom: 30px;
-    border-radius: 5px;
-    left: 100px;
-    bottom: 20px;
-  }
 
   .inp .btn
   {
@@ -374,18 +299,23 @@ input, select, textarea{
     -o-transition: all 0.5s;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
-    position: relative;
-    box-shadow: 0 0 10px 1px #3497db;
-    margin-top: 15px;
-    margin-bottom: 35px;
+    background-color: #1a73e8;
+    margin-top: 0px;
+    margin-bottom: 30px;
     border-radius: 0;
-    top: 80px;
-    left: 490px;
+    top: 12px;
+    left: 0px;
+    border-radius: 4px;
   }
 .delete
 {
     position: relative;
-    top:20px;
+    top:15px;
+    height: 100px;
+}
+.account .change
+{
+    margin-top: 15px;
 }
 .delete .btn
 {
@@ -404,8 +334,56 @@ input, select, textarea{
     margin-top: 0px;
     margin-bottom: 30px;
     border-radius: 5px;
-    left: 170px;
-    top: -45px;
+    left: 465px;
+    top: -57px;
+}
+.account h5
+{
+    font-size: medium;
+}
+.change
+{
+    text-align: center;
+}
+.cmnt input[type="checkbox"]
+{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    -webkit-appearance: none;
+    background: #c6c6c6;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
+    transition: .5s;
+    left: 480px;
+    top: -48px;
+}
+.cmnt input:checked[type="checkbox"]
+{
+    background: red;
+}
+.cmnt input[type="checkbox"]::before
+{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    content: '';
+    background: #fff;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, .2);
+    transition: .5s;
+}
+.cmnt input:checked[type="checkbox"]::before
+{
+   left: 40px;
+}
+.cmnt
+{
+    height: 55px;
+    margin-top: 15px;
 }
 
 @media (min-width: 320px) and (max-width: 700px)
@@ -483,7 +461,7 @@ input, select, textarea{
     display: inline-block;
     text-align: center;
     color: #fff;
-    background-color: #3497db;
+    background-color: #1a73e8;
     opacity: 1;
     left: 30%;
     -moz-transition: all 0.5s;

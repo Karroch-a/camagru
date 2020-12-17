@@ -22,27 +22,15 @@ class UsersController extends AbstractController
             $obj->username = $_POST['username'];
             $obj->email = $_POST['email'];
             $obj->password = $_POST['password'];
-            $obj->password2 = $_POST['confirm-password'];
             if (strlen($obj->username) < 5 || $obj->username == "" || strlen($obj->username) > 10 ||!filter_var($obj->username, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW)) {
                 $_SESSION['username_error'] = 'Invalid Username';
             } 
             else if (!filter_var($obj->email, FILTER_VALIDATE_EMAIL) || !preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $obj->email)) {
                 $_SESSION['email_error'] = 'Invalid Email';
             } 
-            else if (strlen($obj->password) <= '8') {
+            else if (strlen($obj->password) <= '8') 
+            {
                 $_SESSION['passowrd_error'] = 'Your Password Must Contain At Least 8 Characters!';
-            }
-             else if ($obj->password !== $obj->password2) {
-                $_SESSION['passowrd_error'] = 'The password and confirmation password do not match.';
-            } 
-            elseif (!preg_match("#[0-9]+#", $obj->password)) {
-                $_SESSION['passowrd_error'] = 'Your Password Must Contain At Least 1 Number!!';
-            } 
-            elseif (!preg_match("#[A-Z]+#", $obj->password)) {
-                $_SESSION['passowrd_error'] = 'Your Password Must Contain At Least 1 Lowercase Letter!';
-            } 
-            else if (!preg_match("#[a-z]+#", $obj->password)) {
-                $_SESSION['passowrd_error'] = 'Your Password Must Contain At Least 1 Capital Letter!';
             }
             else 
             {
@@ -50,7 +38,7 @@ class UsersController extends AbstractController
                 $obj->rowcount = 0;
                 $obj->password_token = 'NULL';
                 $obj->image_profile = 'NULL';
-                $url = "http://192.168.99.127:8000/users/verify/";
+                $url = "https://192.168.99.128:8081/users/verify/";
                 if ($obj->checkvalidateregister() == true) 
                 {
                     $_SESSION['mail'] = $obj->email;
@@ -105,20 +93,8 @@ class UsersController extends AbstractController
             else if (!filter_var($obj->email, FILTER_VALIDATE_EMAIL) || !preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $obj->email)) {
                 $_SESSION['email_error'] = 'Invalid Email';
             } 
-            else if (strlen($obj->password) <= '8') {
-                $_SESSION['passowrd_error1'] = 'Your Password Must Contain At Least 8 Characters!';
-            }
-            else if ($obj->password !== $obj->password2) {
-                $_SESSION['ok'] = 'The password and confirmation password do not match.';
-            } 
-            elseif (!preg_match("#[0-9]+#", $obj->password)) {
-                $_SESSION['passowrd_error3'] = 'Your Password Must Contain At Least 1 Number!!';
-            } 
-            elseif (!preg_match("#[A-Z]+#", $obj->password)) {
-                $_SESSION['passowrd_error4'] = 'Your Password Must Contain At Least 1 Lowercase Letter!';
-            } 
-            else if (!preg_match("#[a-z]+#", $obj->password)) {
-                $_SESSION['passowrd_error5'] = 'Your Password Must Contain At Least 1 Capital Letter!';
+            else if (strlen($obj->password) == "") {
+                // $_SESSION['passowrd_error1'] = 'Wrong Password';
             }
             else
             {
@@ -160,8 +136,8 @@ class UsersController extends AbstractController
             else if ($obj->checkmail() == true)
             {
                 global $connexion;
-                $url = "http://192.168.99.127:8000/users/verify/";
-                $obj->password_token = str_shuffle('ABCDEFGHJKK1234654@2842942@!8Hd)()@$QQHE=1-1=1=][LDLD');
+                $url = "https://192.168.99.128:8081/users/editpassword/";
+                $obj->password_token = str_shuffle('ABCDEFGHJKK1234654120');
                 $subject = 'reset password';
                 $message = "welcome to camagru . $obj->username <br> $url".$obj->password_token;
                 $header .= "Content-type: text/html\r\n";
@@ -198,7 +174,7 @@ class UsersController extends AbstractController
             }
             else
             {
-                if ($obj->edit() == true)
+                if ($obj->editpassword() == true)
                 {
                     $_SESSION['success'] = 'success password is changed please login in your account';
                     $this->redirect('/users/login');
@@ -209,6 +185,10 @@ class UsersController extends AbstractController
                 $this->redirect('/users/login');
             }
         }
+        $this->_view();
+    }
+    public function change_passwordAction()
+    {
         $this->_view();
     }
 }

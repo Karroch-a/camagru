@@ -1,8 +1,8 @@
 <?php
-//  if (!isset($_SESSION['username']))
-//  {
-//      $this->redirect('/users/login');
-//  }
+ if (!isset($_SESSION['username']))
+ {
+     $this->redirect('/users/login');
+ }
     require_once "bootstrap.php";
     require_once "footer.php";
 ?>
@@ -70,25 +70,30 @@
         ?>
         <div class="account">
             <form action="/users/profile" method="POST" enctype="multipart/form-data">
-                <h1>Account</h1>
-                <h4><?php echo ucfirst($_SESSION['username']) ?></h4>
-                <div class="photo_profile">
-                    <button type="submit" class="btn" name="apply">Apply</button>
-                    <div class="d"><button type="submit" class="btn" name="remove">Remove</button></div>
-                </div>
-                <input type="file" name="upload" class="btn">
+                <h1>General Account Settings</h1>
                 <div class="tr"></div>
                 <div class="inp">
+                    <h5>Username<h5>
                     <input type="text" name="username" placeholder="Username">
+                    <h5>Email address<h5>
                     <input type="text" name="email" placeholder="Email">
+                    <h5>Password</h5>
                     <input type="password" name="password" placeholder="Password">
-                    <input type="password" name="confirm-password" placeholder="Confirm Password">
+                     <div class="tr"></div>
+                        <div class="change"><h3>Change your password</h3>
+                        <a class="btn btn-raised" href="/users/change_password" target="_blank" rel="noopener">Change password</a>
+                        </div>
                     <div class="tr"></div>
                     <div class="delete">
-                        <h3>Delete Account</h3>By deleting your account you will lose all your data
-                        <button type="submit" class="btn" name="delete">delete</button>
+                        <h3>Delete Account</h3><h5>By deleting your account you will lose all your data</h5>
+                        <button type="submit" class="btn btn-raised btn-danger" name="delete">Delete</button>
                     </div>
-                    <button type="submit" class="btn" name="save">Save changes</button>
+                    <div class="tr"></div>
+                    <div class="cmnt">
+                        <h3>Comment Notification Email</h3>
+                        <input type="checkbox" name="" >
+                    </div>
+                    <div class="inp_btn"><button type="submit" class="btn" name="save">Save changes</button></div>
                 </div>
             </form>
         </div>
