@@ -15,43 +15,33 @@
     </head>
     <body>
         <?php
-        if (isset($_SESSION['error'])) {
-            $q = $_SESSION['error'] ;
-            echo "<p class='alert alert-danger text-center'>$q</p>";
+        if (isset($_SESSION['success'])) {
+            $q = $_SESSION['success'] ;
+            echo "<p class='alert alert-success text-center'>$q</p>";
             echo '<br>';
-            unset($_SESSION['error'] );
+            unset($_SESSION['success'] );
         } else if (isset($_SESSION['email_error'])) {
             $er =  $_SESSION['email_error'];
             echo "<p class='alert alert-danger text-center'> $er</p>";
             echo '<br>';
             unset($_SESSION['email_error']);
-        } else if (isset($_SESSION['ok'])) {
-            $er =  $_SESSION['ok'];
-            echo "<p class='alert alert-danger text-center'> $er</p>";
-            echo '<br>';
-            unset($_SESSION['ok']);
-        } else if (isset($_SESSION['passowrd_error1'])) {
+        }  else if (isset($_SESSION['passowrd_error1'])) {
             $er =  $_SESSION['passowrd_error1'];
             echo "<p class='alert alert-danger text-center'> $er</p>";
             echo '<br>';
+            unset($_SESSION['passowrd_error1']);
+        }
+        else if (isset($_SESSION['error'])) {
+            $er =  $_SESSION['error'];
+            echo "<p class='alert alert-danger text-center'> $er</p>";
+            echo '<br>';
+            unset($_SESSION['error']);
+        }
+        else if (isset($_SESSION['passowrd_error2'])) {
+            $er =  $_SESSION['passowrd_error2'];
+            echo "<p class='alert alert-danger text-center'> $er</p>";
+            echo '<br>';
             unset($_SESSION['passowrd_error2']);
-        } else if (isset($_SESSION['passowrd_error3'])) {
-            $er =  $_SESSION['passowrd_error3'];
-            echo "<p class='alert alert-danger text-center'> $er</p>";
-            echo '<br>';
-            unset($_SESSION['passowrd_error3']);
-        }
-        else if (isset($_SESSION['passowrd_error4'])) {
-            $er =  $_SESSION['passowrd_error4'];
-            echo "<p class='alert alert-danger text-center'> $er</p>";
-            echo '<br>';
-            unset($_SESSION['passowrd_error4']);
-        }
-        else if (isset($_SESSION['passowrd_error5'])) {
-            $er =  $_SESSION['passowrd_error5'];
-            echo "<p class='alert alert-danger text-center'> $er</p>";
-            echo '<br>';
-            unset($_SESSION['passowrd_error5']);
         }
         if(isset($_SESSION['email_already']))
         {
@@ -81,12 +71,12 @@
                     <input type="password" name="password" placeholder="Password">
                      <div class="tr"></div>
                         <div class="change"><h3>Change your password</h3>
-                        <a class="btn btn-raised" href="/users/change_password" target="_blank" rel="noopener">Change password</a>
+                        <a class="btn btn-raised" href="/users/changepassword" target="_blank" rel="noopener">Change password</a>
                         </div>
                     <div class="tr"></div>
                     <div class="delete">
                         <h3>Delete Account</h3><h5>By deleting your account you will lose all your data</h5>
-                        <button type="submit" class="btn btn-raised btn-danger" name="delete">Delete</button>
+                        <button  type="submit" class="btn btn-raised btn-danger" name="delete" >Delete</button>
                     </div>
                     <div class="tr"></div>
                     <div class="cmnt">
@@ -97,5 +87,7 @@
                 </div>
             </form>
         </div>
+        <script>
+        </script>
     </body>
 </html>

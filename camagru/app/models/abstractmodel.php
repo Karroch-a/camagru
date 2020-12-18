@@ -179,9 +179,8 @@
             $use = $_SESSION['username'];
             $username = $_POST['username'];
             $email = $_POST['email'];
-            $password = md5($_POST['password']);
-            $row_email = "UPDATE  users SET email = '$email' WHERE username = '$use' AND password = '$password'";
-            $row_user = "UPDATE  users SET username = '$username' WHERE username = '$use' AND password = '$password'";
+            $row_email = "UPDATE  users SET email = '$email' WHERE username = '$use'";
+            $row_user = "UPDATE  users SET username = '$username' WHERE username = '$use'";
             $stmt_email = $connexion->prepare($row_email);
             $stmt_user = $connexion->prepare($row_user);
             $stmt_email->execute();
@@ -193,18 +192,18 @@
             $username = $_POST['username'];
             $email = $_POST['email'];
             $usr = $_SESSION['username'];
-            $password = md5($_POST['password']);
+            $pass = md5($_POST['password']);
             if (isset($email))
             {
                 $sql_username = "SELECT username FROM  users WHERE username = ? AND username != '$usr'";
                 $sql_email = "SELECT email FROM  users WHERE email = ? AND username != '$usr'";
-                $sql_pass = "SELECT password FROM  users WHERE password = '$password'";
                 $stmt_username = $connexion->prepare($sql_username);
                 $stmt_email = $connexion->prepare($sql_email);
-                $stmt_pass = $connexion->prepare($sql_pass);
                 $stmt_email->execute([$email]);
                 $stmt_username->execute([$username]);
-                $stmt_pass->execute([$password]);
+                $sql_pass = "SELECT password FROM  users WHERE password = '$pass' AND username = '$usr'";
+                $stmt_pass = $connexion->prepare($sql_pass);
+                $stmt_pass->execute();
                 if ($stmt_email->rowCount() >= 1)
                 {
                         $_SESSION['email_already'] = 'sorry! email already exist';
@@ -215,14 +214,42 @@
                         $_SESSION['username_already'] = 'sorry! username already exist';
                         return false;
                 }
-                else if ($stmt_pass = false)
-                {
-                    $_SESSION['passowrd_error5'] = 'Wrong Password';
-                }
                 else
                 {
-                    return true;
+                    if ($stmt_pass->fetchColumn() == true)
+                    {
+                        $_SESSION['success'] = 'The information was successfully updated.';
+                        return true;
+                    }
+                    else
+                    {
+                        $_SESSION['passowrd_error2'] = "The password that you've entered is incorrect.";
+                        return false;
+                    }
                 }
+            }
+        }
+        public function change_password()
+        {
+            global $connexion;
+            $usr = $_SESSION['username'];
+            $current = md5($_POST['current']);
+            $new = md5($_POST['new']);
+            $sql_check = "SELECT password FROM  users WHERE password = '$current' AND username = '$usr'";
+            $stmt_check = $connexion->prepare($sql_check);
+            $stmt_check->execute();
+            if ($stmt_check->fetchColumn() == true)
+            {
+                $sql_pass = "UPDATE users SET password = '$new' WHERE password = '$current' AND username = '$usr'";
+                $stmt_pass = $connexion->prepare($sql_pass);
+                $stmt_pass->execute();
+                $_SESSION['success'] = 'The password was successfully updated.';
+                return true;
+            }
+            else
+            {
+                $_SESSION['passowrd_error'] = "The password that you've entered is incorrect.";
+                return false;
             }
         }
         public function getall($usr)

@@ -22,7 +22,7 @@ class UsersController extends AbstractController
             $obj->username = $_POST['username'];
             $obj->email = $_POST['email'];
             $obj->password = $_POST['password'];
-            if (strlen($obj->username) < 5 || $obj->username == "" || strlen($obj->username) > 10 ||!filter_var($obj->username, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW)) {
+            if (strlen($obj->username) < 5 || strlen($obj->username) > 10 ||!filter_var($obj->username, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW)) {
                 $_SESSION['username_error'] = 'Invalid Username';
             } 
             else if (!filter_var($obj->email, FILTER_VALIDATE_EMAIL) || !preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $obj->email)) {
@@ -38,7 +38,7 @@ class UsersController extends AbstractController
                 $obj->rowcount = 0;
                 $obj->password_token = 'NULL';
                 $obj->image_profile = 'NULL';
-                $url = "https://192.168.99.128:8081/users/verify/";
+                $url = "https://192.168.99.129:8081/users/verify/";
                 if ($obj->checkvalidateregister() == true) 
                 {
                     $_SESSION['mail'] = $obj->email;
@@ -77,8 +77,8 @@ class UsersController extends AbstractController
         $obj = new UsersModel();
         if (isset($_POST['delete']))
         {
-            $obj->delete();
-            session_destroy();
+            // $obj->delete();
+            // session_destroy();
             $this->redirect('/users/login');
         }
         if (isset($_POST['save']))
@@ -94,7 +94,7 @@ class UsersController extends AbstractController
                 $_SESSION['email_error'] = 'Invalid Email';
             } 
             else if (strlen($obj->password) == "") {
-                // $_SESSION['passowrd_error1'] = 'Wrong Password';
+                $_SESSION['passowrd_error1'] = 'Wronga Password';
             }
             else
             {
@@ -136,7 +136,7 @@ class UsersController extends AbstractController
             else if ($obj->checkmail() == true)
             {
                 global $connexion;
-                $url = "https://192.168.99.128:8081/users/editpassword/";
+                $url = "https://192.168.99.129:8081/users/editpassword/";
                 $obj->password_token = str_shuffle('ABCDEFGHJKK1234654120');
                 $subject = 'reset password';
                 $message = "welcome to camagru . $obj->username <br> $url".$obj->password_token;
@@ -187,8 +187,37 @@ class UsersController extends AbstractController
         }
         $this->_view();
     }
-    public function change_passwordAction()
+    public function changepasswordAction()
     {
+        $obj = new UsersModel();
+        if (isset($_POST['change']))
+        {
+            $obj->current = $_POST['current'];
+            $obj->password = $_POST['new'];
+            $obj->password2 = $_POST['confirm'];
+            if (strlen($obj->password) <= '8') {
+                $_SESSION['passowrd_error'] = 'Your Password Must Contain At Least 8 Characters!';
+            }
+             else if ($obj->password !== $obj->password2) {
+                $_SESSION['passowrd_error'] = 'The password and confirmation password do not match.';
+            } 
+            elseif (!preg_match("#[0-9]+#", $obj->password)) {
+                $_SESSION['passowrd_error'] = 'Your Password Must Contain At Least 1 Number!!';
+            } 
+            elseif (!preg_match("#[A-Z]+#", $obj->password)) {
+                $_SESSION['passowrd_error'] = 'Your Password Must Contain At Least 1 Lowercase Letter!';
+            } 
+            else if (!preg_match("#[a-z]+#", $obj->password)) {
+                $_SESSION['passowrd_error'] = 'Your Password Must Contain At Least 1 Capital Letter!';
+            }
+            else
+            {
+                if ($obj->change_password())
+                {
+                    $this->redirect('/users/profile');
+                }
+            }
+        }
         $this->_view();
     }
 }
