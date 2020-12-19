@@ -75,11 +75,14 @@ class UsersController extends AbstractController
     public function profileAction()
     {
         $obj = new UsersModel();
-        if (isset($_POST['delete']))
+        if (isset($_POST['confirm']))
         {
-            // $obj->delete();
-            // session_destroy();
-            $this->redirect('/users/login');
+            if ($obj->confirm_password() == true)
+            {
+                $obj->delete();
+                session_destroy();
+                $this->redirect('/users/login');
+            }
         }
         if (isset($_POST['save']))
         {

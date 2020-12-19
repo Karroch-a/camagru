@@ -24,5 +24,4 @@ var video = document.getElementById('video');
 				canvas.width = vid.clientWidth;
 				canvas.height = vid.clientHeight;
                 context.drawImage(vid, 0, 0, canvas.width, canvas.height);
-
-        }
+		}

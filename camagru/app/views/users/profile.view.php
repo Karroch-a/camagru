@@ -59,7 +59,7 @@
         }
         ?>
         <div class="account">
-            <form action="/users/profile" method="POST" enctype="multipart/form-data">
+            <form action="/users/profile" method="POST" target="frame">
                 <h1>General Account Settings</h1>
                 <div class="tr"></div>
                 <div class="inp">
@@ -76,7 +76,7 @@
                     <div class="tr"></div>
                     <div class="delete">
                         <h3>Delete Account</h3><h5>By deleting your account you will lose all your data</h5>
-                        <button  type="submit" class="btn btn-raised btn-danger" name="delete" >Delete</button>
+                        <button class="btnx btn-raised btn-danger" name="delete" >Delete</button>
                     </div>
                     <div class="tr"></div>
                     <div class="cmnt">
@@ -85,9 +85,27 @@
                     </div>
                     <div class="inp_btn"><button type="submit" class="btn" name="save">Save changes</button></div>
                 </div>
+                <div class="modal-lg">
+                        <div class="modaal">
+                            <input type="password" name="pass" placeholder="Password">
+                            <button type="submit" class="btn" name="confirm">Confirm</button>
+                            <span class="modaal-close">X<span>
+                        </div>
+                    </div>
             </form>
         </div>
-        <script>
+        <script type="text/javascript">
+            var modalbtn = document.querySelector('.btnx');
+            var modal_lg = document.querySelector('.modal-lg');
+            var modal_close = document.querySelector('.modaal-close');
+            modalbtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            modal_lg.classList.add("bg-active");
+            });
+            modal_close.addEventListener("click", function(e) {
+            e.preventDefault();
+            modal_lg.classList.remove("bg-active");
+            });
         </script>
     </body>
 </html>

@@ -14,9 +14,15 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
-		<video id="vid" style="width:300px"></video>
-		<canvas id="canvas" ></canvas><br>
-		<button  class="btn btn-primary" onclick="picutre();">take picture</button>
+        <div class="gallery">
+            <div class="stickers"></div>
+            <div class="picutre">
+                <div class="video"><video id="vid" style="width:300px"></video></div>
+                <br>
+                <div class="canvas"><canvas id="canvas"style="width:300px" ></canvas></div><br>
+                <button  class="btn btn-primary" onclick="picutre();">take picture</button>
+            </div>
+    </div>
         <script type="text/javascript" src="/../public/js/main.js">
 		</script>
 	</body>

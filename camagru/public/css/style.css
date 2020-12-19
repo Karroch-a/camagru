@@ -317,7 +317,7 @@ input, select, textarea{
 {
     margin-top: 15px;
 }
-.delete .btn
+.delete .btnx
 {
     position: relative;
     cursor: pointer;
@@ -385,7 +385,124 @@ input, select, textarea{
     height: 55px;
     margin-top: 15px;
 }
-
+.modal-lg
+{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 790;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s , opacity 0.2s;
+    border-radius: 10px;
+}
+.bg-active
+{
+    visibility: visible;
+    opacity: 1;
+}
+.modaal input
+{
+    width: 80%;
+    margin-left: 12%;
+    margin-top: 10%;
+}
+.modaal
+{
+    position: relative;
+    width: 60%;
+    height: 20%;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.modaal .btn
+{
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+    background-color: #3497db;
+    opacity: 1;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    background-color: #1a73e8;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    border-radius: 0;
+    top: 12px;
+    left: 0px;
+    border-radius: 4px;
+}
+.modaal-close
+{
+    position: absolute;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    right: 0;
+    top: 0;
+}
+.gallery
+{
+    position: absolute;
+    width: 90%;
+    height: 60%;
+    align-items: center;
+}
+.gallery .stickers
+{
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 60%;
+    height: 20%;
+    margin-top: 5%;
+    margin-left: 5%;
+    border-radius: 10px;
+}
+.picutre
+{
+    position: absolute;
+    text-align: center;
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: left;
+    flex-direction: column;
+    margin-left: 5%;
+    
+}
+.picutre .btn
+{
+   position: relative;
+   text-align: center;
+   width: 30%;
+   padding: 0px;
+   margin: 0 auto;
+}
+.picutre .video
+{
+    border: 1px solid black;
+    background-color: gray;
+}
+.picutre .canvas
+{
+    border: 1px solid black;
+    background-color: gray;
+}
 @media (min-width: 320px) and (max-width: 700px)
 {
     .login-register 

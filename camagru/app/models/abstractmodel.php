@@ -264,5 +264,26 @@
             }
             return false;
         }
+        public function confirm_password()
+        {
+            global $connexion;
+            $usr = $_SESSION['username'];
+            $pass = md5($_POST['pass']);
+            if (isset($_POST['confirm']))
+            {
+                $sql_pass = "SELECT password FROM  users WHERE password = '$pass' AND username = '$usr'";
+                $stmt_pass = $connexion->prepare($sql_pass);
+                $stmt_pass->execute();
+                if ($stmt_pass->fetchColumn() == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    $_SESSION['passowrd_error2'] = "The password that you've entered is incorrect.";
+                    return false;
+                }
+            }
+        }
     }
 ?>
