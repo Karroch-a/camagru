@@ -21,6 +21,7 @@
             'rowcount'              => self::DATA_TYPE_INT,
             'token'                 => self::DATA_TYPE_STR,
             'password_token'        => self::DATA_TYPE_STR,
+            'notification'          => self::DATA_TYPE_INT,
             // 'confirm_password'      => self::DATA_TYPE_STR,
             // 'username_error'        => self::DATA_TYPE_STR,
             // 'email_error'           => self::DATA_TYPE_STR,

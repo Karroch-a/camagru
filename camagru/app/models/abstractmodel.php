@@ -179,12 +179,19 @@
             $use = $_SESSION['username'];
             $username = $_POST['username'];
             $email = $_POST['email'];
+            if (isset($_POST['notification']))
+                $not = 1;
+            else
+                $not = 0;
             $row_email = "UPDATE  users SET email = '$email' WHERE username = '$use'";
             $row_user = "UPDATE  users SET username = '$username' WHERE username = '$use'";
+            $row_notif = "UPDATE  users SET notification = '$not' WHERE username = '$use'";
             $stmt_email = $connexion->prepare($row_email);
             $stmt_user = $connexion->prepare($row_user);
+            $stmt_notif = $connexion->prepare($row_notif);
             $stmt_email->execute();
             $stmt_user->execute();
+            $stmt_notif->execute();
         }
         public function savechanges()
         {
@@ -284,6 +291,13 @@
                     return false;
                 }
             }
+        }
+        public function sendmail($token, $mail)
+        {
+            global $connexion;
+            $sql = "UPDATE users SET password_token = '$token' WHERE email = '$mail'";
+            $stmt = $connexion->prepare($sql);
+            $stmt->execute();
         }
     }
 ?>

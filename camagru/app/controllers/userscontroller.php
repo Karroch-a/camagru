@@ -32,21 +32,27 @@ class UsersController extends AbstractController
             {
                 $_SESSION['passowrd_error'] = 'Your Password Must Contain At Least 8 Characters!';
             }
-            else 
+            else
             {
                 $obj->password = md5($obj->password);
                 $obj->rowcount = 0;
                 $obj->password_token = 'NULL';
-                $obj->image_profile = 'NULL';
-                $url = "https://192.168.99.129:8081/users/verify/";
+                $obj->notification = 0;
+                $url = "https://".DATABASE_HOST_NAME.":".HTTPS_PORT_NUMBER."/users/verify/";
                 if ($obj->checkvalidateregister() == true) 
                 {
                     $_SESSION['mail'] = $obj->email;
                     $obj->token = str_shuffle('ABCDEFGHJKK1234654120');
                     $_SESSION['shuffled'] = $obj->token;
                     $subject = 'verified accounts';
-                    $message = "welcome to camagru . $obj->username <br> $url" .$obj->token;
-                    $header .= "Content-type: text/html\r\n";
+                    $message = '<html><body>';
+                    $message .= "<h3 style='font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;'> Hi $obj->username !</h3>";
+                    $message .= "<h4 style='font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;'>please confirm you Camagru account</h4>";
+                    $message .= "<td align='center' style='border-radius: 3px;' bgcolor='#FFA73B'><a href='$url$obj->token' target='_blank' style='font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; background-color: #FFA73B; display: inline-block;'>Confirm Account</a></td>";
+                    $message .= '</body></html>';
+                    $message .= '<br>';
+                    $message .= '<h4>Thank you, <br>The Camagru Team</h4>';
+                    $header .= "Content-Type: text/html; charset=UTF-8\r\n";
                     $obj->create();
                     $_SESSION['message'] = 'Your account has been made, <br /> please verify it by clicking the activation link that has been send to your email.';
                     $_SESSION['check'] = mail($obj->email, $subject, $message, $header);
@@ -97,7 +103,7 @@ class UsersController extends AbstractController
                 $_SESSION['email_error'] = 'Invalid Email';
             } 
             else if (strlen($obj->password) == "") {
-                $_SESSION['passowrd_error1'] = 'Wronga Password';
+                $_SESSION['passowrd_error1'] = 'Wrong a Password';
             }
             else
             {
@@ -139,17 +145,20 @@ class UsersController extends AbstractController
             else if ($obj->checkmail() == true)
             {
                 global $connexion;
-                $url = "https://192.168.99.129:8081/users/editpassword/";
+                $url = "https://".DATABASE_HOST_NAME.":".HTTPS_PORT_NUMBER."/users/editpassword/";
                 $obj->password_token = str_shuffle('ABCDEFGHJKK1234654120');
                 $subject = 'reset password';
-                $message = "welcome to camagru . $obj->username <br> $url".$obj->password_token;
-                $header .= "Content-type: text/html\r\n";
+                $message = '<html><body>';
+                $message .= "<h3 style='font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;'> A request has been received to change the password  for you Camagru account !</h3>";
+                $message .= "<td align='center' style='border-radius: 3px;' bgcolor='#FFA73B'><a href='$url$obj->password_token' target='_blank' style='font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; background-color: #FFA73B; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;'>Reset password</a></td>";
+                $message .= '</body></html>';
+                $message .= '<br>';
+                $message .= '<h4>Thank you, <br>the Camagru Team</h4>';
+                $header .= "Content-Type: text/html; charset=UTF-8\r\n";
                 $_SESSION['forgetpassword'] = 'please verify it by clicking the reset link that has been send to your email.';
                 $_SESSION['check'] = mail($obj->email, $subject, $message, $header);
                 $_SESSION['email'] = $obj->email;
-                $sql = "UPDATE users SET password_token = '$obj->password_token' WHERE email = '$obj->email'";
-                $stmt = $connexion->prepare($sql);
-                $stmt->execute();
+                $obj->sendmail($obj->password_token, $obj->email);
             }
         }
         $this->_view();

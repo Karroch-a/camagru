@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Dec 15, 2020 at 01:11 PM
+-- Generation Time: Dec 22, 2020 at 04:06 PM
 -- Server version: 8.0.22
 -- PHP Version: 7.4.11
 
@@ -33,6 +33,7 @@ CREATE TABLE `users` (
   `email` varchar(300) NOT NULL,
   `password` varchar(300) NOT NULL,
   `rowcount` int NOT NULL,
+  `notification` int NOT NULL,
   `token` varchar(300) NOT NULL,
   `password_token` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -41,9 +42,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `rowcount`, `token`, `password_token`) VALUES
-(3, 'abdellahda', 'aaabdedallah.azeroual.info@gmail.com', '904eb66eb259fb2e318aaf27ffc4aedb', 0, 'B3105ACD12KGE4462FKHJ', 'NULL'),
-(4, 'abdellah', 'abdellah.azeroual.info@gmail.com', '904eb66eb259fb2e318aaf27ffc4aedb', 1, '1A506D4H41JGKBEFC232K', 'NULL');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `rowcount`, `notification`, `token`, `password_token`) VALUES
+(25, 'abdellaha', '0bc4c5273b@firemailbox.club', '446aa4de6231ff9d0c10c2c9f3c75619', 1, 0, 'NULL', 'NULL'),
+(26, 'abdellah', 'abdellah.azeroual.info@gmail.com', '446aa4de6231ff9d0c10c2c9f3c75619', 1, 0, 'NULL', 'NULL'),
+(27, 'karroch', 'vokela77a53@aranelab.com', '904eb66eb259fb2e318aaf27ffc4aedb', 1, 0, 'NULL', 'NULL'),
+(28, 'senpai', 'vokela7753@aranelab.com', '904eb66eb259fb2e318aaf27ffc4aedb', 1, 0, 'NULL', 'NULL');
 
 --
 -- Indexes for dumped tables
@@ -63,7 +66,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

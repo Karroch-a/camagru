@@ -81,7 +81,7 @@
                     <div class="tr"></div>
                     <div class="cmnt">
                         <h3>Comment Notification Email</h3>
-                        <input type="checkbox" name="" >
+                        <input type="checkbox" name="notification" value="cmnt">
                     </div>
                     <div class="inp_btn"><button type="submit" class="btn" name="save">Save changes</button></div>
                 </div>
