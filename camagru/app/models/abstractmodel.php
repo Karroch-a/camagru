@@ -173,19 +173,18 @@
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
         }
-        public function profileinfo()
+        public function profileinfo($id)
         {
             global $connexion;
-            $use = $_SESSION['username'];
             $username = $_POST['username'];
             $email = $_POST['email'];
-            if (isset($_POST['notification']))
+            if (($_POST['notification']))
                 $not = 1;
             else
                 $not = 0;
-            $row_email = "UPDATE  users SET email = '$email' WHERE username = '$use'";
-            $row_user = "UPDATE  users SET username = '$username' WHERE username = '$use'";
-            $row_notif = "UPDATE  users SET notification = '$not' WHERE username = '$use'";
+            $row_email = "UPDATE  users SET email = '$email' WHERE id = '$id'";
+            $row_user = "UPDATE  users SET username = '$username' WHERE id = '$id'";
+            $row_notif = "UPDATE  users SET notification = '$not' WHERE id = '$id'";
             $stmt_email = $connexion->prepare($row_email);
             $stmt_user = $connexion->prepare($row_user);
             $stmt_notif = $connexion->prepare($row_notif);
@@ -259,17 +258,19 @@
                 return false;
             }
         }
-        public function getall($usr)
+        public function getall()
         {
             global $connexion;
-            $sql = "SELECT * FROM users WHERE username = '$use'";
+            $usr = $_SESSION['username'];
+            $sql = "SELECT * FROM users WHERE username = '$usr'";
             $stmt = $connexion->prepare($sql);
-            if ($stmt->execute() === true)
-            {
-                $obj = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, get_called_class(), array_keys(static::$tableSchema));
-                return array_shift($obj);
+            $stmt->execute();
+            $info = $stmt->fetchAll();
+            if ($info) {
+                foreach ($info as static::$tableSchema) {
+                    return static::$tableSchema;
+                }
             }
-            return false;
         }
         public function confirm_password()
         {

@@ -64,9 +64,9 @@
                 <div class="tr"></div>
                 <div class="inp">
                     <h5>Username<h5>
-                    <input type="text" name="username" placeholder="Username">
+                    <input type="text" name="username" placeholder="Username" value=<?= $_SESSION['username']?>>
                     <h5>Email address<h5>
-                    <input type="text" name="email" placeholder="Email">
+                    <input type="text" name="email" placeholder="Email" value=<?= $_SESSION['email']?>>
                     <h5>Password</h5>
                     <input type="password" name="password" placeholder="Password">
                      <div class="tr"></div>
@@ -81,7 +81,7 @@
                     <div class="tr"></div>
                     <div class="cmnt">
                         <h3>Comment Notification Email</h3>
-                        <input type="checkbox" name="notification" value="cmnt">
+                        <input type="checkbox" name="notification" <?= $_SESSION['notification'] ? "checked" : ""?>>
                     </div>
                     <div class="inp_btn"><button type="submit" class="btn" name="save">Save changes</button></div>
                 </div>

@@ -16,7 +16,7 @@ class UsersController extends AbstractController
     }
     public function registerAction()
     {
-        if (isset($_POST['submit'])) 
+        if (isset($_POST['submit']))
         {
             $obj = new UsersModel();
             $obj->username = $_POST['username'];
@@ -81,6 +81,9 @@ class UsersController extends AbstractController
     public function profileAction()
     {
         $obj = new UsersModel();
+        $_SESSION['username'] = $obj->getall()['username'];
+        $_SESSION['email'] = $obj->getall()['email'];
+        $_SESSION['notification'] = $obj->getall()['notification'];
         if (isset($_POST['confirm']))
         {
             if ($obj->confirm_password() == true)
@@ -109,8 +112,11 @@ class UsersController extends AbstractController
             {
                 if ($obj->savechanges() == true)
                 {
-                    $obj->profileinfo();
+                    $id = $obj->getall()['id'];
+                    $obj->profileinfo($id);
                     $_SESSION['username'] = $obj->username;
+                    $_SESSION['email'] = $obj->email;
+                    $_SESSION['notification'] = $obj->getall()['notification'];
                 }
             }
         }
