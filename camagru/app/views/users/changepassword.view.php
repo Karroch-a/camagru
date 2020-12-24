@@ -5,6 +5,7 @@
   }
     require_once "bootstrap.php";
     require_once "footer.php";
+
 ?>
 <html>
     <head>
