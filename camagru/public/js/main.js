@@ -23,5 +23,6 @@ var video = document.getElementById('video');
 			function picutre () {
 				canvas.width = vid.clientWidth;
 				canvas.height = vid.clientHeight;
-                context.drawImage(vid, 0, 0, canvas.width, canvas.height);
+				context.drawImage(vid, 0, 0, canvas.width, canvas.height);
+				
 		}

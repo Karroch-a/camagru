@@ -468,10 +468,17 @@ input, select, textarea{
     position: relative;
     background-color: rgba(0, 0, 0, 0.5);
     width: 60%;
-    height: 20%;
+    height: 120px;
     margin-top: 5%;
     margin-left: 5%;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+.stickers h3
+{
+    width: 15%;
+    margin: 45 0;
 }
 .picutre
 {

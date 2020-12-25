@@ -5,7 +5,6 @@
  }
     require_once "bootstrap.php";
     require_once "footer.php";
-    echo APP_PATH . DS . "views" . DS ."users". DS . "IMG_2546.jpg";
 ?>
 <html>
 <head>
