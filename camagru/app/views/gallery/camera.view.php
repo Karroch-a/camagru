@@ -30,17 +30,17 @@
         ?>
         <div class="gallery">
                 <div class="stickers">
-                <h3 id ="Santa">🎅</h3>
-                <h3 id ="Woozy">🥴</h3>
-                <h3 id ="Elf">🧝</h3>
-                <h3 id ="Surfing">🏄</h3>
-                <h3 id ="Juggling">🤹‍♀️</h3>
-                <h3 id ="Golfing">🏌️‍♂️</h3>
+                    <img id="1" src="https://svgshare.com/i/SdS.svg" onclick="changeImage('1');">
+                    <img id="2" src="https://svgshare.com/i/SdT.svg" onclick="changeImage('2');">
+                    <img id="3" src="https://svgshare.com/i/Ser.svg" onclick="changeImage('3');">
+                    <img id="4" src="https://svgshare.com/i/SeZ.svg" onclick="changeImage('4');">
+                    <img id="5" src="https://svgshare.com/i/SfD.svg" onclick="changeImage('5');">
                 </div>
                 <div class="picutre">
-                    <div class="video"><video id="vid" style="width:300px"></video></div>
+                    <img src="" id="stk">
+                    <div class="video"><video id="vid" style="width:378px"></video></div>
                     <br>
-                    <div class="canvas"><canvas id="canvas"style="width:300px" ></canvas></div><br>
+                    <div class="canvas"><canvas id="canvas"style="width:378px" ></canvas></div><br>
                     <button class="btn btn-primary" onclick="picutre();">take picture</button>
                     <form action="/gallery/camera" method="POST" enctype="multipart/form-data">
                         <div class="upload">
@@ -51,6 +51,7 @@
                 </div>
         </div>
         <script type="text/javascript" src="/../public/js/main.js">
+
 		</script>
 	</body>
 </html>
