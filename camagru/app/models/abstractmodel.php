@@ -300,5 +300,14 @@
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
         }
+        public function uploadImage($image_n)
+        {
+            global $connexion;
+            $username = $_SESSION['username'];
+            $sql_image = "INSERT INTO image (user, image_n) VALUES ('$username', '$image_n')";
+            $stmt = $connexion->prepare($sql_image);
+            $stmt->execute();
+        }
+       
     }
 ?>

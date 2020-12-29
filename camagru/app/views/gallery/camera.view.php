@@ -26,7 +26,7 @@
                 echo "<p class='alert alert-danger text-center'>$q</p>";
                 echo '<br>';
                 unset($_SESSION['big_image']);
-            }
+            }            
         ?>
         <div class="gallery">
                 <div class="stickers">
@@ -41,6 +41,7 @@
                     <div class="video"><video id="vid" style="width:378px"></video></div>
                     <br>
                     <div class="canvas"><canvas id="canvas"style="width:378px" ></canvas></div><br>
+                    <img src="<?php ?>" style="width:378px">
                     <button class="btn btn-primary" onclick="picutre();">take picture</button>
                     <form action="/gallery/camera" method="POST" enctype="multipart/form-data">
                         <div class="upload">

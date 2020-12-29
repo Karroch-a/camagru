@@ -27,27 +27,27 @@ var video = document.getElementById('video');
 		}
 				function changeImage(id){
 				var image = document.getElementById("stk");
-				if (1 == id)
+				if (id == 1)
 				{
 					image.src = document.getElementById("1").src;
 					document.getElementById("stk").style = 'display:inline;';
 				}
-				else if (2 == id)
+				else if (id == 2)
 				{
 					image.src = document.getElementById("2").src;
 					document.getElementById("stk").style = 'display:inline;';
 				}
-				else if (3 == id )
+				else if (id == 3)
 				{
 					image.src = document.getElementById("3").src;
 					document.getElementById("stk").style = 'display:inline;';
 				}
-				else if (4 == id)
+				else if (id == 4)
 				{
 					image.src = document.getElementById("4").src;
 					document.getElementById("stk").style = 'display:inline;';
 				}
-				else if (5 == id)
+				else if (id == 5)
 				{
 					image.src = document.getElementById("5").src;
 					document.getElementById("stk").style = 'display:inline;';
