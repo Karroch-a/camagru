@@ -40,14 +40,16 @@
                     <img src="" id="stk">
                     <div class="video"><video id="vid" style="width:378px"></video></div>
                     <br>
-                    <div class="canvas"><canvas id="canvas"style="width:378px" ></canvas></div><br>
-                    <img src="<?php ?>" style="width:378px">
+                    <div class="canvas"><canvas  id="canvas"style="width:378px"></canvas></div><br>
+                    <img src="" id="new" class="new">
                     <button class="btn btn-primary" onclick="picutre();">take picture</button>
                     <form action="/gallery/camera" method="POST" enctype="multipart/form-data">
                         <div class="upload">
                         <input type="file" name="img">
                         <button  class="btn btn-primary" name="upload" value="upload">uplaod</button>
                         </div>
+                        <br>
+                        <!-- <button id="save" class="btn btn-primary" name="save" value="Save">Save</button> -->
                     </form>
                 </div>
         </div>

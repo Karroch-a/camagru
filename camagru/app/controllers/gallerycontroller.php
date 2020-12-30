@@ -44,6 +44,11 @@
                    $_SESSION['image_error'] = 'please upload a real image';
                 }
             }
+            if ($_POST)
+            {
+                $json = json_decode($_POST);
+                echo $json;
+            }
             $this->_view();
         }
     }

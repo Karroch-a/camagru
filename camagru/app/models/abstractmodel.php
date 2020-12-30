@@ -304,7 +304,7 @@
         {
             global $connexion;
             $username = $_SESSION['username'];
-            $sql_image = "INSERT INTO image (user, image_n) VALUES ('$username', '$image_n')";
+            $sql_image = "INSERT INTO images (user, image_n) VALUES ('$username', '$image_n')";
             $stmt = $connexion->prepare($sql_image);
             $stmt->execute();
         }

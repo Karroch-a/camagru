@@ -487,7 +487,15 @@ input, select, textarea{
    display: none;
    height: auto;
    position: absolute;
-
+   top: 0;
+}
+.picutre .new
+{
+   width: 30%;
+   display: none;
+   height: auto;
+   position: absolute;
+   top : 305px;
 }
 .picutre
 {

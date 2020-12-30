@@ -1,9 +1,16 @@
 
-var video = document.getElementById('video');
+			var video = document.getElementById('video');
 			var canvas = document.getElementById('canvas');
             var context = canvas.getContext('2d');
             canvas.width  = 300;
-            canvas.height = 225;
+			canvas.height = 225;
+			var stk = document.getElementById("stk");
+			var new_stk = document.getElementById("new");
+			var a = document.getElementById("1").src
+			var b = document.getElementById("2").src
+			var c = document.getElementById("3").src
+			var d = document.getElementById("4").src
+			var e = document.getElementById("5").src
 
 			navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.oGetUserMedia || navigator.msGetUserMedia;
 
@@ -23,33 +30,43 @@ var video = document.getElementById('video');
 			function picutre () {
 				canvas.width = vid.clientWidth;
 				canvas.height = vid.clientHeight;
-				context.drawImage(vid, 0, 0, canvas.width, canvas.height);
+				if (stk.src != a && stk.src != b && stk.src != c && stk.src != d && stk.src != e){
+					new_stk.style = 'display:none;';
+					return;
+				}
+				else
+				{
+					context.drawImage(vid, 0, 0, canvas.width, canvas.height);
+					new_stk.src = stk.src;
+					stk.src = '';
+					stk.style = 'display:none;';
+					new_stk.style = 'display:inline;';
+				}
 		}
 				function changeImage(id){
-				var image = document.getElementById("stk");
 				if (id == 1)
 				{
-					image.src = document.getElementById("1").src;
-					document.getElementById("stk").style = 'display:inline;';
+					stk.src = a;
+					stk.style = 'display:inline;';
 				}
 				else if (id == 2)
 				{
-					image.src = document.getElementById("2").src;
-					document.getElementById("stk").style = 'display:inline;';
+					stk.src = b;
+					stk.style = 'display:inline;';
 				}
 				else if (id == 3)
 				{
-					image.src = document.getElementById("3").src;
-					document.getElementById("stk").style = 'display:inline;';
+					stk.src = c;
+					stk.style = 'display:inline;';
 				}
 				else if (id == 4)
 				{
-					image.src = document.getElementById("4").src;
-					document.getElementById("stk").style = 'display:inline;';
+					stk.src = d;
+					stk.style = 'display:inline;';
 				}
 				else if (id == 5)
 				{
-					image.src = document.getElementById("5").src;
-					document.getElementById("stk").style = 'display:inline;';
+					stk.src = e;
+					stk.style = 'display:inline;';
 				}
-		 }
+			}
