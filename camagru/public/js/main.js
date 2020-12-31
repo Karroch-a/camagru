@@ -1,5 +1,5 @@
 
-			var video = document.getElementById('video');
+			var vid = document.getElementById('vid');
 			var canvas = document.getElementById('canvas');
             var context = canvas.getContext('2d');
             canvas.width  = 300;
@@ -19,7 +19,7 @@
 			}
 
 			function streamWebCam (stream) {
-                vid.srcObject = stream;
+				vid.srcObject = stream;
 				vid.play();
 			}
 
@@ -44,29 +44,36 @@
 				}
 		}
 				function changeImage(id){
-				if (id == 1)
+				if (!(vid.srcObject))
 				{
-					stk.src = a;
-					stk.style = 'display:inline;';
+					return;
 				}
-				else if (id == 2)
+				else
 				{
-					stk.src = b;
-					stk.style = 'display:inline;';
-				}
-				else if (id == 3)
-				{
-					stk.src = c;
-					stk.style = 'display:inline;';
-				}
-				else if (id == 4)
-				{
-					stk.src = d;
-					stk.style = 'display:inline;';
-				}
-				else if (id == 5)
-				{
-					stk.src = e;
-					stk.style = 'display:inline;';
+					if (id == 1)
+					{
+						stk.src = a;
+						stk.style = 'display:inline;';
+					}
+					else if (id == 2)
+					{
+						stk.src = b;
+						stk.style = 'display:inline;';
+					}
+					else if (id == 3)
+					{
+						stk.src = c;
+						stk.style = 'display:inline;';
+					}
+					else if (id == 4)
+					{
+						stk.src = d;
+						stk.style = 'display:inline;';
+					}
+					else if (id == 5)
+					{
+						stk.src = e;
+						stk.style = 'display:inline;';
+					}
 				}
 			}
