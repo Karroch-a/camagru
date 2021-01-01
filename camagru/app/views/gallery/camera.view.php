@@ -40,21 +40,23 @@
                     <img src="" id="stk">
                     <div class="video"><video id="vid" style="width:378px"></video></div>
                     <br>
-                    <div class="canvas"><canvas  id="canvas"style="width:378px"></canvas></div><br>
+                    <div class="canvas"><canvas id="canvas"style="width:378px"></canvas></div>
+                    <img src="<?=$_SESSION['path']?>" id="img" style="width:300; height=225">
+                    <br>
                     <img src="" id="new" class="new">
                     <button class="btn btn-primary" onclick="picutre();">take picture</button>
                     <form action="/gallery/camera" method="POST" enctype="multipart/form-data">
                         <div class="upload">
                         <input type="file" name="img">
-                        <button  class="btn btn-primary" name="upload" value="upload">uplaod</button>
+                        <button  class="btn btn-primary" name="upload" value="upload">upload</button>
                         </div>
-                        <br>
-                        <!-- <button id="save" class="btn btn-primary" name="save" value="Save">Save</button> -->
+                    </form>
+                    <form action="/gallery/camera/" method="POST">
+                        <button class="btn btn-primary"  name="save" value="save">Save image</button>
                     </form>
                 </div>
         </div>
         <script type="text/javascript" src="/../public/js/main.js">
-
 		</script>
 	</body>
 </html>

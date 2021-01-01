@@ -36,11 +36,18 @@
 				}
 				else
 				{
-					context.drawImage(vid, 0, 0, canvas.width, canvas.height);
-					new_stk.src = stk.src;
-					stk.src = '';
-					stk.style = 'display:none;';
-					new_stk.style = 'display:inline;';
+					if (!(vid.srcObject))
+					{
+						return;
+					}
+					else
+					{
+						context.drawImage(vid, 0, 0, canvas.width, canvas.height);
+						new_stk.src = stk.src;
+						stk.src = '';
+						stk.style = 'display:none;';
+						new_stk.style = 'display:inline;';
+					}
 				}
 		}
 				function changeImage(id){
@@ -77,3 +84,16 @@
 					}
 				}
 			}
+			function save() {
+				var xhttp = new XMLHttpRequest();
+				const url = "https://192.168.99.132:8081/gallery/camera";
+				xhttp.open("POST", url);
+				stickers = new_stk.src;
+				image = canvas.toDataURL('image/jpeg');
+				xhttp.send(stickers);
+				console.log(stickers);
+				xhttp.onreadystatechange = function() {
+				  if (this.readyState == 4 && this.status == 200) { }
+				};
+			  }
+			

@@ -35,7 +35,8 @@
                     {
                         if (move_uploaded_file($_FILES['img']['tmp_name'], $path) == true)
                         {
-                            $obj->uploadImage($name);
+                            $_SESSION['path'] = $path;
+                            // $obj->uploadImage($name);
                         }
                     }
                 }
@@ -44,10 +45,11 @@
                    $_SESSION['image_error'] = 'please upload a real image';
                 }
             }
-            if ($_POST)
+            if ($_POST['save'])
             {
-                $json = json_decode($_POST);
-                echo $json;
+                $stickers = $_POST['stickers'];
+                echo $stickers;
+                echo "ok";
             }
             $this->_view();
         }
