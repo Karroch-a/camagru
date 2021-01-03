@@ -1,5 +1,4 @@
 <?php
-
     namespace CAMAGRU\Controllers;
     use CAMAGRU\Models\usersmodel;
     use CAMAGRU\LIB\Helper;
@@ -10,8 +9,10 @@
         use Helper;
         public function cameraAction()
         {
-            if ($_POST['upload'])
-            {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET'){
+                $this->_view();
+            }
+            if (isset($_POST['upload']) && $_POST['upload']){
                 $obj = new UsersModel();
                 $path = '..' .DS . 'public' . DS .'img' .DS . 'upload';
                 if (!is_dir($path))
@@ -42,15 +43,19 @@
                 }
                 else 
                 {
-                   $_SESSION['image_error'] = 'please upload a real image';
+                    $_SESSION['image_error'] = 'please upload a real image';
+                }
+                $this->_view();
+            }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+                if (isset($_POST['logout']))
+                {
+                    session_destroy();
+                        $this->redirect('/users/login');
+                    }
+                if (isset($_POST['stk']) && isset($_POST['img'])){
+                    
                 }
             }
-            if ($_POST['save'])
-            {
-                $stickers = $_POST['stickers'];
-                echo $stickers;
-                echo "ok";
-            }
-            $this->_view();
         }
     }

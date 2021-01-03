@@ -51,9 +51,7 @@
                         <button  class="btn btn-primary" name="upload" value="upload">upload</button>
                         </div>
                     </form>
-                    <form action="/gallery/camera/" method="POST">
-                        <button class="btn btn-primary"  name="save" value="save">Save image</button>
-                    </form>
+                        <button class="btn btn-primary" onclick="save();" name="save" value="save">Save image</button>
                 </div>
         </div>
         <script type="text/javascript" src="/../public/js/main.js">

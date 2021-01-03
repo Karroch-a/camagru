@@ -37,7 +37,7 @@ class UsersController extends AbstractController
                 $obj->password = md5($obj->password);
                 $obj->rowcount = 0;
                 $obj->password_token = 'NULL';
-                $obj->notification = 0;
+                $obj->notification = 1;
                 $url = "https://".DATABASE_HOST_NAME.":".HTTPS_PORT_NUMBER."/users/verify/";
                 if ($obj->checkvalidateregister() == true) 
                 {
