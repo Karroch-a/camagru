@@ -4,6 +4,7 @@
          $this->redirect('/users/login');
      }
    require_once APP_PATH . DS . 'views' . DS .  'users' . DS . 'bootstrap.php';
+   require_once APP_PATH . DS . 'views' . DS .  'users' . DS . 'footer.php';
 ?>
 <html>
 	<head>
