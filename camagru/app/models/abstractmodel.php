@@ -207,6 +207,7 @@
                 $stmt_email = $connexion->prepare($sql_email);
                 $stmt_email->execute([$email]);
                 $stmt_username->execute([$username]);
+                #check password
                 $sql_pass = "SELECT password FROM  users WHERE password = '$pass' AND username = '$usr'";
                 $stmt_pass = $connexion->prepare($sql_pass);
                 $stmt_pass->execute();
@@ -224,6 +225,7 @@
                 {
                     if ($stmt_pass->fetchColumn() == true)
                     {
+                        #check password
                         $_SESSION['success'] = 'The information was successfully updated.';
                         return true;
                     }

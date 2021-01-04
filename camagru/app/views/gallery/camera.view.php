@@ -4,7 +4,6 @@
          $this->redirect('/users/login');
      }
    require_once APP_PATH . DS . 'views' . DS .  'users' . DS . 'bootstrap.php';
-   require_once APP_PATH . DS . 'views' . DS .  'users' . DS . 'footer.php';
 ?>
 <html>
 	<head>
@@ -30,11 +29,11 @@
         ?>
         <div class="gallery">
                 <div class="stickers">
-                    <img id="1" src="https://svgshare.com/i/SdS.svg" onclick="changeImage('1');">
-                    <img id="2" src="https://svgshare.com/i/SdT.svg" onclick="changeImage('2');">
-                    <img id="3" src="https://svgshare.com/i/Ser.svg" onclick="changeImage('3');">
-                    <img id="4" src="https://svgshare.com/i/SeZ.svg" onclick="changeImage('4');">
-                    <img id="5" src="https://svgshare.com/i/SfD.svg" onclick="changeImage('5');">
+                    <img id="1" src="../../public/img/stickers/SdS.png" onclick="changeImage('1');">
+                    <img id="2" src="../../public/img/stickers/SdT.png" onclick="changeImage('2');">
+                    <img id="3" src="../../public/img/stickers/Ser.png" onclick="changeImage('3');">
+                    <img id="4" src="../../public/img/stickers/SeZ.png" onclick="changeImage('4');">
+                    <img id="5" src="../../public/img/stickers/SfD.png" onclick="changeImage('5');">
                 </div>
                 <div class="picutre">
                     <img src="" id="stk">

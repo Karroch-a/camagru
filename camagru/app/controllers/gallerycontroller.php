@@ -54,8 +54,25 @@
                         $this->redirect('/users/login');
                     }
                 if (isset($_POST['stk']) && isset($_POST['img'])){
-                    
+                    $path = '..' .DS . 'public' . DS .'img' .DS . 'picture' . DS;
+                    $emoji = $_POST['stk'];
+                    $img = str_replace('data:image/jpeg;base64,', '', $_POST['img']);
+                    $img = str_replace(' ', '+', $img);
+                    $fileData = base64_decode($img);
+                    $fileName = $path . "pic-".time() . '.jpeg';
+                    file_put_contents($fileName, $fileData);
+                    chmod($fileName, 0777);
+                    $src = imagecreatefrompng($emoji);
+                    $dest = imagecreatefromjpeg($fileName);
+                    // imagecopymerge($dest, $src, 10, 10, 0, 0, 100, 47, 75);
+                    // file_put_contents($fileName, imagejpeg($dest));
+                    // chmod($fileName, 0777);
+                    // echo json_decode($dest);
                 }
             }
+        }
+        public function testAction()
+        {
+            $this->_view();
         }
     }

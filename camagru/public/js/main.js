@@ -86,11 +86,8 @@
 			}
 			function save() {
 				var xhttp = new XMLHttpRequest();
-				// const url = "https://192.168.99.132:8081/gallery/camera";
 				xhttp.open("POST", window.location.href, true);
-				// stickers = new_stk.src;
 				picture = stickers = "stk=" + new_stk.src + "&img=" +  canvas.toDataURL('image/jpeg');
-				console.log(picture);
 				xhttp.onreadystatechange = function() {
 				  if (this.readyState == 4 && this.status == 200) {
 						console.log(JSON.parse(this.responseText));
