@@ -57,6 +57,12 @@
 				}
 				else
 				{
+					if (document.getElementById("picture").getAttribute('src') !== '')
+					{
+						document.getElementById("picture").style = 'display:block;';
+						new_stk.src = a;
+						new_stk.style = 'display:inline;';
+					}
 					if (id == 1)
 					{
 						stk.src = a;
@@ -106,6 +112,6 @@
 			  }
 			  function upload()
 			  {
-				var image = document.getElementById('picture');
+
 			  }
 			

@@ -476,7 +476,15 @@ input, select, textarea{
     margin: 12 0;
     height: 80%;
 }
-.picutre img
+.ikhan .path
+{
+    display: none;
+    width: 379px;
+    height: 285px;
+    position: absolute;
+    margin-top: -285px;
+}
+.picutre .old
 {
    width: 30%;
    display: none;
