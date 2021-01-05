@@ -85,15 +85,27 @@
 				}
 			}
 			function save() {
-				var xhttp = new XMLHttpRequest();
-				xhttp.open("POST", window.location.href, true);
-				picture = stickers = "stk=" + new_stk.src + "&img=" +  canvas.toDataURL('image/jpeg');
-				xhttp.onreadystatechange = function() {
-				  if (this.readyState == 4 && this.status == 200) {
-						console.log(JSON.parse(this.responseText));
-				  }
-				};
-				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				xhttp.send(picture);
+				if (new_stk.src != a && new_stk.src != b && new_stk.src != c && new_stk.src != d && new_stk.src != e)
+				{
+					return;
+				}
+				else
+				{
+					console.log(new_stk.src);
+					var xhttp = new XMLHttpRequest();
+					xhttp.open("POST", window.location.href, true);
+					picture = stickers = "stk=" + new_stk.src + "&img=" +  canvas.toDataURL('image/jpeg');
+					xhttp.onreadystatechange = function() {
+					  if (this.readyState == 4 && this.status == 200) {
+					  }
+					};
+					xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					xhttp.send(picture);
+					window.location.replace("/gallery/camera");
+				}
+			  }
+			  function upload()
+			  {
+				var image = document.getElementById('picture');
 			  }
 			

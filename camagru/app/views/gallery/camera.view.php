@@ -14,6 +14,7 @@
 	</head>
 	<body>
         <?php
+        echo $_SESSION['path'];
             if (isset($_SESSION['image_error'])) {
                 $q = $_SESSION['image_error'] ;
                 echo "<p class='alert alert-danger text-center'>$q</p>";
@@ -41,16 +42,16 @@
                     <div class="video"><video id="vid" style="width:378px"></video></div>
                     <br>
                     <div class="canvas"><canvas id="canvas"style="width:378px"></canvas></div>
-                    <img src="<?=$_SESSION['path']?>" id="img" style="width:300; height=225">
+                    <img src="<?=$_SESSION['path']?>" id="picture" style="width:300; height=225">
                     <br>
                     <img src="" id="new" class="new">
                     <button class="btn btn-primary" onclick="picutre();">take picture</button>
-                    <form action="/gallery/camera" method="POST" enctype="multipart/form-data">
+                    <!-- <form action="/gallery/camera" method="POST" enctype="multipart/form-data"> -->
                         <div class="upload">
                         <input type="file" name="img">
-                        <button  class="btn btn-primary" name="upload" value="upload">upload</button>
+                        <button  class="btn btn-primary" name="upload" value="upload" onclick="upload();">upload</button>
                         </div>
-                    </form>
+                    <!-- </form> -->
                         <button class="btn btn-primary" onclick="save();" name="save" value="save">Save image</button>
                 </div>
         </div>
