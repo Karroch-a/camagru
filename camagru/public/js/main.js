@@ -63,7 +63,7 @@
 						new_stk.src = a;
 						new_stk.style = 'display:inline;';
 					}
-					if (id == 1)
+					else if (id == 1)
 					{
 						stk.src = a;
 						stk.style = 'display:inline;';
@@ -112,6 +112,5 @@
 			  }
 			  function upload()
 			  {
-
 			  }
 			

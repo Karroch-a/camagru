@@ -14,6 +14,14 @@
 	</head>
 	<body>
         <?php
+            if (file_exists($_SESSION['path']))
+            {
+                
+            }
+            else
+            {
+                $_SESSION['path'] = '';
+            }
             if (isset($_SESSION['image_error'])) {
                 $q = $_SESSION['image_error'] ;
                 echo "<p class='alert alert-danger text-center'>$q</p>";

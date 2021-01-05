@@ -39,7 +39,6 @@
                             $_SESSION['path'] = $path;
                             $this->redirect('/gallery/camera');
                             // $obj->uploadImage($name);
-                            // unset($_SESSION['path']);
                         }
                     }
                 }
