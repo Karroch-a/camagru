@@ -536,6 +536,33 @@ input, select, textarea{
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.photos
+{
+    top: 32.5%;
+    width: 30%;
+    position: absolute;
+    height: 77%;
+    left: 35%;
+    overflow: auto;
+}
+.photos img
+{
+    width: 30%;
+    overflow: auto;
+    height: 15%;
+    margin: 2px;
+    border: 1px solid black;
+}
+.photos .close
+{
+    position: absolute;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+    right: 0;
+    top: 0;
+}
 @media (min-width: 320px) and (max-width: 700px)
 {
     .login-register 

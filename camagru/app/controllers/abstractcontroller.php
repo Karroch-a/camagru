@@ -8,6 +8,7 @@
         protected $_controller;
         protected $_action;
         protected $_params;
+        protected $_data = [];
 
         public function notFoundAction()
         {
@@ -27,6 +28,7 @@
         }
         protected function _view()
         {
+            
             if ($this->_action == FrontController::NOT_FOUND_ACTION)
             {
                 require_once VIEW_PATH . 'notfound' . DS . 'notfound.view.php';
@@ -35,7 +37,7 @@
                 $view = VIEW_PATH . $this->_controller .DS  .$this->_action . '.view.php';
                 if (file_exists($view))
                 {
-                    require_once $view;
+                    require_once $view; 
                 }
                 else
                 {

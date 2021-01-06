@@ -310,6 +310,26 @@
             $stmt = $connexion->prepare($sql_image);
             $stmt->execute();
         }
+        public function fetchImage()
+        {
+            global $connexion;
+            $usr = $_SESSION['username'];
+            $sql = "SELECT * FROM images WHERE user = '$usr'";
+            $stmt = $connexion->prepare($sql);
+            $stmt->execute();
+            $info = $stmt->fetchAll();
+            // if ($info) {
+            //     // echo "<pre>";
+            //     // var_dump($info);
+            //     // echo "</pre>";
+
+            //     foreach ($info as  static::$tableImage) 
+            //     {
+            //         return static::$tableImage;
+            //     }
+            // }
+            return $info;
+        }
        
     }
 ?>

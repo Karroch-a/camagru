@@ -27,7 +27,7 @@
             // 'passowrd_error'        => self::DATA_TYPE_STR
         );
         protected static $tableImage = array(
-            'username'              => self::DATA_TYPE_STR,
+            'user'              => self::DATA_TYPE_STR,
             'image_n'              => self::DATA_TYPE_STR,
         );
     }

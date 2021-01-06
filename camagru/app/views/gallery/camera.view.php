@@ -50,16 +50,23 @@
                     <br>
                     <div class="canvas"><canvas id="canvas"style="width:378px"></canvas></div>
                     <div class="ikhan"><img src="<?= $_SESSION['path']?>" id="picture" class="path"></div>
+                    <?php  unset($_SESSION['path'])?>
                     <br>
                     <img src="" id="new" class="new">
-                    <button class="btn btn-primary" onclick="picutre();">take picture</button>
+                    <button class="btn btn-primary" id = 'abaza' onclick="picutre();">take picture</button>
                     <form action="/gallery/camera" method="POST" enctype="multipart/form-data">
                         <div class="upload">
                         <input type="file" name="img">
-                        <button  class="btn btn-primary" name="upload" value="upload" onclick="upload();">upload</button>
+                        <button  class="btn btn-primary" name="upload" value="upload" id = "upload">upload</button>
                         </div>
                     </form>
                         <button class="btn btn-primary" onclick="save();" name="save" value="save">Save image</button>
+                </div>
+                <div class="photos">
+                    <?php extract($this->_data); ?>
+                    <?php foreach($atoi as $img) : ?>
+                        <img src=<?="../../public/img/picture/".$img['image_n']?> id="stk">
+                    <?php endforeach; ?>
                 </div>
         </div>
         <script type="text/javascript" src="/../public/js/main.js">

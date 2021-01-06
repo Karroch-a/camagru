@@ -8,7 +8,9 @@
 
     $connexion = null;
         try{
-            $connexion = new \PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+            $connexion = new \PDO($DB_DSN, $DB_USER, $DB_PASSWORD, [
+                \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC
+            ]);
             $connexion->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
         echo 'Connection failed: ' . $e->getMessage();

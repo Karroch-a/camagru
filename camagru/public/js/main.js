@@ -51,45 +51,69 @@
 				}
 		}
 				function changeImage(id){
-				if (!(vid.srcObject))
-				{
-					return;
-				}
-				else
-				{
-					if (document.getElementById("picture").getAttribute('src') !== '')
+					if (document.getElementById("picture").getAttribute('src') !== '' && !(vid.srcObject))
 					{
+						document.getElementById("abaza").disabled = true;
 						document.getElementById("picture").style = 'display:block;';
-						new_stk.src = a;
-						new_stk.style = 'display:inline;';
+						if (id == 1)
+						{
+							new_stk.src = a;
+							new_stk.style = 'display:inline;';
+						}
+						else if (id == 2)
+						{
+							new_stk.src = b;
+							new_stk.style = 'display:inline;';
+						}
+						else if (id == 3)
+						{
+							new_stk.src = c;
+							new_stk.style = 'display:inline;';
+						}
+						else if (id == 4)
+						{
+							new_stk.src = d;
+							new_stk.style = 'display:inline;';
+						}
+						else if (id == 5)
+						{
+							new_stk.src = e;
+							new_stk.style = 'display:inline;';
+						}
 					}
-					else if (id == 1)
+					else
 					{
-						stk.src = a;
-						stk.style = 'display:inline;';
-					}
-					else if (id == 2)
-					{
-						stk.src = b;
-						stk.style = 'display:inline;';
-					}
-					else if (id == 3)
-					{
-						stk.src = c;
-						stk.style = 'display:inline;';
-					}
-					else if (id == 4)
-					{
-						stk.src = d;
-						stk.style = 'display:inline;';
-					}
-					else if (id == 5)
-					{
-						stk.src = e;
-						stk.style = 'display:inline;';
+						if (document.getElementById("picture").getAttribute('src') == '' && !(vid.srcObject))
+						{
+							return;
+						}
+						if (id == 1)
+						{
+							stk.src = a;
+							stk.style = 'display:inline;';
+						}
+						else if (id == 2)
+						{
+							stk.src = b;
+							stk.style = 'display:inline;';
+						}
+						else if (id == 3)
+						{
+							stk.src = c;
+							stk.style = 'display:inline;';
+						}
+						else if (id == 4)
+						{
+							stk.src = d;
+							stk.style = 'display:inline;';
+						}
+						else if (id == 5)
+						{
+							stk.src = e;
+							stk.style = 'display:inline;';
+						}
 					}
 				}
-			}
 			function save() {
 				if (new_stk.src != a && new_stk.src != b && new_stk.src != c && new_stk.src != d && new_stk.src != e)
 				{
@@ -97,12 +121,19 @@
 				}
 				else
 				{
-					console.log(new_stk.src);
 					var xhttp = new XMLHttpRequest();
 					xhttp.open("POST", window.location.href, true);
-					picture = stickers = "stk=" + new_stk.src + "&img=" +  canvas.toDataURL('image/jpeg');
+					if (document.getElementById("picture").getAttribute('src') !== '' && !(vid.srcObject))
+					{
+						picture = stickers = "emoji=" + new_stk.src + "&pic=" +  document.getElementById("picture").src;
+					}
+					else
+					{
+						picture = stickers = "stk=" + new_stk.src + "&img=" +  canvas.toDataURL('image/jpeg');
+					}
 					xhttp.onreadystatechange = function() {
 					  if (this.readyState == 4 && this.status == 200) {
+						console.log(xhttp.responseText);
 					  }
 					};
 					xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -112,5 +143,6 @@
 			  }
 			  function upload()
 			  {
+					// document.getElementById("picture").style = 'display:block;';
 			  }
 			
