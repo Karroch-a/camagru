@@ -19,7 +19,6 @@
                 // var_dump($obj->fetchImage());
                 // var_dump($this->$_data);
                 $this->_data['atoi'] = $obj->fetchImage();
-                // extract($this->$_data);
                 $this->_view();
             }
             if (isset($_POST['upload']) && $_POST['upload']){
@@ -108,6 +107,13 @@
                     unlink($picture);
                     $name = explode('/', $fileName, 5);
                     $obj->uploadImage($name[4]);
+                }
+                if (isset($_POST['image_n']))
+                {
+                    $image_n = $_POST['image_n'];
+                    $obj->deleteImage($image_n);
+                    $path = '..' .DS . 'public' . DS .'img' .DS . 'picture' . DS . $image_n;
+                    unlink($path);
                 }
             }
         }

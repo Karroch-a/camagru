@@ -134,15 +134,40 @@
 					xhttp.onreadystatechange = function() {
 					  if (this.readyState == 4 && this.status == 200) {
 						console.log(xhttp.responseText);
+						window.location.href = "/gallery/camera";
 					  }
 					};
 					xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 					xhttp.send(picture);
-					window.location.replace("/gallery/camera");
 				}
 			  }
-			  function upload()
+			  function deleteImage(image_n)
 			  {
-					// document.getElementById("picture").style = 'display:block;';
-			  }
+					var xhttp = new XMLHttpRequest();
+					xhttp.open("POST", window.location.href, true);
+					picture = "image_n=" + image_n;
+					xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						console.log(xhttp.responseText);
+						window.location.href = "/gallery/camera";
+						}
+					};
+					xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					xhttp.send(picture);
+				}
+			function like(image_n)
+			{
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST", window.location.href, true);
+				picture = "like=" + image_n;
+				console.log(picture );
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					console.log(xhttp.responseText);
+					// window.location.href = "/home/post";
+					}
+				};
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				xhttp.send(picture);
+			}
 			

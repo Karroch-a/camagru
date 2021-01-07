@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 .login-register
 {
     position: absolute;
@@ -58,7 +58,6 @@ input, select, textarea{
     color: black;
     border: 1px solid #3497db;
     border-radius: 8px;
-
 }
 ::placeholder
 {
@@ -538,7 +537,7 @@ input, select, textarea{
 }
 .photos
 {
-    top: 32.5%;
+    margin-top: 61px;
     width: 30%;
     position: absolute;
     height: 77%;
@@ -547,9 +546,9 @@ input, select, textarea{
 }
 .photos img
 {
-    width: 30%;
+    width: 61%;
     overflow: auto;
-    height: 15%;
+    height: 26%;
     margin: 2px;
     border: 1px solid black;
 }
@@ -563,6 +562,66 @@ input, select, textarea{
     right: 0;
     top: 0;
 }
+.fa-fw
+{
+    position: absolute;
+}
+.save
+{
+    width: 100%;
+}
+.post
+{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+.post .image
+{
+    margin-top: 44px;
+    border: 1px solid rgba(var(--ce3,239,239,239),1);
+}
+.post  img
+{
+    width: 100%;
+    margin: -1px -1px 2px 0px;
+    overflow: none;
+}
+.post h6
+{
+    font-weight: 900;
+    font-family: 'Roboto Condensed', sans-serif;
+    margin: 10px 11px 8px 10px;
+    color : rgba(var(--f75,38,38,38),1)
+}
+.like
+{
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: 0 0;
+    border: 0;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 8px;
+    display: inline-block;
+    outline: none;
+}
+.like:focus{
+    outline: none;
+}
+
 @media (min-width: 320px) and (max-width: 700px)
 {
     .login-register 

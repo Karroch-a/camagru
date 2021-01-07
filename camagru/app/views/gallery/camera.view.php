@@ -65,7 +65,10 @@
                 <div class="photos">
                     <?php extract($this->_data); ?>
                     <?php foreach($atoi as $img) : ?>
-                        <img src=<?="../../public/img/picture/".$img['image_n']?> id="stk">
+                    <div class = "save">
+                        <img src=<?="../../public/img/picture/".$img['image_n']?>>
+                        <i class="fa fa-trash fa-fw" aria-hidden="true" onclick="deleteImage('<?= $img['image_n']?>');"></i>
+                    </div>
                     <?php endforeach; ?>
                 </div>
         </div>

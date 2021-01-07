@@ -306,7 +306,8 @@
         {
             global $connexion;
             $username = $_SESSION['username'];
-            $sql_image = "INSERT INTO images (user, image_n) VALUES ('$username', '$image_n')";
+            $like = 0;
+            $sql_image = "INSERT INTO images (user, image_n, like_m) VALUES ('$username', '$image_n', '$like')";
             $stmt = $connexion->prepare($sql_image);
             $stmt->execute();
         }
@@ -318,18 +319,32 @@
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $info = $stmt->fetchAll();
-            // if ($info) {
-            //     // echo "<pre>";
-            //     // var_dump($info);
-            //     // echo "</pre>";
-
-            //     foreach ($info as  static::$tableImage) 
-            //     {
-            //         return static::$tableImage;
-            //     }
-            // }
             return $info;
         }
-       
+        public function deleteImage($image_n)
+        {
+            global $connexion;
+            $sql = "DELETE FROM images WHERE image_n = '$image_n'";
+            $stmt = $connexion->prepare($sql);
+            $stmt->execute();
+        }
+        public function fetchallImage()
+        {
+            global $connexion;
+            $usr = $_SESSION['username'];
+            $sql = "SELECT * FROM images";
+            $stmt = $connexion->prepare($sql);
+            $stmt->execute();
+            $info = $stmt->fetchAll();
+            return $info;
+        }
+        public function like($image_n, $like)
+        {
+            global $connexion;
+            $usr = $_SESSION['username'];
+            $like_sql = "UPDATE  images SET like_m = $like WHERE image_n = '$image_n'";
+            $stmt = $connexion->prepare($like_sql);
+            $stmt->execute();
+        }
     }
 ?>

@@ -1,6 +1,8 @@
 <?php
     namespace CAMAGRU\LIB\Config;
     use CAMAGRU\Config;
+    use PDO;
+    use PDOException;
     
     $DB_DSN = "mysql:host=".DATABASE_HOST_NAME.";port=".DATABASE_PORT_NUMBER.";dbname=".DATABASE_DB_NAME;
     $DB_USER = DATABASE_USER_NAME;
@@ -8,10 +10,10 @@
 
     $connexion = null;
         try{
-            $connexion = new \PDO($DB_DSN, $DB_USER, $DB_PASSWORD, [
-                \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC
+            $connexion = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, [
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
             ]);
-            $connexion->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        } catch (\PDOException $e) {
+            $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
         echo 'Connection failed: ' . $e->getMessage();
     }
