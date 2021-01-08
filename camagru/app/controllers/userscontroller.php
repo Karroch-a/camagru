@@ -83,6 +83,7 @@ class UsersController extends AbstractController
         $obj = new UsersModel();
         $_SESSION['username'] = $obj->getall()['username'];
         $_SESSION['email'] = $obj->getall()['email'];
+        $_SESSION['id'] = $obj->getall()['id'];
         $_SESSION['notification'] = $obj->getall()['notification'];
         if (isset($_POST['confirm']))
         {

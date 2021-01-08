@@ -581,12 +581,14 @@ input, select, textarea{
 }
 .post .image
 {
+    width: 467px;
     margin-top: 44px;
     border: 1px solid rgba(var(--ce3,239,239,239),1);
 }
 .post  img
 {
     width: 100%;
+    height: 349px;
     margin: -1px -1px 2px 0px;
     overflow: none;
 }
@@ -621,7 +623,15 @@ input, select, textarea{
 .like:focus{
     outline: none;
 }
-
+svg:hover {
+    fill: rgb(237, 73, 86);
+    height: 24;
+    width: 24;
+}
+.new_like
+{
+    margin: 8px;
+}
 @media (min-width: 320px) and (max-width: 700px)
 {
     .login-register 

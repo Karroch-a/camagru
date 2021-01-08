@@ -305,17 +305,17 @@
         public function uploadImage($image_n)
         {
             global $connexion;
-            $username = $_SESSION['username'];
+            $id = $_SESSION['id'];
             $like = 0;
-            $sql_image = "INSERT INTO images (user, image_n, like_m) VALUES ('$username', '$image_n', '$like')";
+            $sql_image = "INSERT INTO images (id, image_n, like_count) VALUES ($id, '$image_n', '$like')";
             $stmt = $connexion->prepare($sql_image);
             $stmt->execute();
         }
         public function fetchImage()
         {
             global $connexion;
-            $usr = $_SESSION['username'];
-            $sql = "SELECT * FROM images WHERE user = '$usr'";
+            $id = $_SESSION['id'];
+            $sql = "SELECT * FROM images WHERE id = '$id'";
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $info = $stmt->fetchAll();
@@ -341,10 +341,67 @@
         public function like($image_n, $like)
         {
             global $connexion;
-            $usr = $_SESSION['username'];
-            $like_sql = "UPDATE  images SET like_m = $like WHERE image_n = '$image_n'";
+            $id = $_SESSION['id'];
+            $like_sql = "UPDATE  images SET like_count = like_count + $like WHERE image_n = '$image_n'";
+            $like_count = "INSERT INTO likes (id, image_n) VALUES ('$id', '$image_n')";
+            $stmt_count = $connexion->prepare($like_count);
+            $stmt_count->execute();
             $stmt = $connexion->prepare($like_sql);
             $stmt->execute();
+        }
+        public function checklike($image_n)
+        {
+            global $connexion;
+            $id = $_SESSION['id'];
+            $sql = "SELECT * FROM likes WHERE id = '$id' AND image_n = '$image_n'";
+            $stmt = $connexion->prepare($sql);
+            $stmt->execute();
+            $count = $stmt->fetchColumn();
+            if ($count >= 1)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public function removelike($image_n, $like)
+        {
+            global $connexion;
+            $id = $_SESSION['id'];
+            $sql = "DELETE FROM likes WHERE image_n = '$image_n' AND id = '$id'";
+            $like_sql = "UPDATE  images SET like_count = like_count + $like WHERE image_n = '$image_n'";
+            $stmt_sql = $connexion->prepare($sql);
+            $stmt = $connexion->prepare($like_sql);
+            $stmt->execute();
+            $stmt_sql->execute();
+        }
+        public function getOwnerImage($id)
+        {
+            global $connexion;
+            $sql = "SELECT  username FROM users WHERE id = '$id'";
+            $stmt = $connexion->prepare($sql);
+            $stmt->execute();
+            $info = $stmt->fetchAll();
+            return $info;
+        }
+        public function countLike($image_n)
+        {
+            global $connexion;
+            $like_count = "SELECT like_count FROM images WHERE image_n = '$image_n'";
+            $stmt = $connexion->prepare($like_count);
+            $stmt->execute();
+            $info = $stmt->fetchAll();
+            return $info;
+            // if ($stmt->fetchColumn() == true)
+            // {
+            //         return 1;
+            // }
+            // else
+            // {
+            //         return 2;
+            // }
         }
     }
 ?>

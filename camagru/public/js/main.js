@@ -155,19 +155,22 @@
 					xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 					xhttp.send(picture);
 				}
-			function like(image_n)
+			function like(image_n, id)
 			{
 				var xhttp = new XMLHttpRequest();
 				xhttp.open("POST", window.location.href, true);
 				picture = "like=" + image_n;
-				console.log(picture );
 				xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-					console.log(xhttp.responseText);
-					// window.location.href = "/home/post";
+					console.log(xhttp);
+					res = JSON.parse(xhttp.responseText);
+						if (res)
+						{
+							console.log(res[0].like_count);
+							document.getElementById(id).innerText = res[0].like_count + " Likes";
+						}
 					}
 				};
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send(picture);
 			}
-			

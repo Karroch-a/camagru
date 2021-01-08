@@ -13,24 +13,42 @@ class HomeController extends AbstractController
     {
         $obj = new UsersModel();
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-            // foreach($obj->fetchImage() as $img)
-            // {
-            //     $_SESSION['image_name'] =  $img['image_n'];
-            // }
-            // $_SESSION['image_name'] =  $obj->fetchImage()['image_n'];\
-            // var_dump($obj->fetchImage());
-            // var_dump($this->$_data);
             $this->_data['home'] = $obj->fetchallImage();
+            // echo "<pre>";
+            // var_dump($this->_data['home']);
+            // echo "</pre>";
+            // die();
+            $obj->fetchallImage();
+            foreach($this->_data['home'] as $key)
+            {
+                $this->_data['user'][] = array_pop($obj->getOwnerImage($key['id']));
+                // $this->_data['user'][] = "ali";
+            }
             $this->_view();   
         }
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            if (isset($_POST['logout']))
+                {
+                    session_destroy();
+                    $this->redirect('/users/login');
+                }
             if (isset($_POST['like']))
             {
-                // echo json_encode($_POST['like']);
-                // echo json_encode($like = $this->_data['home']['like']);
-               $like =  $this->_data['home']['like_m'] + 1;
+                $like =   1;
                 $image_n = $_POST['like'];
-                $obj->like($image_n, $like);
+                if ($obj->checklike($image_n) == true)
+                {
+                    $obj->like($image_n, $like);
+                    $li = $obj->countLike($image_n);
+                    echo json_encode($li);
+                }
+                else
+                {
+                    $like = -1;
+                    $obj->removelike($image_n, $like);
+                    $li = $obj->countLike($image_n);
+                    echo json_encode($li);
+                }
             }
         }
     }

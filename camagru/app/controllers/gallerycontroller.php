@@ -102,7 +102,7 @@
                     $newheight=($height/$width)*$newwidth;
                     $src = imagecreatefrompng($src);
                     $dest = imagecreatefromjpeg($picture);
-                    imagecopyresampled($dest, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+                    imagecopyresampled($dest, $src, 0, 0, 0, 0, $newwidth,$newheight, $width, $height);
                     imagepng($dest, $fileName, 0);
                     unlink($picture);
                     $name = explode('/', $fileName, 5);
