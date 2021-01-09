@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Dec 22, 2020 at 04:06 PM
+-- Generation Time: Jan 09, 2021 at 01:56 PM
 -- Server version: 8.0.22
--- PHP Version: 7.4.11
+-- PHP Version: 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,37 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_aazeroua`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `images`
+--
+
+CREATE TABLE `images` (
+  `image_id` int NOT NULL,
+  `id` int NOT NULL,
+  `image_n` varchar(300) NOT NULL,
+  `like_count` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`image_id`, `id`, `image_n`, `like_count`) VALUES
+(1, 27, 'pic-1610200505.png', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `likes`
+--
+
+CREATE TABLE `likes` (
+  `id` int NOT NULL,
+  `image_n` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -53,6 +84,12 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `rowcount`, `notific
 --
 
 --
+-- Indexes for table `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`image_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -61,6 +98,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `images`
+--
+ALTER TABLE `images`
+  MODIFY `image_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`

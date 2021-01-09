@@ -632,6 +632,10 @@ svg:hover {
 {
     margin: 8px;
 }
+.color
+{
+    fill: rgb(237, 73, 86);
+}
 @media (min-width: 320px) and (max-width: 700px)
 {
     .login-register 

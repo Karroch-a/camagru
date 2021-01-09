@@ -14,15 +14,12 @@ class HomeController extends AbstractController
         $obj = new UsersModel();
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
             $this->_data['home'] = $obj->fetchallImage();
-            // echo "<pre>";
-            // var_dump($this->_data['home']);
-            // echo "</pre>";
-            // die();
             $obj->fetchallImage();
-            foreach($this->_data['home'] as $key)
-            {
-                $this->_data['user'][] = array_pop($obj->getOwnerImage($key['id']));
-                // $this->_data['user'][] = "ali";
+            for ($i = 0; $i < count($this->_data['home']); $i++){
+                $this->_data['home'][$i]['username'] = array_pop(array_pop($obj->getOwnerImage($this->_data['home'][$i]['id'])));
+            }
+            for ($i = 0; $i < count($this->_data['home']); $i++){
+                $this->_data['home'][$i]['id_image'] = $obj->checklikeByID();
             }
             $this->_view();   
         }

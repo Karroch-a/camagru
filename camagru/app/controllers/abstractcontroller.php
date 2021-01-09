@@ -9,6 +9,7 @@
         protected $_action;
         protected $_params;
         protected $_data = [];
+        protected $color = [];
 
         public function notFoundAction()
         {

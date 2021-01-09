@@ -332,7 +332,7 @@
         {
             global $connexion;
             $usr = $_SESSION['username'];
-            $sql = "SELECT * FROM images";
+            $sql = "SELECT * FROM images ORDER BY id DESC";
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $info = $stmt->fetchAll();
@@ -343,7 +343,7 @@
             global $connexion;
             $id = $_SESSION['id'];
             $like_sql = "UPDATE  images SET like_count = like_count + $like WHERE image_n = '$image_n'";
-            $like_count = "INSERT INTO likes (id, image_n) VALUES ('$id', '$image_n')";
+            $like_count = "INSERT INTO likes (id_image, image_n) VALUES ('$id', '$image_n')";
             $stmt_count = $connexion->prepare($like_count);
             $stmt_count->execute();
             $stmt = $connexion->prepare($like_sql);
@@ -353,7 +353,7 @@
         {
             global $connexion;
             $id = $_SESSION['id'];
-            $sql = "SELECT * FROM likes WHERE id = '$id' AND image_n = '$image_n'";
+            $sql = "SELECT * FROM likes WHERE id_image = '$id' AND image_n = '$image_n'";
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $count = $stmt->fetchColumn();
@@ -370,7 +370,7 @@
         {
             global $connexion;
             $id = $_SESSION['id'];
-            $sql = "DELETE FROM likes WHERE image_n = '$image_n' AND id = '$id'";
+            $sql = "DELETE FROM likes WHERE image_n = '$image_n' AND id_image = '$id'";
             $like_sql = "UPDATE  images SET like_count = like_count + $like WHERE image_n = '$image_n'";
             $stmt_sql = $connexion->prepare($sql);
             $stmt = $connexion->prepare($like_sql);
@@ -394,14 +394,16 @@
             $stmt->execute();
             $info = $stmt->fetchAll();
             return $info;
-            // if ($stmt->fetchColumn() == true)
-            // {
-            //         return 1;
-            // }
-            // else
-            // {
-            //         return 2;
-            // }
+        }
+        public function checklikeByID()
+        {
+            global $connexion;
+            $id = $_SESSION['id'];
+            $sql = "SELECT image_n FROM likes WHERE id_image = '$id'";
+            $stmt = $connexion->prepare($sql);
+            $stmt->execute();
+            $info = $stmt->fetchAll();
+            return $info;
         }
     }
 ?>
