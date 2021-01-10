@@ -15,13 +15,26 @@ class HomeController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
             $this->_data['home'] = $obj->fetchallImage();
             $obj->fetchallImage();
+            $liked = $obj->checklikeByID();
             for ($i = 0; $i < count($this->_data['home']); $i++){
                 $this->_data['home'][$i]['username'] = array_pop(array_pop($obj->getOwnerImage($this->_data['home'][$i]['id'])));
             }
             for ($i = 0; $i < count($this->_data['home']); $i++){
-                $this->_data['home'][$i]['id_image'] = $obj->checklikeByID();
+                $this->_data['home'][$i]['liked'] = false;
+                for($j = 0; $j < count($liked); $j++){
+                    if ($this->_data['home'][$i]['image_n'] == $liked[$j]['image_n']){
+                        $this->_data['home'][$i]['liked'] = true;
+                    }
+                }
             }
-            $this->_view();   
+            echo "<pre>";
+            // for($j = 0; $j < count($liked); $j++){
+            //     print_r($liked[$j]['image_n']);
+            // }
+            var_dump($obj->fetchCmnt());
+            echo "</pre>";
+            die();
+            $this->_view();
         }
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             if (isset($_POST['logout']))
@@ -37,6 +50,7 @@ class HomeController extends AbstractController
                 {
                     $obj->like($image_n, $like);
                     $li = $obj->countLike($image_n);
+                    $li['liked'] = 'ok';
                     echo json_encode($li);
                 }
                 else
@@ -44,9 +58,21 @@ class HomeController extends AbstractController
                     $like = -1;
                     $obj->removelike($image_n, $like);
                     $li = $obj->countLike($image_n);
+                    $li['liked'] = 'no';
                     echo json_encode($li);
                 }
             }
+            if (isset($_POST['nameofimage']) && isset($_POST['cmnt']))
+            {
+                $cmnt = $_POST['cmnt'];
+                $image_n = $_POST['nameofimage'];
+                if (trim($cmnt) !==  '')
+                {
+                    $obj->addCmnt($image_n, trim($cmnt));
+                }
+                echo json_encode('ok');
+            }
+
         }
     }
 }

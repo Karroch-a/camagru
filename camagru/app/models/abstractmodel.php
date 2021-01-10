@@ -332,7 +332,7 @@
         {
             global $connexion;
             $usr = $_SESSION['username'];
-            $sql = "SELECT * FROM images ORDER BY id DESC";
+            $sql = "SELECT * FROM images ORDER BY image_id DESC";
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $info = $stmt->fetchAll();
@@ -400,6 +400,24 @@
             global $connexion;
             $id = $_SESSION['id'];
             $sql = "SELECT image_n FROM likes WHERE id_image = '$id'";
+            $stmt = $connexion->prepare($sql);
+            $stmt->execute();
+            $info = $stmt->fetchAll();
+            return $info;
+        }
+        public function addCmnt($image_n, $comment)
+        {
+            global $connexion;
+            $id = $_SESSION['id'];
+            $comnt = "INSERT INTO cmnt (id_user, image_n, comment) VALUES ('$id', '$image_n', '$comment')";
+            $stmt = $connexion->prepare($comnt);
+            $stmt->execute();
+        }
+        public function fetchCmnt()
+        {
+            global $connexion;
+            $id = $_SESSION['id'];
+            $sql = "SELECT * FROM cmnt WHERE id_user = '$id'";
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $info = $stmt->fetchAll();
