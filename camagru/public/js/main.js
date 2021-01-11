@@ -182,11 +182,11 @@
 				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				xhttp.send(picture);
 			}
-			function cmnt(image_n)
+			function cmnt(image_n, i, j, username)
 			{
 				var xhttp = new XMLHttpRequest();
 				xhttp.open("POST", window.location.href, true);
-				comment = document.getElementById("textarea").value;
+				comment = document.getElementById(i).value;
 				picture = "nameofimage=" + image_n + "&cmnt=" + comment;
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
@@ -194,7 +194,20 @@
 						res = JSON.parse(xhttp.responseText);
 							if (res)
 							{
-								document.getElementById("textarea").value = '';
+								var div = document.createElement("DIV");
+								div.setAttribute("class", "fetchcmnt");
+								document.getElementById(j).appendChild(div);
+
+								var node = document.createElement("H6");
+								var textnode = document.createTextNode(username);
+								node.appendChild(textnode);
+								div.appendChild(node);
+
+								var span = document.createElement("SPAN");
+								var spantext = document.createTextNode(comment);
+								span.appendChild(spantext);
+								div.appendChild(span);
+								document.getElementById(i).value = '';
 							}
 						}
 					};

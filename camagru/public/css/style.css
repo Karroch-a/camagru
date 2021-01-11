@@ -760,11 +760,6 @@ svg:hover {
     width: 77%;
     word-wrap: break-word;
 }
-.fetchcmnt i
-{
-    position: relative;
-    margin: 10px;
-}
 @media (min-width: 320px) and (max-width: 700px)
 {
     .login-register 

@@ -27,13 +27,30 @@ class HomeController extends AbstractController
                     }
                 }
             }
-            echo "<pre>";
-            // for($j = 0; $j < count($liked); $j++){
-            //     print_r($liked[$j]['image_n']);
+            $cmnt = $obj->fetchCmnt();
+            for ($i = 0; $i < count($this->_data['home']); $i++){
+                for($j = 0; $j < count($cmnt); $j++){
+                    if ($this->_data['home'][$i]['image_n'] == $cmnt[$j]['image_n']){
+                        $this->_data['home'][$i]['cmnt'] = $cmnt;
+                    }
+                }
+            }
+            for ($i = 0; $i < count($this->_data['home']); $i++){
+                for($j = 0; $j < count($this->_data['home'][$i]['cmnt']); $j++){
+                    $this->_data['home'][$i]['cmnt'][$j]['username'] = array_pop(array_pop($obj->getOwnerImage($this->_data['home'][$i]['cmnt'][$j]['id_user'])));;
+                }
+            }
+            // for ($i = 0; $i < count($this->_data['home']); $i++){
+            //     $this->_data['home'][$i]['cmnt'] = $obj->fetchCmnt();
             // }
-            var_dump($obj->fetchCmnt());
-            echo "</pre>";
-            die();
+            // echo "<pre>";
+            // // for($j = 0; $j < count($liked); $j++){
+            // //     print_r($liked[$j]['image_n']);
+            // // }
+            // // var_dump($obj->fetchCmnt('pic-1610373610.png'));
+            // var_dump($this->_data);
+            // echo "</pre>";
+            // die();
             $this->_view();
         }
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -69,8 +86,9 @@ class HomeController extends AbstractController
                 if (trim($cmnt) !==  '')
                 {
                     $obj->addCmnt($image_n, trim($cmnt));
+                    $li = $obj->fetchCmnt($image_n);
                 }
-                echo json_encode('ok');
+                echo json_encode($li);
             }
 
         }

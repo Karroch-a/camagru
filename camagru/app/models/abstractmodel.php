@@ -417,7 +417,7 @@
         {
             global $connexion;
             $id = $_SESSION['id'];
-            $sql = "SELECT * FROM cmnt WHERE id_user = '$id'";
+            $sql = "SELECT * FROM cmnt ORDER BY id" ;
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $info = $stmt->fetchAll();
