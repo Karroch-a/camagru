@@ -168,10 +168,19 @@
         public function delete()
         {
             global $connexion;
-            $username = $_SESSION['username'];
-            $sql = "DELETE FROM users WHERE username = '$username'";
-            $stmt = $connexion->prepare($sql);
-            $stmt->execute();
+            $id = $_SESSION['id'];
+            $sql_user = "DELETE FROM users WHERE id = '$id'";
+            $sql_image = "DELETE FROM images WHERE id = '$id'";
+            $sql_cmnt = "DELETE FROM cmnt WHERE id_user = '$id'";
+            $sql_likes = "DELETE FROM likes WHERE id_image = '$id'";
+            $stmt_user = $connexion->prepare($sql_user);
+            $stmt_image = $connexion->prepare($sql_image);
+            $stmt_cmnt = $connexion->prepare($sql_cmnt);
+            $stmt_likes = $connexion->prepare($sql_likes);
+            $stmt_user->execute();
+            $stmt_image->execute();
+            $stmt_cmnt->execute();
+            $stmt_likes->execute();
         }
         public function profileinfo($id)
         {
@@ -328,11 +337,11 @@
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
         }
-        public function fetchallImage()
+        public function fetchallImage($start, $end)
         {
             global $connexion;
             $usr = $_SESSION['username'];
-            $sql = "SELECT * FROM images ORDER BY image_id DESC";
+            $sql = "SELECT * FROM images ORDER BY image_id DESC limit $start, $end";
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $info = $stmt->fetchAll();
@@ -421,6 +430,15 @@
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $info = $stmt->fetchAll();
+            return $info;
+        }
+        public function GetcountofImage()
+        {
+            global $connexion;
+            $sql = "SELECT COUNT(id) FROM images";
+            $stmt = $connexion->prepare($sql);
+            $stmt->execute();
+            $info = $stmt->fetchColumn();
             return $info;
         }
     }

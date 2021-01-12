@@ -572,7 +572,6 @@ input, select, textarea{
 }
 .post
 {
-    position: absolute;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -759,6 +758,15 @@ svg:hover {
     margin-top: 7px;
     width: 77%;
     word-wrap: break-word;
+}
+.fa-trash:before 
+{
+    cursor: pointer;
+    color: crimson;
+}
+.pagination
+{
+    margin-top: 20px;
 }
 @media (min-width: 320px) and (max-width: 700px)
 {

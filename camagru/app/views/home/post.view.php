@@ -1,6 +1,5 @@
 <?php
     require_once "../app/views/users/bootstrap.php";
-    require_once "../app/views/users/footer.php";
 ?>
 <html>
 <head></head>
@@ -45,15 +44,33 @@
                             <div class="cmnt">
                                 <div class="ikk">
                                 <textarea aria-label="Add a comment…" placeholder="Add a comment…" class="text" id = "<?=$i?>" autocomplete="off" autocorrect="off"></textarea>
-                                <button onclick="cmnt('<?= $img['image_n']?>' ,'<?= $i?>' ,'<?= $j?>', '<?=$img['username']?>');" type="submit">Post</button>
+                                <button onclick="cmnt('<?= $img['image_n']?>' ,'<?= $i?>' ,'<?= $j?>', '<?=$_SESSION['username']?>');" type="submit">Post</button>
                                 </div>
                             </div>
                         </div>
                         </section>
                     </div>
                     <?php endforeach; ?>
-    </div>
-    <script type="text/javascript" src="/../public/js/main.js">
+                    <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <?php if ($_GET['start'] != 0) :?>
+                            <li class="page-item"><a class="page-link" href="/home/post?start=<?=$_GET['start'] - 1?>">Previous</a></li>
+                        <?php else : ?>
+                            <li class="page-item"><a class="page-link" href="/home/post?start=<?=0?>">Previous</a></li>
+                        <?php endif;?>
+                        <?php for($count = 0; $count < $img['countofimage'] ; $count++) :?>
+                            <li class="page-item"><a class="page-link" href="/home/post?start=<?=$count?>"><?=$count?></a></li>
+                        <?php endfor;?>
+                        <?php if ($_GET['start'] < $img['countofimage'] - 1) :?>
+                            <li class="page-item"><a class="page-link" href="/home/post?start=<?=$_GET['start'] + 1?>">Next</a></li>
+                        <?php else : ?>
+                            <li class="page-item"><a class="page-link" href="/home/post?start=<?=0?>">Next</a></li>
+                        <?php endif;?>
+                    </ul>
+                    </nav>
+                </div>
+                <?php  require_once APP_PATH . DS . 'views' . DS .  'users' . DS . 'footer.php';  ?>
+        <script type="text/javascript" src="/../public/js/main.js">
 		</script>
 </body>
 </html>

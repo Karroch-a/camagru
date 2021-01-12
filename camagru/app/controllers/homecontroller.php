@@ -13,8 +13,16 @@ class HomeController extends AbstractController
     {
         $obj = new UsersModel();
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-            $this->_data['home'] = $obj->fetchallImage();
-            $obj->fetchallImage();
+            $num = $obj->GetcountofImage();
+            $limit = 2;
+            $count = ceil($num / $limit);
+            $page = $_GET['start'];
+            if (!$page)
+            {
+                $page = 0;
+            }
+            $start = $page * $limit;
+            $this->_data['home'] = $obj->fetchallImage($start,$limit);
             $liked = $obj->checklikeByID();
             for ($i = 0; $i < count($this->_data['home']); $i++){
                 $this->_data['home'][$i]['username'] = array_pop(array_pop($obj->getOwnerImage($this->_data['home'][$i]['id'])));
@@ -29,6 +37,7 @@ class HomeController extends AbstractController
             }
             $cmnt = $obj->fetchCmnt();
             for ($i = 0; $i < count($this->_data['home']); $i++){
+                $this->_data['home'][$i]['countofimage'] = $count;
                 for($j = 0; $j < count($cmnt); $j++){
                     if ($this->_data['home'][$i]['image_n'] == $cmnt[$j]['image_n']){
                         $this->_data['home'][$i]['cmnt'] = $cmnt;
@@ -67,7 +76,7 @@ class HomeController extends AbstractController
                 {
                     $obj->like($image_n, $like);
                     $li = $obj->countLike($image_n);
-                    $li['liked'] = 'ok';
+                    $li['liked'] = 'like';
                     echo json_encode($li);
                 }
                 else
@@ -75,9 +84,13 @@ class HomeController extends AbstractController
                     $like = -1;
                     $obj->removelike($image_n, $like);
                     $li = $obj->countLike($image_n);
-                    $li['liked'] = 'no';
+                    $li['liked'] = 'unlike';
                     echo json_encode($li);
                 }
+            }
+             if (!isset($_SESSION['username']))
+            {
+                $this->redirect('/users/login');
             }
             if (isset($_POST['nameofimage']) && isset($_POST['cmnt']))
             {
@@ -89,8 +102,7 @@ class HomeController extends AbstractController
                     $li = $obj->fetchCmnt($image_n);
                 }
                 echo json_encode($li);
-            }
-
+                }
         }
     }
 }

@@ -10,6 +10,7 @@ if (!defined('DS')) {
 }
 // require_once "../app/views/users/bootstrap.php";
 // require_once "../app/views/users/footer.php";
+
 require_once '..' . DS . 'app' . DS . 'config.php';
 require_once '..' . DS . 'app' . DS . 'lib' . DS . 'config' . DS . 'database.php';
 require_once APP_PATH . DS . 'lib' . DS . 'autoload.php';

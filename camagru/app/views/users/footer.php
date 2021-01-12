@@ -1,20 +1,9 @@
 
-<head>
-    <title>Camagru</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../../public/css/style.css">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-</head>
 <body>
-    <footer>
-        <div class="copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col text-center text-uppercase">
-                        Copyright 2020 camagru &copy; aazeroua
-                    </div>
-                </div>
-            </div>
-        </div>    
-    </footer>
+<footer class="bg-light text-center text-lg-start">
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2020 Copyright:
+    <a class="text-dark" href="#">aazeroua</a>
+  </div>
+</footer>
 </body>
