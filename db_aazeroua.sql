@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Jan 09, 2021 at 01:56 PM
+-- Generation Time: Jan 12, 2021 at 06:31 PM
 -- Server version: 8.0.22
 -- PHP Version: 7.4.13
 
@@ -24,6 +24,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cmnt`
+--
+
+CREATE TABLE `cmnt` (
+  `id` int NOT NULL,
+  `id_user` int NOT NULL,
+  `image_n` varchar(300) NOT NULL,
+  `comment` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `cmnt`
+--
+
+INSERT INTO `cmnt` (`id`, `id_user`, `image_n`, `comment`) VALUES
+(248, 27, 'pic-1610459270.png', 'DDA'),
+(249, 27, 'pic-1610459270.png', 'dad'),
+(250, 27, 'pic-1610461459.png', 'daada'),
+(251, 27, 'pic-1610461853.png', 'adad'),
+(252, 27, 'pic-1610461850.png', 'adada'),
+(253, 27, 'pic-1610461853.png', 'da'),
+(254, 27, 'pic-1610461853.png', 'dad'),
+(255, 27, 'pic-1610461853.png', 'adad'),
+(256, 27, 'pic-1610461853.png', 'adad'),
+(257, 27, 'pic-1610461853.png', 'dad'),
+(258, 27, 'pic-1610461850.png', 'adad'),
+(259, 27, 'pic-1610461459.png', 'dad'),
+(260, 27, 'pic-1610461853.png', 'olo');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `images`
 --
 
@@ -39,7 +71,9 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`image_id`, `id`, `image_n`, `like_count`) VALUES
-(1, 27, 'pic-1610200505.png', 2);
+(9, 27, 'pic-1610387748.png', 1),
+(12, 27, 'pic-1610461850.png', 0),
+(13, 27, 'pic-1610461853.png', 1);
 
 -- --------------------------------------------------------
 
@@ -48,9 +82,22 @@ INSERT INTO `images` (`image_id`, `id`, `image_n`, `like_count`) VALUES
 --
 
 CREATE TABLE `likes` (
-  `id` int NOT NULL,
+  `id_image` int NOT NULL,
   `image_n` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`id_image`, `image_n`) VALUES
+(27, 'pic-1610373266.png'),
+(27, 'pic-1610373269.png'),
+(28, 'pic-1610387748.png'),
+(28, 'pic-1610373610.png'),
+(27, 'pic-1610461459.png'),
+(27, 'pic-1610459270.png'),
+(27, 'pic-1610461853.png');
 
 -- --------------------------------------------------------
 
@@ -75,13 +122,18 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `rowcount`, `notification`, `token`, `password_token`) VALUES
 (25, 'abdellaha', '0bc4c5273b@firemailbox.club', '446aa4de6231ff9d0c10c2c9f3c75619', 1, 0, 'NULL', 'NULL'),
-(26, 'abdellah', 'abdellah.azeroual.info@gmail.com', '446aa4de6231ff9d0c10c2c9f3c75619', 1, 0, 'NULL', 'NULL'),
 (27, 'karroch', 'vokela77a53@aranelab.com', '904eb66eb259fb2e318aaf27ffc4aedb', 1, 0, 'NULL', 'NULL'),
-(28, 'senpai', 'vokela7753@aranelab.com', '904eb66eb259fb2e318aaf27ffc4aedb', 1, 0, 'NULL', 'NULL');
+(28, 'charaf', 'vokela7753@aranelab.com', '904eb66eb259fb2e318aaf27ffc4aedb', 1, 0, 'NULL', 'NULL');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `cmnt`
+--
+ALTER TABLE `cmnt`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `images`
@@ -100,10 +152,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `cmnt`
+--
+ALTER TABLE `cmnt`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=261;
+
+--
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `image_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `image_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
