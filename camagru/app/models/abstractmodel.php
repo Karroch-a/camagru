@@ -441,5 +441,18 @@
             $info = $stmt->fetchColumn();
             return $info;
         }
+        public function getemailOfImage($id)
+        {
+            global $connexion;
+            $sql = "SELECT  email FROM users WHERE id = '$id'";
+            $stmt = $connexion->prepare($sql);
+            $stmt->execute();
+            $info = $stmt->fetchAll();
+            if ($info) {
+                foreach ($info as static::$tableSchema) {
+                    return static::$tableSchema;
+                }
+            }
+        }
     }
 ?>

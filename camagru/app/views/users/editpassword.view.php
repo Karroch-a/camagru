@@ -4,7 +4,6 @@
       $this->redirect('/users/profile');
   }
     require_once "bootstrap.php";
-    require_once "footer.php";
 ?>
 <html>
     <head>
@@ -22,15 +21,18 @@
             unset($_SESSION['passowrd_error']);
         }
         ?>
+        <div class="respon">
         <div class="login-register">
             <!-- <img src="https://img.icons8.com/ios/100/000000/gender-neutral-user.png" class="face"> -->
             <form action="/users/login" method="POST">
-                    <input type="password" name="new" placeholder="New Password">
-                    <input type="password" name="confirm" placeholder="Confirm Password">
+                    <input type="password" name="new" placeholder="New Password" required>
+                    <input type="password" name="confirm" placeholder="Confirm Password" required>
                     <div>
                         <button type="submit" class="btn" name="submit">Reset</button>
                     </div>
             </form>
         </div>
+        </div>
+        <?php require_once "footer.php"; ?>
     </body>
 </html>

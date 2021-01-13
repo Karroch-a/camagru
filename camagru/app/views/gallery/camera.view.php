@@ -4,7 +4,6 @@
          $this->redirect('/users/login');
      }
    require_once APP_PATH . DS . 'views' . DS .  'users' . DS . 'bootstrap.php';
-   require_once APP_PATH . DS . 'views' . DS .  'users' . DS . 'footer.php';
 ?>
 <html>
 	<head>
@@ -42,34 +41,39 @@
                     <img id="4" src="../../public/img/stickers/SeZ.png" onclick="changeImage('4');">
                     <img id="5" src="../../public/img/stickers/SfD.png" onclick="changeImage('5');">
                 </div>
-                <div class="picutre">
-                    <img src="" id="stk" class="old">
-                    <div class="video"><video id="vid" style="width:378px"></video></div>
-                    <br>
-                    <div class="canvas"><canvas id="canvas"style="width:378px"></canvas></div>
-                    <div class="ikhan"><img src="<?= $_SESSION['path']?>" id="picture" class="path"></div>
-                    <?php  unset($_SESSION['path'])?>
-                    <br>
-                    <img src="" id="new" class="new">
-                    <button class="btn btn-primary" id = 'abaza' onclick="picutre();">take picture</button>
-                    <form action="/gallery/camera" method="POST" enctype="multipart/form-data">
-                        <div class="upload">
-                        <input type="file" name="img">
-                        <button  class="btn btn-primary" name="upload" value="upload" id = "upload">upload</button>
+                <div class="direction">
+                        <div class="picutre">
+                            <div class="video"><video id="vid" style="width: 100%;"></video>
+                                <img src="" id="stk" class="old">
+                            </div>
+                            <br>
+                            <div class="canvas"><canvas id="canvas"style="width: 100%;"></canvas>
+                            <div class="ikhan"><img src="<?= $_SESSION['path']?>" id="picture" class="path"></div>
+                                <img src="" id="new" class="new">
+                            </div>
+                            <?php  unset($_SESSION['path'])?>
+                            <br>
+                            <button class="btn btn-primary" id = 'abaza' onclick="picutre();">take picture</button>
+                            <form action="/gallery/camera" method="POST" enctype="multipart/form-data">
+                                <div class="upload">
+                                <input type="file" name="img" required>
+                                <button  class="btn btn-primary" name="upload" value="upload" id = "upload">upload</button>
+                                </div>
+                            </form>
+                                <button class="btn btn-primary" onclick="save();" name="save" value="save">Save image</button>
                         </div>
-                    </form>
-                        <button class="btn btn-primary" onclick="save();" name="save" value="save">Save image</button>
-                </div>
-                <div class="photos">
-                    <?php extract($this->_data); ?>
-                    <?php foreach($atoi as $img) : ?>
-                    <div class = "save">
-                        <img src=<?="../../public/img/picture/".$img['image_n']?>>
-                        <i class="fa fa-trash fa-fw" aria-hidden="true" onclick="deleteImage('<?= $img['image_n']?>');"></i>
+                        <div class="photos">
+                            <?php extract($this->_data); ?>
+                            <?php foreach($atoi as $img) : ?>
+                            <div class = "save">
+                                <img src=<?="../../public/img/picture/".$img['image_n']?>>
+                                <i class="fa fa-trash fa-fw" aria-hidden="true" onclick="deleteImage('<?= $img['image_n']?>');"></i>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
-                    <?php endforeach; ?>
-                </div>
         </div>
+        <?php    require_once APP_PATH . DS . 'views' . DS .  'users' . DS . 'footer.php'; ?>
         <script type="text/javascript" src="/../public/js/main.js">
 		</script>
 	</body>

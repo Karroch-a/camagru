@@ -49,17 +49,6 @@ class HomeController extends AbstractController
                     $this->_data['home'][$i]['cmnt'][$j]['username'] = array_pop(array_pop($obj->getOwnerImage($this->_data['home'][$i]['cmnt'][$j]['id_user'])));;
                 }
             }
-            // for ($i = 0; $i < count($this->_data['home']); $i++){
-            //     $this->_data['home'][$i]['cmnt'] = $obj->fetchCmnt();
-            // }
-            // echo "<pre>";
-            // // for($j = 0; $j < count($liked); $j++){
-            // //     print_r($liked[$j]['image_n']);
-            // // }
-            // // var_dump($obj->fetchCmnt('pic-1610373610.png'));
-            // var_dump($this->_data);
-            // echo "</pre>";
-            // die();
             $this->_view();
         }
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -99,10 +88,19 @@ class HomeController extends AbstractController
                 if (trim($cmnt) !==  '')
                 {
                     $obj->addCmnt($image_n, trim($cmnt));
-                    $li = $obj->fetchCmnt($image_n);
+                    if ($_SESSION['id'] != $_POST['user_id'])
+                    {
+                        $email = $obj->getemailOfImage($_POST['user_id'])['email'];
+                        $subject = 'New comment';
+                        $message = '<html><body>';
+                        $message .= "<h4 style='font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;'>Hi there, someone commented on your photo</h4>";
+                        $message .= '</body></html>';
+                        $message .= '<h4>Thank you, <br>The Camagru Team</h4>';
+                        $header .= "Content-Type: text/html; charset=UTF-8\r\n";
+                        mail($email, $subject, $message, $header);   
+                    }
                 }
-                echo json_encode($li);
-                }
+            }
         }
     }
 }

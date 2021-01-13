@@ -4,7 +4,6 @@
      $this->redirect('/users/login');
  }
     require_once "bootstrap.php";
-    require_once "footer.php";
 ?>
 <html>
 <head>
@@ -58,42 +57,45 @@
             unset($_SESSION['username_already']);
         }
         ?>
-        <div class="account">
-            <form action="/users/profile" method="POST" target="frame">
-                <h1>General Account Settings</h1>
-                <div class="tr"></div>
-                <div class="inp">
-                    <h5>Username<h5>
-                    <input type="text" name="username" placeholder="Username" value=<?= $_SESSION['username']?>>
-                    <h5>Email address<h5>
-                    <input type="text" name="email" placeholder="Email" value=<?= $_SESSION['email']?>>
-                    <h5>Password</h5>
-                    <input type="password" name="password" placeholder="Password">
-                     <div class="tr"></div>
-                        <div class="change"><h3>Change your password</h3>
-                        <a class="btn btn-raised" href="/users/changepassword" target="_blank" rel="noopener">Change password</a>
-                        </div>
+        <div class="respon">
+            <div class="account">
+                <form action="/users/profile" method="POST" target="frame">
+                    <h1>General Account Settings</h1>
                     <div class="tr"></div>
-                    <div class="delete">
-                        <h3>Delete Account</h3><h5>By deleting your account you will lose all your data</h5>
-                        <button class="btnx btn-raised btn-danger" name="delete" >Delete</button>
-                    </div>
-                    <div class="tr"></div>
-                    <div class="cmnt">
-                        <h3>Comment Notification Email</h3>
-                        <input type="checkbox" name="notification" <?= $_SESSION['notification'] ? "checked" : ""?>>
-                    </div>
-                    <div class="inp_btn"><button type="submit" class="btn" name="save">Save changes</button></div>
-                </div>
-                <div class="modal-lg">
-                        <div class="modaal">
-                            <input type="password" name="pass" placeholder="Password">
-                            <button type="submit" class="btn" name="confirm">Confirm</button>
-                            <span class="modaal-close">X<span>
+                    <div class="inp">
+                        <h5>Username<h5>
+                        <input type="text" name="username" placeholder="Username" value=<?= $_SESSION['username']?> required>
+                        <h5>Email address<h5>
+                        <input type="text" name="email" placeholder="Email" value=<?= $_SESSION['email']?> required>
+                        <h5>Password</h5>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <div class="tr"></div>
+                            <div class="change"><h3>Change your password</h3>
+                            <a class="btn btn-raised" href="/users/changepassword" target="_blank" rel="noopener">Change password</a>
+                            </div>
+                        <div class="tr"></div>
+                        <div class="delete">
+                            <h3>Delete Account</h3><h5>By deleting your account you will lose all your data</h5>
+                            <button class="btnx btn-raised btn-danger" name="delete" >Delete</button>
                         </div>
+                        <div class="tr"></div>
+                        <div class="cmnt">
+                            <h3>Comment Notification Email</h3>
+                            <input type="checkbox" name="notification" <?= $_SESSION['notification'] ? "checked" : ""?>>
+                        </div>
+                        <div class="inp_btn"><button type="submit" class="btn" name="save">Save changes</button></div>
                     </div>
-            </form>
-        </div>
+                    <div class="modal-lg">
+                            <div class="modaal">
+                                <input type="password" name="pass" placeholder="Password">
+                                <button type="submit" class="btn" name="confirm">Confirm</button>
+                                <span class="modaal-close">X<span>
+                            </div>
+                        </div>
+                </form>
+            </div>
+    </div>
+        <?php  require_once "footer.php"; ?>
         <script type="text/javascript">
             var modalbtn = document.querySelector('.btnx');
             var modal_lg = document.querySelector('.modal-lg');

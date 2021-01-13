@@ -4,7 +4,6 @@
         $this->redirect('/users/profile');
     }
     require_once "bootstrap.php";
-    require_once "footer.php";
 ?>
 <html>
     <head>
@@ -40,11 +39,14 @@
                 unset($_SESSION['validate']);
             }
         ?>
-        <div class="login-register">
-            <h2>Find your Camagru account</h2>
-            <form action="/users/forgetpassword" method="POST">
-                <input type="text" name="email" placeholder="Email">
-                <button type="submit" class="btn" name="submit">Search</button>
+        <div class="respon">
+            <div class="login-register">
+                <h2>Find your Camagru account</h2>
+                <form action="/users/forgetpassword" method="POST">
+                    <input type="text" name="email" placeholder="Email" required>
+                    <button type="submit" class="btn" name="submit">Search</button>
+            </div>
         </div>
+        <?php require_once "footer.php"; ?>
     </body>
 </html>
