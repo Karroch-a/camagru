@@ -1,1 +1,3 @@
-<h1>hello<h1>
+<?php
+    $this->redirect('/gallery/camera');
+?>

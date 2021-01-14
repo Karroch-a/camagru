@@ -1,9 +1,11 @@
 <?php
 
     namespace CAMAGRU\LIB;
+    use CAMAGRU\LIB\Helper;
 
     class FrontController
     {
+         use Helper;
         const NOT_FOUND_ACTION = 'notFoundAction';
         const NOT_FOUND_CONTROLLER = 'CAMAGRU\Controllers\\NotFoundController';
         private $_controller = "index";
@@ -28,6 +30,10 @@
             if (isset($url[2]) && $url[2] != '')
             {
                 $this->_params = explode('/' , $url[2]);
+                if (count($this->_params) > 1)
+                {
+                    $this->redirect("/".$this->_controller."/".$this->_action);
+                }
             }
         }
 

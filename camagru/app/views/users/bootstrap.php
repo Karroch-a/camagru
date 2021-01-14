@@ -33,7 +33,7 @@ if (isset($_POST['logout']))
                     </form>
                     <?php else :?>
                         <a href="/users/login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</a>
-                        <a href="/users/register" class="btn btn-outline-success my-2 my-sm-0"  type ='logout'type="submit">Resgister</a>
+                        <a href="/users/register" class="btn btn-outline-success my-2 my-sm-0"  type ='logout'type="submit">Register</a>
             <?php endif; ?>
             </div>
                 </ul>

@@ -454,5 +454,12 @@
                 }
             }
         }
+        public function deletecmnt($id)
+        {
+            global $connexion;
+            $sql = "DELETE FROM cmnt  WHERE id = '$id'";
+            $stmt = $connexion->prepare($sql);
+            $stmt->execute();
+        }
     }
 ?>

@@ -77,10 +77,6 @@ class HomeController extends AbstractController
                     echo json_encode($li);
                 }
             }
-             if (!isset($_SESSION['username']))
-            {
-                $this->redirect('/users/login');
-            }
             if (isset($_POST['nameofimage']) && isset($_POST['cmnt']))
             {
                 $cmnt = $_POST['cmnt'];
@@ -101,6 +97,15 @@ class HomeController extends AbstractController
                     }
                 }
             }
+            if ($_SESSION['id'] == $_POST['id_user'])
+            {
+                $obj->deletecmnt($_POST['id_cmnt']);
+                echo json_encode('cmnt is deleted');
+            }
         }
+    }
+    public function defaultAction()
+    {
+        $this->_view();
     }
 }

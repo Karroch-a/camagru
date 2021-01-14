@@ -15,13 +15,13 @@
             echo "<p class='alert alert-success text-center'>$q</p>";
             unset($_SESSION['message']);
         }
-        if ($_SESSION['token_validate'])
+        if (isset($_SESSION['token_validate']))
         {
             $er =  $_SESSION['token_validate'];
             echo "<p class='alert alert-success text-center'> $er</p>";
             unset($_SESSION['token_validate']);
         }
-        if ($_SESSION['validate_account'])
+        if (isset($_SESSION['validate_account']))
         {
             $er =  $_SESSION['validate_account'];
             echo "<p class='alert alert-danger text-center'> $er</p>";

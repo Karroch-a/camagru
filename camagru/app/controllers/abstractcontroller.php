@@ -38,7 +38,7 @@
                 $view = VIEW_PATH . $this->_controller .DS  .$this->_action . '.view.php';
                 if (file_exists($view))
                 {
-                    require_once $view; 
+                    require_once $view;
                 }
                 else
                 {

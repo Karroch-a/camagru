@@ -5,11 +5,11 @@ namespace CAMAGRU;
 use CAMAGRU\LIB\FrontController;
 use CAMAGRU\Models\UsersModel;
 
+
 if (!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
 }
-// require_once "../app/views/users/bootstrap.php";
-// require_once "../app/views/users/footer.php";
+
 
 require_once '..' . DS . 'app' . DS . 'config.php';
 require_once '..' . DS . 'app' . DS . 'lib' . DS . 'config' . DS . 'database.php';

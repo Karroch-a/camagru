@@ -2,7 +2,9 @@
     require_once "../app/views/users/bootstrap.php";
 ?>
 <html>
-<head></head>
+<head>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 <body>
     <div class="post">
 
@@ -11,7 +13,7 @@
                     <div class = "image">
                         <h6><?=$img['username']?></h6>
                         <img src=<?="../../public/img/picture/".$img['image_n']?>>
-                        <button onclick="like('<?= $img['image_n']?>' , '<?=$img['image_id']?>');" class="like" type="button">
+                        <button onclick="like('<?= $img['image_n']?>' , '<?=$img['image_id']?>' ,'<?=$_SESSION['id']?>');" class="like" type="button">
                             <div id = "<?=$img['image_n']?>"class="count">
                             <?php if (!$img['liked']):?>
                                 <svg aria-label="Like" class="_8-yf5 " fill="#262626" height="24" viewBox="0 0 48 48" width="24"><path d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path></svg>
@@ -27,12 +29,15 @@
                             ?>
                             <div class="" id="<?=$j?>">
                             <?php foreach($img['cmnt'] as $comment) :?>
-
-                                <div class="fetchcmnt" >
+                                <?php  $cmnt_id = str_shuffle('abcdezddze198'); ?>
+                                <div class="fetchcmnt" id = '<?=$cmnt_id?>'>
                                     <?php if ($comment['image_n'] == $img['image_n']) :?>
                                     <h6 id ="h6"><?= $comment['username']?></h6>
                                     <span id = "span"><?= $comment['comment']?></span>
+                                    <?php if ($_SESSION['id'] == $comment['id_user']) :?>
+                                    <i class="fa fa-trash fa-fw" aria-hidden="true" onclick="deletcmnt('<?= $comment['id']?>', '<?= $comment['id_user']?>', '<?=$cmnt_id?>');"></i>
                                     <?php endif ;?>
+                                 <?php endif ;?>
                                 </div>
                                 <?php endforeach; ?>
                             </div>
@@ -41,18 +46,23 @@
                             $i = str_shuffle('abcdAcd198');
                         ?>
                         <div>
-                            <div class="cmnt">
-                                <div class="ikk">
-                                <textarea aria-label="Add a comment…" placeholder="Add a comment…" class="text" id = "<?=$i?>" autocomplete="off" autocorrect="off"></textarea>
-                                <button onclick="cmnt('<?= $img['image_n']?>' ,'<?= $i?>' ,'<?= $j?>', '<?=$_SESSION['username']?>', '<?=$img['id']?>');" type="submit">Post</button>
+                            <?php if (isset($_SESSION['id'])):?>
+                                <div class="cmnt">
+                                    <div class="ikk">
+                                    <textarea aria-label="Add a comment…" placeholder="Add a comment…" class="text" id = "<?=$i?>" autocomplete="off" autocorrect="off"></textarea>
+                                    <button onclick="cmnt('<?= $img['image_n']?>' ,'<?= $i?>' ,'<?= $j?>', '<?=$_SESSION['username']?>', '<?=$img['id']?>');" type="submit">Post</button>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php endif ;?>
                         </div>
                         </section>
                     </div>
                     <?php endforeach; ?>
                     <nav aria-label="Page navigation example">
                     <ul class="pagination">
+                        <?php if($_GET['start'] > $img['countofimage'] || $img['countofimage'] < 0)
+                            $this->redirect('/home/post?start=0');
+                        ?>
                         <?php if ($_GET['start'] != 0) :?>
                             <li class="page-item"><a class="page-link" href="/home/post?start=<?=$_GET['start'] - 1?>">Previous</a></li>
                         <?php else : ?>

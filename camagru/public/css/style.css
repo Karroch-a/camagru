@@ -17,6 +17,11 @@ body
     flex-direction: column;
     height: 100%;
 }
+.fetchcmnt i 
+{
+    position: relative;
+    margin: auto;
+}
 .respon
 {
     display: flex;
@@ -126,10 +131,20 @@ input, select, textarea{
     width: 100%;
     position: fixed;
 }
+.container1
+{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
 .container1 img
 {
-    width:  100%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
 }
 .jumbotron
 {
@@ -422,8 +437,8 @@ input, select, textarea{
 .modaal
 {
     position: relative;
-    width: 60%;
-    height: 20%;
+    width: 45%;
+    height: 200px;
     background-color: white;
     display: flex;
     justify-content: space-around;
@@ -590,7 +605,7 @@ input, select, textarea{
 }
 .photos img
 {
-    width: 61%;
+    width: 227px;
     overflow: auto;
     height: 127px;
     margin: 2px;
@@ -710,9 +725,6 @@ svg:hover {
         -webkit-align-items: center;
         -ms-flex-align: center;
         align-items: center;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
         display: flex;
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
@@ -734,9 +746,6 @@ svg:hover {
         border: 0;
         color: #262626;
         color: rgba(var(--i1d,38,38,38),1);
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
         display: flex;
         -webkit-box-flex: 1;
         -webkit-flex-grow: 1;
@@ -820,10 +829,7 @@ svg:hover {
         width: 310px;
         height: 292px;
         padding: 40px 30px;
-        box-sizing: border-box;
-        box-shadow: 0px 5px 10px rgba(0,0,0,.5);
         border-radius: 20px;
-        background: #fff;
         margin-top: 6%;
     }
     .register
@@ -832,10 +838,7 @@ svg:hover {
     height: 341px;
     padding: 30px 30px;
     margin-top: 5%;
-    box-sizing: border-box;
-    box-shadow: 0px 5px 10px rgba(0,0,0,.5);
     border-radius: 20px;
-    background: #fff;
 }
 .alert {
     height: 52px;
@@ -857,23 +860,11 @@ input, select, textarea{
 
 .register input[type="text"]
 {
-    border: none;
-    border-bottom: 1px solid  rgb(129, 129, 129);
-    background-color: transparent;
-    outline: none;
     height: 40px;
-    color: black;
-    border: 1px solid #3497db;
 }
 .register input[type="password"]
 {
-    border: none;
-    border-bottom: 1px solid  rgb(129, 129, 129);
-    background-color: transparent;
-    outline: none;
     height: 40px;
-    color: black;
-    border: 1px solid #3497db;
 
 }
 
@@ -902,7 +893,7 @@ input, select, textarea{
     width: 100%;
   }
   .account {
-    width: 100%;
+    width: 97%;
     height: 100%;
   }
   .account input[type="text"]
@@ -917,4 +908,29 @@ input, select, textarea{
   {
       top: 30px;
   }
+  .gallery .stickers {
+    width: 90%;
+  }
+  .direction {
+    flex-direction: column;
+  }
+  .photos img {
+    width: 86%;
+  }
+  .modaal {
+      width: 90%;
+      height: 22%;
+  }
+  .modaal input[type="password"]
+  {
+      width: 80%;
+  }
+}
+@media (min-width: 992px)
+{
+    .modal-lg, .modal-xl
+    {
+        height: 100%;
+        min-width: 100%;
+    }
 }

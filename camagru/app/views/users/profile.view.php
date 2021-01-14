@@ -68,7 +68,7 @@
                         <h5>Email address<h5>
                         <input type="text" name="email" placeholder="Email" value=<?= $_SESSION['email']?> required>
                         <h5>Password</h5>
-                        <input type="password" name="password" placeholder="Password" required>
+                        <input type="password" name="password" placeholder="Password" >
                         <div class="tr"></div>
                             <div class="change"><h3>Change your password</h3>
                             <a class="btn btn-raised" href="/users/changepassword" target="_blank" rel="noopener">Change password</a>

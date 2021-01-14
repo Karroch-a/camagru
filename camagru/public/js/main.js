@@ -51,7 +51,7 @@
 				}
 		}
 				function changeImage(id){
-					if (document.getElementById("picture").getAttribute('src') !== '' && !(vid.srcObject))
+					if (document.getElementById("picture").getAttribute('src') !== '')
 					{
 						document.getElementById("abaza").disabled = true;
 						document.getElementById("picture").style = 'display:block;';
@@ -123,7 +123,7 @@
 				{
 					var xhttp = new XMLHttpRequest();
 					xhttp.open("POST", window.location.href, true);
-					if (document.getElementById("picture").getAttribute('src') !== '' && !(vid.srcObject))
+					if (document.getElementById("picture").getAttribute('src') !== '')
 					{
 						picture = stickers = "emoji=" + new_stk.src + "&pic=" +  document.getElementById("picture").src;
 					}

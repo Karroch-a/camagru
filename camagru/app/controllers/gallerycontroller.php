@@ -117,7 +117,7 @@
                 }
             }
         }
-        public function testAction()
+        public function defaultAction()
         {
             $this->_view();
         }
