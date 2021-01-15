@@ -14,12 +14,16 @@ class HomeController extends AbstractController
         $obj = new UsersModel();
         if ($_SERVER['REQUEST_METHOD'] == 'GET'){
             $num = $obj->GetcountofImage();
-            $limit = 2;
+            $limit = 5;
             $count = ceil($num / $limit);
             $page = $_GET['start'];
             if (!$page)
             {
                 $page = 0;
+            }
+            if ($_GET['start'] < 0)
+            {
+                $this->redirect("/home/post");
             }
             $start = $page * $limit;
             $this->_data['home'] = $obj->fetchallImage($start,$limit);

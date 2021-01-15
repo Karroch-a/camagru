@@ -57,7 +57,6 @@
     ?>
     <div class="respon">
         <div class="register">
-            <!-- <img src="https://img.icons8.com/ios/100/000000/gender-neutral-user.png" class="face"> -->
             <form action="/users/register" method="POST">
                 <input type="text" name="username" placeholder="Username" required>
                 <input type="text" name="email" placeholder="Email" required>

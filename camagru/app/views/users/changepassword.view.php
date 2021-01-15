@@ -22,7 +22,6 @@
         ?>
         <div class="respon">
         <div class="login-register">
-            <!-- <img src="https://img.icons8.com/ios/100/000000/gender-neutral-user.png" class="face"> -->
             <form action="/users/changepassword" method="POST">
                     <input type="password" name="current" placeholder="Current Password" required>
                     <input type="password" name="new" placeholder="New Password" required>

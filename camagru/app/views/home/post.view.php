@@ -33,7 +33,7 @@
                                 <div class="fetchcmnt" id = '<?=$cmnt_id?>'>
                                     <?php if ($comment['image_n'] == $img['image_n']) :?>
                                     <h6 id ="h6"><?= $comment['username']?></h6>
-                                    <span id = "span"><?= $comment['comment']?></span>
+                                    <span id = "span"><?= htmlspecialchars($comment['comment'])?></span>
                                     <?php if ($_SESSION['id'] == $comment['id_user']) :?>
                                     <i class="fa fa-trash fa-fw" aria-hidden="true" onclick="deletcmnt('<?= $comment['id']?>', '<?= $comment['id_user']?>', '<?=$cmnt_id?>');"></i>
                                     <?php endif ;?>
@@ -58,6 +58,7 @@
                         </section>
                     </div>
                     <?php endforeach; ?>
+                    <?php if ($img['countofimage']): ?>
                     <nav aria-label="Page navigation example">
                     <ul class="pagination">
                         <?php if($_GET['start'] > $img['countofimage'] || $img['countofimage'] < 0)
@@ -78,6 +79,7 @@
                         <?php endif;?>
                     </ul>
                     </nav>
+                    <?php endif;?>
                 </div>
                 <?php  require_once APP_PATH . DS . 'views' . DS .  'users' . DS . 'footer.php';  ?>
         <script type="text/javascript" src="/../public/js/home.js">

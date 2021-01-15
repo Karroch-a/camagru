@@ -25,7 +25,7 @@ class UsersController extends AbstractController
             if (strlen($obj->username) < 5 || strlen($obj->username) > 10 ||!filter_var($obj->username, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW)) {
                 $_SESSION['username_error'] = 'Invalid Username';
             } 
-            else if (!filter_var($obj->email, FILTER_VALIDATE_EMAIL) || !preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $obj->email)) {
+            else if (!filter_var($obj->email, FILTER_VALIDATE_EMAIL)) {
                 $_SESSION['email_error'] = 'Invalid Email';
             } 
             else if (strlen($obj->password) <= '8') 
@@ -103,7 +103,7 @@ class UsersController extends AbstractController
             if (strlen($obj->username) < 5 || $obj->username == "" || strlen($obj->username) > 10 ||!filter_var($obj->username, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW)) {
                 $_SESSION['error'] = 'Invalid Username';
             } 
-            else if (!filter_var($obj->email, FILTER_VALIDATE_EMAIL) || !preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $obj->email)) {
+            else if (!filter_var($obj->email, FILTER_VALIDATE_EMAIL)) {
                 $_SESSION['email_error'] = 'Invalid Email';
             } 
             else if (strlen($obj->password) == "") {

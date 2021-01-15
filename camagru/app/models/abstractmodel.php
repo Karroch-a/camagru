@@ -444,7 +444,7 @@
         public function getemailOfImage($id)
         {
             global $connexion;
-            $sql = "SELECT  email FROM users WHERE id = '$id'";
+            $sql = "SELECT  email FROM users WHERE id = '$id' WHERE rowcount = 1";
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $info = $stmt->fetchAll();

@@ -11,13 +11,6 @@
         {
             $obj = new UsersModel();
             if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-                // foreach($obj->fetchImage() as $img)
-                // {
-                //     $_SESSION['image_name'] =  $img['image_n'];
-                // }
-                // $_SESSION['image_name'] =  $obj->fetchImage()['image_n'];\
-                // var_dump($obj->fetchImage());
-                // var_dump($this->$_data);
                 $this->_data['atoi'] = $obj->fetchImage();
                 $this->_view();
             }
@@ -47,7 +40,6 @@
                         {
                             $_SESSION['path'] = $path;
                             $this->redirect('/gallery/camera');
-                            // $obj->uploadImage($name);
                         }
                     }
                 }
@@ -67,7 +59,6 @@
                     $path = '..' .DS . 'public' . DS .'img' .DS . 'picture' . DS;
                     $emoji_path = '..' .DS . 'public' . DS .'img' .DS . 'stickers' . DS;
                     $emoji = $_POST['stk'];
-                    // echo json_encode($_POST);       
                     $img = str_replace('data:image/jpeg;base64,', '', $_POST['img']);
                     $img = str_replace(' ', '+', $img);
                     $fileData = base64_decode($img);
@@ -89,14 +80,11 @@
                     $emoji_path = '..' .DS . 'public' . DS .'img' .DS . 'stickers' . DS;
                     $picture_path = '..' .DS . 'public' . DS .'img' .DS . 'upload' . DS;
                     $emoji = $_POST['emoji'];
-                    // echo json_encode($_POST);       
                     $fileName = $path . "pic-".time() . '.png';
                     $emoji = explode('/', $emoji, 7);
                     $dest = explode('/', $_POST['pic'], 7);
                     $picture = $picture_path . $dest[6];
                     $src = $emoji_path . $emoji[6];
-                    // echo json_encode($dest);
-                    // echo json_encode($src);
                     list($width,$height)=getimagesize($src);
                     $newwidth=114;
                     $newheight=($height/$width)*$newwidth;
