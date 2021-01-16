@@ -63,8 +63,8 @@
             $username = $_POST['username'];
             $password = $_POST['password'];
             $password = md5($password);
-            $q = $connexion->prepare("SELECT COUNT(id) FROM users WHERE username = '$username' AND password = '$password'");
-            $q_rowcount = $connexion->prepare("SELECT COUNT(id) FROM users WHERE username = '$username' AND password = '$password' AND rowcount = 1");
+            $q = $connexion->prepare('SELECT COUNT(id) FROM users WHERE username = "'.$username.'" AND password = "'.$password.'"');
+            $q_rowcount = $connexion->prepare('SELECT COUNT(id) FROM users WHERE username = "'.$username.'" AND password = "'.$password.'" AND rowcount = 1');
             $q->execute();
             $q_rowcount->execute();
             $count = $q->fetchColumn();
@@ -142,8 +142,8 @@
         {
             global $connexion;
             $email = $_POST['email'];
-            $q = $connexion->prepare("SELECT COUNT(id) FROM users WHERE email = '$email'");
-            $q_rowcount = $connexion->prepare("SELECT COUNT(id) FROM users WHERE email = '$email' AND rowcount = 1");
+            $q = $connexion->prepare('SELECT COUNT(id) FROM users WHERE email = "'.$email.'"');
+            $q_rowcount = $connexion->prepare('SELECT COUNT(id) FROM users WHERE email = "'.$email.'" AND rowcount = 1');
             $q->execute();
             $q_rowcount->execute();
             $count = $q->fetchColumn();
@@ -169,10 +169,10 @@
         {
             global $connexion;
             $id = $_SESSION['id'];
-            $sql_user = "DELETE FROM users WHERE id = '$id'";
-            $sql_image = "DELETE FROM images WHERE id = '$id'";
-            $sql_cmnt = "DELETE FROM cmnt WHERE id_user = '$id'";
-            $sql_likes = "DELETE FROM likes WHERE id_image = '$id'";
+            $sql_user = 'DELETE FROM users WHERE id = "'.$id.'"';
+            $sql_image = 'DELETE FROM images WHERE id = "'.$id.'"';
+            $sql_cmnt = 'DELETE FROM cmnt WHERE id_user = "'.$id.'"';
+            $sql_likes = 'DELETE FROM likes WHERE id_image = "'.$id.'"';
             $stmt_user = $connexion->prepare($sql_user);
             $stmt_image = $connexion->prepare($sql_image);
             $stmt_cmnt = $connexion->prepare($sql_cmnt);
@@ -191,9 +191,9 @@
                 $not = 1;
             else
                 $not = 0;
-            $row_email = "UPDATE  users SET email = '$email' WHERE id = '$id'";
-            $row_user = "UPDATE  users SET username = '$username' WHERE id = '$id'";
-            $row_notif = "UPDATE  users SET notification = '$not' WHERE id = '$id'";
+            $row_email = 'UPDATE  users SET email = "'.$email.'" WHERE id = "'.$id.'"';
+            $row_user = 'UPDATE  users SET username = "'.$username.'" WHERE id = "'.$id.'"';
+            $row_notif = 'UPDATE  users SET notification = "'.$not.'" WHERE id = "'.$id.'"';
             $stmt_email = $connexion->prepare($row_email);
             $stmt_user = $connexion->prepare($row_user);
             $stmt_notif = $connexion->prepare($row_notif);
@@ -210,14 +210,14 @@
             $pass = md5($_POST['password']);
             if (isset($email))
             {
-                $sql_username = "SELECT username FROM  users WHERE username = ? AND username != '$usr'";
-                $sql_email = "SELECT email FROM  users WHERE email = ? AND username != '$usr'";
+                $sql_username = 'SELECT username FROM  users WHERE username = ? AND username != "'.$usr.'"';
+                $sql_email = 'SELECT email FROM  users WHERE email = ? AND username != "'.$usr.'"';
                 $stmt_username = $connexion->prepare($sql_username);
                 $stmt_email = $connexion->prepare($sql_email);
                 $stmt_email->execute([$email]);
                 $stmt_username->execute([$username]);
                 #check password
-                $sql_pass = "SELECT password FROM  users WHERE password = '$pass' AND username = '$usr'";
+                $sql_pass = 'SELECT password FROM  users WHERE password = "'.$pass.'" AND username = "'.$usr.'"';
                 $stmt_pass = $connexion->prepare($sql_pass);
                 $stmt_pass->execute();
                 if ($stmt_email->rowCount() >= 1)
@@ -252,12 +252,12 @@
             $usr = $_SESSION['username'];
             $current = md5($_POST['current']);
             $new = md5($_POST['new']);
-            $sql_check = "SELECT password FROM  users WHERE password = '$current' AND username = '$usr'";
+            $sql_check = 'SELECT password FROM  users WHERE password = "'.$current.'" AND username = "'.$usr.'"';
             $stmt_check = $connexion->prepare($sql_check);
             $stmt_check->execute();
             if ($stmt_check->fetchColumn() == true)
             {
-                $sql_pass = "UPDATE users SET password = '$new' WHERE password = '$current' AND username = '$usr'";
+                $sql_pass = 'UPDATE users SET password = "'.$new.'" WHERE password = "'.$current.'" AND username = "'.$usr.'"';
                 $stmt_pass = $connexion->prepare($sql_pass);
                 $stmt_pass->execute();
                 $_SESSION['success'] = 'The password was successfully updated.';
@@ -273,7 +273,7 @@
         {
             global $connexion;
             $usr = $_SESSION['username'];
-            $sql = "SELECT * FROM users WHERE username = '$usr'";
+            $sql = 'SELECT * FROM users WHERE username = "'.$usr.'"';
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $info = $stmt->fetchAll();
@@ -290,7 +290,7 @@
             $pass = md5($_POST['pass']);
             if (isset($_POST['confirm']))
             {
-                $sql_pass = "SELECT password FROM  users WHERE password = '$pass' AND username = '$usr'";
+                $sql_pass = 'SELECT password FROM  users WHERE password = "'.$pass.'" AND username = "'.$usr.'"';
                 $stmt_pass = $connexion->prepare($sql_pass);
                 $stmt_pass->execute();
                 if ($stmt_pass->fetchColumn() == true)
@@ -307,7 +307,7 @@
         public function sendmail($token, $mail)
         {
             global $connexion;
-            $sql = "UPDATE users SET password_token = '$token' WHERE email = '$mail'";
+            $sql = 'UPDATE users SET password_token = "'.$token.'" WHERE email = "'.$mail.'"';
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
         }
@@ -316,7 +316,7 @@
             global $connexion;
             $id = $_SESSION['id'];
             $like = 0;
-            $sql_image = "INSERT INTO images (id, image_n, like_count) VALUES ($id, '$image_n', '$like')";
+            $sql_image = 'INSERT INTO images (id, image_n, like_count) VALUES ("'.$id.'", "'.$image_n.'", "'.$like.'")';
             $stmt = $connexion->prepare($sql_image);
             $stmt->execute();
         }
@@ -324,7 +324,7 @@
         {
             global $connexion;
             $id = $_SESSION['id'];
-            $sql = "SELECT * FROM images WHERE id = '$id'";
+            $sql = 'SELECT * FROM images WHERE id = "'.$id.'"';
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $info = $stmt->fetchAll();
@@ -333,7 +333,7 @@
         public function deleteImage($image_n)
         {
             global $connexion;
-            $sql = "DELETE FROM images WHERE image_n = '$image_n'";
+            $sql = 'DELETE FROM images WHERE image_n = "'.$image_n.'"';
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
         }
@@ -351,8 +351,8 @@
         {
             global $connexion;
             $id = $_SESSION['id'];
-            $like_sql = "UPDATE  images SET like_count = like_count + $like WHERE image_n = '$image_n'";
-            $like_count = "INSERT INTO likes (id_image, image_n) VALUES ('$id', '$image_n')";
+            $like_sql = 'UPDATE  images SET like_count = like_count + $like WHERE image_n = "'.$image_n.'"';
+            $like_count = 'INSERT INTO likes (id_image, image_n) VALUES ("'.$id.'", "'.$image_n.'")';
             $stmt_count = $connexion->prepare($like_count);
             $stmt_count->execute();
             $stmt = $connexion->prepare($like_sql);
@@ -362,7 +362,7 @@
         {
             global $connexion;
             $id = $_SESSION['id'];
-            $sql = "SELECT * FROM likes WHERE id_image = '$id' AND image_n = '$image_n'";
+            $sql = 'SELECT * FROM likes WHERE id_image = "'.$id.'" AND image_n = "'.$image_n.'"';
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $count = $stmt->fetchColumn();
@@ -379,8 +379,8 @@
         {
             global $connexion;
             $id = $_SESSION['id'];
-            $sql = "DELETE FROM likes WHERE image_n = '$image_n' AND id_image = '$id'";
-            $like_sql = "UPDATE  images SET like_count = like_count + $like WHERE image_n = '$image_n'";
+            $sql = 'DELETE FROM likes WHERE image_n = "'.$image_n.'" AND id_image = "'.$id.'"';
+            $like_sql = 'UPDATE  images SET like_count = like_count + $like WHERE image_n = "'.$image_n.'"';
             $stmt_sql = $connexion->prepare($sql);
             $stmt = $connexion->prepare($like_sql);
             $stmt->execute();
@@ -389,7 +389,7 @@
         public function getOwnerImage($id)
         {
             global $connexion;
-            $sql = "SELECT  username FROM users WHERE id = '$id'";
+            $sql = 'SELECT  username FROM users WHERE id = "'.$id.'"';
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $info = $stmt->fetchAll();
@@ -398,7 +398,7 @@
         public function countLike($image_n)
         {
             global $connexion;
-            $like_count = "SELECT like_count FROM images WHERE image_n = '$image_n'";
+            $like_count = 'SELECT like_count FROM images WHERE image_n = "'.$image_n.'"';
             $stmt = $connexion->prepare($like_count);
             $stmt->execute();
             $info = $stmt->fetchAll();
@@ -408,7 +408,7 @@
         {
             global $connexion;
             $id = $_SESSION['id'];
-            $sql = "SELECT image_n FROM likes WHERE id_image = '$id'";
+            $sql = 'SELECT image_n FROM likes WHERE id_image = "'.$id.'"';
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $info = $stmt->fetchAll();
@@ -418,7 +418,7 @@
         {
             global $connexion;
             $id = $_SESSION['id'];
-            $comnt = "INSERT INTO cmnt (id_user, image_n, comment) VALUES ('$id', '$image_n', '$comment')";
+            $comnt = 'INSERT INTO cmnt (id_user, image_n, comment) VALUES ("'.$id.'", "'.$image_n.'", "'.$comment.'")';
             $stmt = $connexion->prepare($comnt);
             $stmt->execute();
         }
@@ -444,7 +444,7 @@
         public function getemailOfImage($id)
         {
             global $connexion;
-            $sql = "SELECT  email FROM users WHERE id = '$id' WHERE rowcount = 1";
+            $sql = 'SELECT  email FROM users WHERE id = "'.$id.'" AND rowcount = 1';
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $info = $stmt->fetchAll();
@@ -457,7 +457,7 @@
         public function deletecmnt($id)
         {
             global $connexion;
-            $sql = "DELETE FROM cmnt  WHERE id = '$id'";
+            $sql = 'DELETE FROM cmnt  WHERE id = "'.$id.'"';
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
         }

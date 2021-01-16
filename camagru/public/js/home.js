@@ -35,11 +35,12 @@ function like(image_n, id, id_user)
 				var xhttp = new XMLHttpRequest();
 				xhttp.open("POST", window.location.href, true);
 				comment = document.getElementById(i).value;
-				comment =  comment + 'value';
 				picture = "nameofimage=" + image_n + "&cmnt=" + comment + '&user_id=' + id_user;
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
-						if (document.getElementById(i).value !== '')
+						}
+					};
+					if (document.getElementById(i).value !== '')
 					{
 						var div = document.createElement("DIV");
 						div.setAttribute("class", "fetchcmnt");
@@ -57,9 +58,6 @@ function like(image_n, id, id_user)
 						div.appendChild(icon);
 						document.getElementById(i).value = '';
 					}
-						}
-					};
-					console.log(picture);
 					xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 					xhttp.send(picture);
 			}
