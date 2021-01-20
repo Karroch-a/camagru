@@ -48,12 +48,12 @@
                             </div>
                             <br>
                             <div class="canvas"><canvas id="canvas"style="width: 100%;"></canvas>
-                            <div class="ikhan"><img src="<?= $_SESSION['path']?>" id="picture" class="path"></div>
+                            <div class="image_upload"><img src="<?= $_SESSION['path']?>" id="picture" class="path"></div>
                                 <img src="" id="new" class="new">
                             </div>
                             <?php  unset($_SESSION['path'])?>
                             <br>
-                            <button class="btn btn-primary" id = 'abaza' onclick="picutre();">take picture</button>
+                            <button class="btn btn-primary" id = 'photo' onclick="picutre();">take picture</button>
                             <form action="/gallery/camera" method="POST" enctype="multipart/form-data">
                                 <div class="upload">
                                 <input type="file" name="img" required>

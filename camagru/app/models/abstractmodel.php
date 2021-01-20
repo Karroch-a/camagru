@@ -60,7 +60,14 @@
         public function checkvalidatelogin()
         {
             global $connexion;
-            $username = $_POST['username'];
+            if (is_array($_POST['username']))
+            {
+                $username =  '';
+            }
+            else
+            {
+                $username = $_POST['username'];
+            }
             $password = $_POST['password'];
             $password = md5($password);
             $q = $connexion->prepare('SELECT COUNT(id) FROM users WHERE username = "'.$username.'" AND password = "'.$password.'"');
@@ -351,7 +358,7 @@
         {
             global $connexion;
             $id = $_SESSION['id'];
-            $like_sql = 'UPDATE  images SET like_count = like_count + $like WHERE image_n = "'.$image_n.'"';
+            $like_sql = 'UPDATE  images SET like_count = like_count + "'.$like.'" WHERE image_n = "'.$image_n.'"';
             $like_count = 'INSERT INTO likes (id_image, image_n) VALUES ("'.$id.'", "'.$image_n.'")';
             $stmt_count = $connexion->prepare($like_count);
             $stmt_count->execute();
@@ -380,7 +387,7 @@
             global $connexion;
             $id = $_SESSION['id'];
             $sql = 'DELETE FROM likes WHERE image_n = "'.$image_n.'" AND id_image = "'.$id.'"';
-            $like_sql = 'UPDATE  images SET like_count = like_count + $like WHERE image_n = "'.$image_n.'"';
+            $like_sql = 'UPDATE  images SET like_count = like_count + "'.$like.'" WHERE image_n = "'.$image_n.'"';
             $stmt_sql = $connexion->prepare($sql);
             $stmt = $connexion->prepare($like_sql);
             $stmt->execute();
@@ -418,6 +425,7 @@
         {
             global $connexion;
             $id = $_SESSION['id'];
+            $comment = htmlspecialchars($comment);
             $comnt = 'INSERT INTO cmnt (id_user, image_n, comment) VALUES ("'.$id.'", "'.$image_n.'", "'.$comment.'")';
             $stmt = $connexion->prepare($comnt);
             $stmt->execute();
@@ -444,7 +452,7 @@
         public function getemailOfImage($id)
         {
             global $connexion;
-            $sql = 'SELECT  email FROM users WHERE id = "'.$id.'" AND rowcount = 1';
+            $sql = 'SELECT  email FROM users WHERE id = "'.$id.'" AND notification = 1';
             $stmt = $connexion->prepare($sql);
             $stmt->execute();
             $info = $stmt->fetchAll();

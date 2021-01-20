@@ -53,7 +53,7 @@
 				function changeImage(id){
 					if (document.getElementById("picture").getAttribute('src') !== '')
 					{
-						document.getElementById("abaza").disabled = true;
+						document.getElementById("photo").disabled = true;
 						document.getElementById("picture").style = 'display:block;';
 						if (id == 1)
 						{

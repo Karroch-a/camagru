@@ -12,15 +12,15 @@ if (!defined('DS')) {
 $path_upload = '..' .DS . 'public' . DS .'img' .DS . 'upload';
 $path_stickers = '..' .DS . 'public' . DS .'img' .DS . 'stickers';
 $path_picture = '..' .DS . 'public' . DS .'img' .DS . 'picture';
-if (file_exists($path))
-{
-
-}
-else
+if (!file_exists($path_upload))
 {
     mkdir($path_upload, 0777);
     chmod($path_upload, 0777);
     chmod($path_stickers, 0777);
+}
+if (!file_exists($path_picture))
+{
+    mkdir($path_picture, 0777);
     chmod($path_picture, 0777);
 }
 

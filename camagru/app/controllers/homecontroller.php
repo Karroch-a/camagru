@@ -25,6 +25,10 @@ class HomeController extends AbstractController
             {
                 $this->redirect("/home/post");
             }
+            if ($_GET['start'] > $count)
+            {
+                $this->redirect("/home/post");
+            }
             $start = $page * $limit;
             $this->_data['home'] = $obj->fetchallImage($start,$limit);
             $liked = $obj->checklikeByID();
@@ -83,21 +87,28 @@ class HomeController extends AbstractController
             }
             if (isset($_POST['nameofimage']) && isset($_POST['cmnt']))
             {
-                $cmnt = $_POST['cmnt'];
-                $image_n = $_POST['nameofimage'];
-                if (trim($cmnt) !==  '')
+                if (!isset($_SESSION['id']))
                 {
-                    $obj->addCmnt($image_n, trim($cmnt));
-                    if ($_SESSION['id'] != $_POST['user_id'])
+                    $this->redirect('/users/login');
+                }
+                else
+                {
+                    $cmnt = $_POST['cmnt'];
+                    $image_n = $_POST['nameofimage'];
+                    if (trim($cmnt) !==  '')
                     {
-                        $email = $obj->getemailOfImage($_POST['user_id'])['email'];
-                        $subject = 'New comment';
-                        $message = '<html><body>';
-                        $message .= "<h4 style='font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;'>Hi there, someone commented on your photo</h4>";
-                        $message .= '</body></html>';
-                        $message .= '<h4>Thank you, <br>The Camagru Team</h4>';
-                        $header .= "Content-Type: text/html; charset=UTF-8\r\n";
-                        mail($email, $subject, $message, $header);   
+                        $obj->addCmnt($image_n, trim($cmnt));
+                        if ($_SESSION['id'] != $_POST['user_id'])
+                        {
+                            $email = $obj->getemailOfImage($_POST['user_id'])['email'];
+                            $subject = 'New comment';
+                            $message = '<html><body>';
+                            $message .= "<h4 style='font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;'>Hi there, someone commented on your photo</h4>";
+                            $message .= '</body></html>';
+                            $message .= '<h4>Thank you, <br>The Camagru Team</h4>';
+                            $header .= "Content-Type: text/html; charset=UTF-8\r\n";
+                            mail($email, $subject, $message, $header);   
+                        }
                     }
                 }
             }

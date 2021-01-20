@@ -33,7 +33,7 @@
                                 <div class="fetchcmnt" id = '<?=$cmnt_id?>'>
                                     <?php if ($comment['image_n'] == $img['image_n']) :?>
                                     <h6 id ="h6"><?= $comment['username']?></h6>
-                                    <span id = "span"><?= htmlspecialchars($comment['comment'])?></span>
+                                    <span id = "span"><?= $comment['comment']?></span>
                                     <?php if ($_SESSION['id'] == $comment['id_user']) :?>
                                     <i class="fa fa-trash fa-fw" aria-hidden="true" onclick="deletcmnt('<?= $comment['id']?>', '<?= $comment['id_user']?>', '<?=$cmnt_id?>');"></i>
                                     <?php endif ;?>
@@ -41,14 +41,14 @@
                                 </div>
                                 <?php endforeach; ?>
                             </div>
-                            <section class="okkk">
+                            <section class="sec">
                         <?php
                             $i = str_shuffle('abcdAcd198');
                         ?>
                         <div>
                             <?php if (isset($_SESSION['id'])):?>
                                 <div class="cmnt">
-                                    <div class="ikk">
+                                    <div class="comment">
                                     <textarea aria-label="Add a comment…" placeholder="Add a comment…" class="text" id = "<?=$i?>" autocomplete="off" autocorrect="off"></textarea>
                                     <button onclick="cmnt('<?= $img['image_n']?>' ,'<?= $i?>' ,'<?= $j?>', '<?=$_SESSION['username']?>', '<?=$img['id']?>');" type="submit">Post</button>
                                     </div>
@@ -61,9 +61,6 @@
                     <?php if ($img['countofimage']): ?>
                     <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                        <?php if($_GET['start'] > $img['countofimage'] || $img['countofimage'] < 0)
-                            $this->redirect('/home/post?start=0');
-                        ?>
                         <?php if ($_GET['start'] != 0) :?>
                             <li class="page-item"><a class="page-link" href="/home/post?start=<?=$_GET['start'] - 1?>">Previous</a></li>
                         <?php else : ?>

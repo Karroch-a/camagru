@@ -22,7 +22,7 @@ class UsersController extends AbstractController
             $obj->username = $_POST['username'];
             $obj->email = $_POST['email'];
             $obj->password = $_POST['password'];
-            if (strlen($obj->username) < 5 || strlen($obj->username) > 10 ||!filter_var($obj->username, FILTER_SANITIZE_STRING)) {
+            if (strlen($obj->username) < 5 || strlen($obj->username) > 10 || !preg_match("/^[a-zA-Z]+$/", $obj->username)) {
                 $_SESSION['username_error'] = 'Invalid Username';
             } 
             else if (!filter_var($obj->email, FILTER_VALIDATE_EMAIL)) {
@@ -66,14 +66,20 @@ class UsersController extends AbstractController
     {
         if (isset($_POST['username']))
         {
-            $obj = new UsersModel();
-            if ($obj->checkvalidatelogin() == true)
-            {
-                $this->redirect('/users/profile');
-            }
+            if (strlen($_POST['username']) < 5 || $_POST['username'] == "" || strlen($_POST['username']) > 10 || !preg_match("/^[a-zA-Z]+$/", $_POST['username'])) {
+                $_SESSION['username_error'] = 'Wrong Username OR Password';
+            } 
             else
             {
-                $_SESSION['username_error'] = 'Wrong Username OR Password';
+                $obj = new UsersModel();
+                if ($obj->checkvalidatelogin() == true)
+                {
+                    $this->redirect('/users/profile');
+                }
+                else
+                {
+                    $_SESSION['username_error'] = 'Wrong Username OR Password';
+                }
             }
         }
         $this->_view();
