@@ -42,9 +42,4 @@ PAGES :
 <img width="1341" alt="Screen Shot 2021-01-22 at 3 47 50 PM" src="https://user-images.githubusercontent.com/46114232/105506527-73bf5400-5cca-11eb-8d21-8ad068ebde98.png">
 </div>
 
-7. Home Page:
-
-<div style="text-align:center">
-<img width="1331" alt="Screen Shot 2021-01-22 at 3 47 37 PM" src="https://user-images.githubusercontent.com/46114232/105506638-8cc80500-5cca-11eb-8a39-4b80c82c38c0.png">
-</div>
 
